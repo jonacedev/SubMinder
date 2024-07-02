@@ -102,7 +102,8 @@
 		AB7B36552C34A793004AE578 /* SubMinder */ = {
 			isa = PBXGroup;
 			children = (
-				AB7B36802C34A974004AE578 /* App */,
+				AB7B36562C34A793004AE578 /* SubMinderApp.swift */,
+				AB7B36822C34A996004AE578 /* Code */,
 				AB7B36812C34A97D004AE578 /* Resources */,
 				AB7B365C2C34A794004AE578 /* Preview Content */,
 			);
@@ -134,15 +135,6 @@
 			path = SubMinderUITests;
 			sourceTree = "<group>";
 		};
-		AB7B36802C34A974004AE578 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				AB7B36832C34A99B004AE578 /* RootManager */,
-				AB7B36822C34A996004AE578 /* Code */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
 		AB7B36812C34A97D004AE578 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +146,7 @@
 		AB7B36822C34A996004AE578 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				AB7B368C2C34A9F5004AE578 /* Managers */,
+				AB7B36832C34A99B004AE578 /* RootManager */,
 				AB7B36922C34AAAD004AE578 /* Base */,
 				AB7B368B2C34A9ED004AE578 /* Components */,
 				AB7B36842C34A9AF004AE578 /* Modules */,
@@ -165,7 +157,7 @@
 		AB7B36832C34A99B004AE578 /* RootManager */ = {
 			isa = PBXGroup;
 			children = (
-				AB7B36562C34A793004AE578 /* SubMinderApp.swift */,
+				AB7B368D2C34AA1B004AE578 /* RootManager.swift */,
 			);
 			path = RootManager;
 			sourceTree = "<group>";
@@ -201,14 +193,6 @@
 			children = (
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		AB7B368C2C34A9F5004AE578 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				AB7B368D2C34AA1B004AE578 /* RootManager.swift */,
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		AB7B368F2C34AA52004AE578 /* Splash */ = {
