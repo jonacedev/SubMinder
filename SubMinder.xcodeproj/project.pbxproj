@@ -27,6 +27,7 @@
 		AB7B36AE2C34C01F004AE578 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36AD2C34C01F004AE578 /* DeviceInfo.swift */; };
 		AB7B36B02C34CBAA004AE578 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36AF2C34CBAA004AE578 /* LoginViewModel.swift */; };
 		AB7B36B22C34CC07004AE578 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36B12C34CC07004AE578 /* HomeViewModel.swift */; };
+		AB7B36B42C34D3BE004AE578 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AB7B36B32C34D3BE004AE578 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		AB7B36AD2C34C01F004AE578 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		AB7B36AF2C34CBAA004AE578 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		AB7B36B12C34CC07004AE578 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		AB7B36B32C34D3BE004AE578 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				AB7B365A2C34A794004AE578 /* Assets.xcassets */,
+				AB7B36B32C34D3BE004AE578 /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -347,11 +350,12 @@
 			};
 			buildConfigurationList = AB7B364E2C34A793004AE578 /* Build configuration list for PBXProject "SubMinder" */;
 			compatibilityVersion = "Xcode 15.0";
-			developmentRegion = en;
+			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = AB7B364A2C34A793004AE578;
 			packageReferences = (
@@ -375,6 +379,7 @@
 			files = (
 				AB7B36A92C34BB47004AE578 /* GoogleService-Info.plist in Resources */,
 				AB7B365E2C34A794004AE578 /* Preview Assets.xcassets in Resources */,
+				AB7B36B42C34D3BE004AE578 /* Localizable.xcstrings in Resources */,
 				AB7B365B2C34A794004AE578 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,6 +511,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -562,6 +568,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

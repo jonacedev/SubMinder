@@ -1,0 +1,39 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+    "button_ok" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "jailbreak_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your device is jailbroken. Please use a non-jailbroken device."
+          }
+        }
+      }
+    },
+    "jailbreak_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device Issue"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

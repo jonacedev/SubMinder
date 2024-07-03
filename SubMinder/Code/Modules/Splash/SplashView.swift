@@ -26,9 +26,9 @@ struct SplashView: View {
         }
         .alert(isPresented: $viewModel.showJailbreakAlert) {
             Alert(
-                title: Text("Device Issue"),
-                message: Text("Your device is jailbroken. Please use a non-jailbroken device."),
-                dismissButton: .default(Text("OK"), action: { exit(0)})
+                title: Text("jailbreak_title"),
+                message: Text("jailbreak_description"),
+                dismissButton: .default(Text("button_ok"), action: { exit(0)})
             )
         }
         
