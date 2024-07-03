@@ -26,15 +26,19 @@
 		AB7B36AE2C34C01F004AE578 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36AD2C34C01F004AE578 /* DeviceInfo.swift */; };
 		AB7B36B02C34CBAA004AE578 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36AF2C34CBAA004AE578 /* LoginViewModel.swift */; };
 		AB7B36B22C34CC07004AE578 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36B12C34CC07004AE578 /* HomeViewModel.swift */; };
-		AB7B36B42C34D3BE004AE578 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AB7B36B32C34D3BE004AE578 /* Localizable.xcstrings */; };
 		AB7B36B62C34D974004AE578 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36B52C34D974004AE578 /* String+Utils.swift */; };
 		AB7B36B82C34DA93004AE578 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB7B36B72C34DA93004AE578 /* GoogleService-Info.plist */; };
-		AB7B36BB2C34DB32004AE578 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AB7B36BA2C34DB32004AE578 /* GoogleSignIn */; };
 		AB7B36BE2C354F44004AE578 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36BD2C354F44004AE578 /* RegisterView.swift */; };
 		AB7B36C02C354F4F004AE578 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36BF2C354F4F004AE578 /* RegisterViewModel.swift */; };
 		AB7B36C22C355C76004AE578 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C12C355C76004AE578 /* MainButton.swift */; };
 		AB7B36C62C35622A004AE578 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C52C35622A004AE578 /* SecureTextField.swift */; };
 		AB7B36C82C356605004AE578 /* MainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C72C356605004AE578 /* MainTextField.swift */; };
+		AB7B36CB2C35992C004AE578 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36CA2C35992B004AE578 /* AuthService.swift */; };
+		ABEDC0282C35D09B0057EDC6 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC0272C35D09B0057EDC6 /* Roboto-Bold.ttf */; };
+		ABEDC02A2C35D0A20057EDC6 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC0292C35D0A20057EDC6 /* Roboto-Regular.ttf */; };
+		ABEDC02C2C35D0AC0057EDC6 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */; };
+		ABEDC02E2C35D41D0057EDC6 /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC02D2C35D41D0057EDC6 /* CustomText.swift */; };
+		ABEDC0312C35DE680057EDC6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC02F2C35DE680057EDC6 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +79,6 @@
 		AB7B36AD2C34C01F004AE578 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		AB7B36AF2C34CBAA004AE578 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		AB7B36B12C34CC07004AE578 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		AB7B36B32C34D3BE004AE578 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		AB7B36B52C34D974004AE578 /* String+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		AB7B36B72C34DA93004AE578 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB7B36BD2C354F44004AE578 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -83,6 +86,12 @@
 		AB7B36C12C355C76004AE578 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		AB7B36C52C35622A004AE578 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
 		AB7B36C72C356605004AE578 /* MainTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextField.swift; sourceTree = "<group>"; };
+		AB7B36CA2C35992B004AE578 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		ABEDC0272C35D09B0057EDC6 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		ABEDC0292C35D0A20057EDC6 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		ABEDC02D2C35D41D0057EDC6 /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
+		ABEDC0342C35E2F30057EDC6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +100,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB7B36A02C34B72B004AE578 /* FirebaseCrashlytics in Frameworks */,
-				AB7B36BB2C34DB32004AE578 /* GoogleSignIn in Frameworks */,
 				AB7B369C2C34B718004AE578 /* FirebaseAnalytics in Frameworks */,
 				AB7B36A22C34B734004AE578 /* FirebaseAuth in Frameworks */,
 			);
@@ -175,8 +183,9 @@
 		AB7B36812C34A97D004AE578 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ABEDC0322C35DFA30057EDC6 /* Fonts */,
 				AB7B365A2C34A794004AE578 /* Assets.xcassets */,
-				AB7B36B32C34D3BE004AE578 /* Localizable.xcstrings */,
+				ABEDC02F2C35DE680057EDC6 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -184,6 +193,7 @@
 		AB7B36822C34A996004AE578 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				AB7B36C92C359914004AE578 /* Authentication */,
 				AB7B36832C34A99B004AE578 /* RootManager */,
 				AB7B36AC2C34C00A004AE578 /* Utils */,
 				AB7B36922C34AAAD004AE578 /* Base */,
@@ -236,6 +246,7 @@
 				AB7B36C12C355C76004AE578 /* MainButton.swift */,
 				AB7B36C52C35622A004AE578 /* SecureTextField.swift */,
 				AB7B36C72C356605004AE578 /* MainTextField.swift */,
+				ABEDC02D2C35D41D0057EDC6 /* CustomText.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -292,6 +303,24 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		AB7B36C92C359914004AE578 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				AB7B36CA2C35992B004AE578 /* AuthService.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		ABEDC0322C35DFA30057EDC6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */,
+				ABEDC0292C35D0A20057EDC6 /* Roboto-Regular.ttf */,
+				ABEDC0272C35D09B0057EDC6 /* Roboto-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -312,7 +341,6 @@
 				AB7B369B2C34B718004AE578 /* FirebaseAnalytics */,
 				AB7B369F2C34B72B004AE578 /* FirebaseCrashlytics */,
 				AB7B36A12C34B734004AE578 /* FirebaseAuth */,
-				AB7B36BA2C34DB32004AE578 /* GoogleSignIn */,
 			);
 			productName = SubMinder;
 			productReference = AB7B36532C34A793004AE578 /* SubMinder.app */;
@@ -383,8 +411,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				es,
+				Base,
 			);
 			mainGroup = AB7B364A2C34A793004AE578;
 			packageReferences = (
@@ -407,9 +435,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABEDC02A2C35D0A20057EDC6 /* Roboto-Regular.ttf in Resources */,
 				AB7B365E2C34A794004AE578 /* Preview Assets.xcassets in Resources */,
 				AB7B36B82C34DA93004AE578 /* GoogleService-Info.plist in Resources */,
-				AB7B36B42C34D3BE004AE578 /* Localizable.xcstrings in Resources */,
+				ABEDC0312C35DE680057EDC6 /* Localizable.strings in Resources */,
+				ABEDC02C2C35D0AC0057EDC6 /* Roboto-Medium.ttf in Resources */,
+				ABEDC0282C35D09B0057EDC6 /* Roboto-Bold.ttf in Resources */,
 				AB7B365B2C34A794004AE578 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +469,7 @@
 				AB7B36C82C356605004AE578 /* MainTextField.swift in Sources */,
 				AB7B36C62C35622A004AE578 /* SecureTextField.swift in Sources */,
 				AB7B368A2C34A9E0004AE578 /* HomeView.swift in Sources */,
+				AB7B36CB2C35992C004AE578 /* AuthService.swift in Sources */,
 				AB7B36B22C34CC07004AE578 /* HomeViewModel.swift in Sources */,
 				AB7B36BE2C354F44004AE578 /* RegisterView.swift in Sources */,
 				AB7B36882C34A9D3004AE578 /* LoginView.swift in Sources */,
@@ -448,6 +480,7 @@
 				AB7B368E2C34AA1B004AE578 /* RootManager.swift in Sources */,
 				AB7B36C02C354F4F004AE578 /* RegisterViewModel.swift in Sources */,
 				AB7B36B62C34D974004AE578 /* String+Utils.swift in Sources */,
+				ABEDC02E2C35D41D0057EDC6 /* CustomText.swift in Sources */,
 				AB7B36AE2C34C01F004AE578 /* DeviceInfo.swift in Sources */,
 				AB7B36B02C34CBAA004AE578 /* LoginViewModel.swift in Sources */,
 				AB7B36AB2C34BCD0004AE578 /* SplashViewModel.swift in Sources */,
@@ -486,6 +519,17 @@
 			targetProxy = AB7B366E2C34A794004AE578 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ABEDC02F2C35DE680057EDC6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABEDC0342C35E2F30057EDC6 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AB7B36752C34A794004AE578 /* Debug */ = {
@@ -818,11 +862,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB7B36992C34B612004AE578 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
-		};
-		AB7B36BA2C34DB32004AE578 /* GoogleSignIn */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AB7B36B92C34DB32004AE578 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

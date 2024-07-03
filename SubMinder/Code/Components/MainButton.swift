@@ -19,7 +19,8 @@ struct MainButton: View {
             Button(action: {
                 action()
             }, label: {
-                Text(title)
+                
+                CustomText(text: title)
                     .frame(maxWidth: .infinity, maxHeight: height)
                     .foregroundStyle(.white)
                     .background(

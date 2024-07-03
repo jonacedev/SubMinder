@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  SubMinder
+
+  Created by Jonathan Miguel Onrubia Solis on 3/7/24.
+  
+*/
+
+// MARK: - Components
+
+"button_ok" = "OK";
+
+// MARK: - Splash
+
+"jailbreak_title" = "Device issue";
+"jailbreak_description" = "Your device is jailbroken. Please use a non-jailbroken device.";
+
+
+// MARK: - Login
+
+"login_header" = "Bienvenido";
+"login_btn" = "Login";
+"login_no_account" = "¿Aun no tienes cuenta?";
+"login_link" = "Login";
+"login_email" = "Email";
+"login_password" = "Contraseña";
+"login_email_placeholder" = "Introduce tu email";
+"login_password_placeholder" = "Introduce tu contraseña";
+
+
+// MARK: - Register
+
+"register_header" = "Registro";
+"register_btn" = "Continuar";
+"register_have_account" = "¿Ya tienes cuenta?";
+"register_link" = "Registrate";
+"register_username" = "Login";
+"register_email" = "Email";
+"register_password" = "Contraseña";
+"register_username_placeholder" = "Introduce tu nombre de usuario";
+"register_email_placeholder" = "Introduce tu email";
+"register_password_placeholder" = "Introduce tu contraseña";
+
+
+// MARK: - Home
+

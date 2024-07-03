@@ -18,10 +18,9 @@ struct MainTextField: View {
     
     var body: some View {
         HStack {
-           
             TextField(placeholder, text: $text)
+                .font(.custom("Roboto-Regular", size: 15))
                 .padding(.horizontal)
-            
         }
         .frame(maxWidth: .infinity, maxHeight: 44)
         .background(

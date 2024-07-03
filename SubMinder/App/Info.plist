@@ -4,5 +4,11 @@
 <dict>
 	<key>FirebaseAutomaticScreenReportingEnabled</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Roboto-Medium.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Roboto-Bold.ttf</string>
+	</array>
 </dict>
 </plist>

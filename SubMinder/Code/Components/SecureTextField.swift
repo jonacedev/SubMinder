@@ -27,6 +27,7 @@ struct SecureTextField: View {
                     TextField(placeholder, text: $text)
                 }
             }
+            .font(.custom("Roboto-Regular", size: 15))
             .padding(.horizontal)
             
            
