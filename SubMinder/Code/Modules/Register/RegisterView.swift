@@ -33,7 +33,6 @@ struct RegisterView: View {
                                              password: password,
                                              username: username)
                 }
-               
             })
             
             Divider()
@@ -71,7 +70,7 @@ struct RegisterView: View {
             }, label: {
                 CustomText(text: "login_link".localized)
                     .underline()
-                    .foregroundStyle(LinearGradient(colors: [Color("secondaryPurple"), Color("secondaryBlue")], startPoint: .topLeading, endPoint: .trailing))
+                    .foregroundStyle(LinearGradient(colors: [Color.additionalPurple, Color.additionalBlue], startPoint: .topLeading, endPoint: .trailing))
             })
         }
     }

@@ -25,7 +25,7 @@ struct MainButton: View {
                     .foregroundStyle(.white)
                     .background(
                         LinearGradient(
-                            colors: [Color("secondaryPurple"), Color("secondaryBlue")],
+                            colors: [Color.additionalPurple, Color.additionalBlue],
                             startPoint: .topLeading,
                             endPoint: .trailing)
                     )

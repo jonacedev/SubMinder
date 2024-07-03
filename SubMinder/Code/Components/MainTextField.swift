@@ -25,7 +25,7 @@ struct MainTextField: View {
         .frame(maxWidth: .infinity, maxHeight: 44)
         .background(
             RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(Color("primary3"), lineWidth: lineWidth)
+                .stroke(Color.primary3, lineWidth: lineWidth)
         )
     }
 }

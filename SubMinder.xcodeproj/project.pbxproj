@@ -39,6 +39,7 @@
 		ABEDC02C2C35D0AC0057EDC6 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */; };
 		ABEDC02E2C35D41D0057EDC6 /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC02D2C35D41D0057EDC6 /* CustomText.swift */; };
 		ABEDC0312C35DE680057EDC6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC02F2C35DE680057EDC6 /* Localizable.strings */; };
+		ABEDC0372C35F1D30057EDC6 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0362C35F1D30057EDC6 /* Color+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		ABEDC02D2C35D41D0057EDC6 /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
 		ABEDC0342C35E2F30057EDC6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ABEDC0362C35F1D30057EDC6 /* Color+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,8 +185,8 @@
 		AB7B36812C34A97D004AE578 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				ABEDC0322C35DFA30057EDC6 /* Fonts */,
 				AB7B365A2C34A794004AE578 /* Assets.xcassets */,
+				ABEDC0322C35DFA30057EDC6 /* Fonts */,
 				ABEDC02F2C35DE680057EDC6 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -194,7 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				AB7B36C92C359914004AE578 /* Authentication */,
-				AB7B36832C34A99B004AE578 /* RootManager */,
+				AB7B36832C34A99B004AE578 /* Managers */,
 				AB7B36AC2C34C00A004AE578 /* Utils */,
 				AB7B36922C34AAAD004AE578 /* Base */,
 				AB7B368B2C34A9ED004AE578 /* Components */,
@@ -203,12 +205,12 @@
 			path = Code;
 			sourceTree = "<group>";
 		};
-		AB7B36832C34A99B004AE578 /* RootManager */ = {
+		AB7B36832C34A99B004AE578 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				AB7B368D2C34AA1B004AE578 /* RootManager.swift */,
 			);
-			path = RootManager;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		AB7B36842C34A9AF004AE578 /* Modules */ = {
@@ -290,6 +292,7 @@
 			children = (
 				AB7B36AD2C34C01F004AE578 /* DeviceInfo.swift */,
 				AB7B36B52C34D974004AE578 /* String+Utils.swift */,
+				ABEDC0362C35F1D30057EDC6 /* Color+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				AB7B36962C34AC31004AE578 /* BaseLoader.swift in Sources */,
 				AB7B36A62C34B782004AE578 /* AppDelegate.swift in Sources */,
 				AB7B36572C34A793004AE578 /* SubMinderApp.swift in Sources */,
+				ABEDC0372C35F1D30057EDC6 /* Color+Utils.swift in Sources */,
 				AB7B368E2C34AA1B004AE578 /* RootManager.swift in Sources */,
 				AB7B36C02C354F4F004AE578 /* RegisterViewModel.swift in Sources */,
 				AB7B36B62C34D974004AE578 /* String+Utils.swift in Sources */,

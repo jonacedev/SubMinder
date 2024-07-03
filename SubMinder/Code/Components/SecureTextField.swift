@@ -35,7 +35,7 @@ struct SecureTextField: View {
                 isSecure = !isSecure
             }, label: {
                 Image(systemName: !isSecure ? "eye.slash" : "eye")
-                    .foregroundColor(.gray)
+                    .foregroundStyle(Color.primary3)
                     .padding()
             })
             
@@ -43,7 +43,7 @@ struct SecureTextField: View {
         .frame(maxWidth: .infinity, maxHeight: 44)
         .background(
             RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(Color("primary3"), lineWidth: lineWidth)
+                .stroke(Color.primary3, lineWidth: lineWidth)
         )
         .animation(.easeInOut(duration: 0.3), value: isSecure)
     }

@@ -43,7 +43,7 @@ struct LoginView: View {
                 RegisterView()
             })
         }
-        .tint(Color("secondaryPurple"))
+        .tint(.additionalPurple)
     }
     
     @ViewBuilder private func vwFields() -> some View {
@@ -67,7 +67,7 @@ struct LoginView: View {
             }, label: {
                 CustomText(text: "register_link".localized)
                     .underline()
-                    .foregroundStyle(LinearGradient(colors: [Color("secondaryPurple"), Color("secondaryBlue")], startPoint: .topLeading, endPoint: .trailing))
+                    .foregroundStyle(LinearGradient(colors: [Color.additionalPurple, Color.additionalBlue], startPoint: .topLeading, endPoint: .trailing))
             })
         }
     }
