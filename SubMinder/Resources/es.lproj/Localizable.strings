@@ -34,7 +34,7 @@
 "register_btn" = "Continuar";
 "register_have_account" = "¿Ya tienes cuenta?";
 "register_link" = "Registrate";
-"register_username" = "Login";
+"register_username" = "Username";
 "register_email" = "Email";
 "register_password" = "Contraseña";
 "register_username_placeholder" = "Introduce tu nombre de usuario";

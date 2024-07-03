@@ -7,21 +7,10 @@
 
 import Foundation
 
-enum RootView {
-    case splash
-    case login
-    case home
-}
-
-class RootManager: ObservableObject {
+class BaseManager: ObservableObject {
     
-    @Published private var currentRoot: RootView = .splash
     //@Published var alert: BaseAlert.Model?
     @Published private var loading: Bool = false
-    
-    func changeRootTo(_ root: RootView) {
-        currentRoot = root
-    }
     
     func showLoading() {
         loading = true
@@ -29,10 +18,6 @@ class RootManager: ObservableObject {
     
     func hideLoading() {
         loading = false
-    }
-    
-    func getCurrentRoot() -> RootView {
-        currentRoot
     }
     
     func isLoading() -> Bool {

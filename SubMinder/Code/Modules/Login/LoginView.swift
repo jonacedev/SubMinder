@@ -9,16 +9,20 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @EnvironmentObject var rootManager: RootManager
-    @StateObject var viewModel = LoginViewModel(authService: AuthService())
+    @EnvironmentObject var baseManager: BaseManager
+    @StateObject var viewModel: LoginViewModel
+    private let authService: AuthService
     
     @State var navigateToRegister: Bool = false
-    
     @State var email: String = ""
     @State var password: String = ""
     
+    init(authService: AuthService) {
+        self.authService = authService
+        self._viewModel = StateObject(wrappedValue: LoginViewModel(authService: authService))
+    }
+    
     var body: some View {
-        
         NavigationStack {
             VStack(spacing: 40) {
                 CustomText(text: "login_header".localized,
@@ -40,7 +44,7 @@ struct LoginView: View {
             }
             .padding(.horizontal, 20)
             .navigationDestination(isPresented: $navigateToRegister, destination: {
-                RegisterView()
+                RegisterView(authService: authService)
             })
         }
         .tint(.additionalPurple)
@@ -74,5 +78,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(authService: AuthService())
 }

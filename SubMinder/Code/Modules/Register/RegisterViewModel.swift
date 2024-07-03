@@ -15,6 +15,7 @@ final class RegisterViewModel: ObservableObject {
         self.authService = authService
     }
     
+    @MainActor
     func register(email: String, password: String, username: String) async {
         do {
             try await authService.registerUser(email: email, password: password, username: username)

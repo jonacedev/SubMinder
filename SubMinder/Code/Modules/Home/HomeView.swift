@@ -9,14 +9,23 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @EnvironmentObject var rootManager: RootManager
-    @StateObject var viewModel = HomeViewModel()
+    @EnvironmentObject var baseManager: BaseManager
+    @StateObject var viewModel: HomeViewModel
+    
+    init(authService: AuthService) {
+        self._viewModel = StateObject(wrappedValue: HomeViewModel(authService: authService))
+    }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Home")
+            Button("Logout", action: {
+                viewModel.signOut()
+            })
+        }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(authService: AuthService())
 }

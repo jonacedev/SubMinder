@@ -15,6 +15,7 @@ final class LoginViewModel: ObservableObject {
         self.authService = authService
     }
     
+    @MainActor
     func login(email: String, password: String) async {
         do {
             try await authService.login(email: email, password: password)

@@ -9,12 +9,16 @@ import SwiftUI
 
 struct RegisterView: View {
     
-    @StateObject var viewModel = RegisterViewModel(authService: AuthService())
+    @StateObject var viewModel: RegisterViewModel
     @Environment(\.dismiss) var dismiss
     
     @State var username: String = ""
     @State var email: String = ""
     @State var password: String = ""
+    
+    init(authService: AuthService) {
+        self._viewModel = StateObject(wrappedValue: RegisterViewModel(authService: authService))
+    }
   
     var body: some View {
        
@@ -77,5 +81,5 @@ struct RegisterView: View {
 }
 
 #Preview {
-    RegisterView()
+    RegisterView(authService: AuthService())
 }

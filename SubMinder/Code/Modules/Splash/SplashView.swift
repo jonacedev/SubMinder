@@ -9,8 +9,14 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @EnvironmentObject var rootManager: RootManager
-    @StateObject var viewModel = SplashViewModel(authService: AuthService())
+    @EnvironmentObject var baseManager: BaseManager
+    @StateObject var viewModel: SplashViewModel
+    @Binding var splashLoaded: Bool
+    
+    init(authService: AuthService, splashLoaded: Binding<Bool>) {
+        self._splashLoaded = splashLoaded
+        self._viewModel = StateObject(wrappedValue: SplashViewModel(authService: authService))
+    }
     
     var body: some View {
         VStack {
@@ -21,7 +27,7 @@ struct SplashView: View {
         }
         .onChange(of: viewModel.successCheck) { success in
             if success {
-                goFirstScreen()
+                splashLoaded = true
             }
         }
         .alert(isPresented: $viewModel.showJailbreakAlert) {
@@ -31,19 +37,10 @@ struct SplashView: View {
                 dismissButton: .default(Text("button_ok".localized), action: { exit(0)})
             )
         }
-        
-    }
-    
-    func goFirstScreen() {
-        if viewModel.userSessionActive {
-            rootManager.changeRootTo(.home)
-        } else {
-            rootManager.changeRootTo(.login)
-        }
     }
 }
 
 #Preview {
-    SplashView()
-        .environmentObject(RootManager())
+    SplashView(authService: AuthService(), splashLoaded: .constant(false))
+        .environmentObject(BaseManager())
 }

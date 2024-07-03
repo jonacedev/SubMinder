@@ -12,25 +12,27 @@ import FirebaseCore
 struct SubMinderApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject private var rootManager = RootManager()
-    
+    @StateObject private var baseManager = BaseManager()
+    @StateObject private var authService = AuthService()
+    @State var splashLoaded = false
+   
     var body: some Scene {
         WindowGroup {
             RootView()
-                .environmentObject(rootManager)
+                .environmentObject(baseManager)
         }
     }
     
-    
     @ViewBuilder
     private func RootView() -> some View {
-        switch rootManager.getCurrentRoot() {
-        case .splash:
-            SplashView()
-        case .login:
-            LoginView()
-        case .home:
-            HomeView()
+        if !splashLoaded {
+            SplashView(authService: authService, splashLoaded: $splashLoaded)
+        } else {
+            if authService.userSession != nil {
+                HomeView(authService: authService)
+            } else {
+                LoginView(authService: authService)
+            }
         }
     }
     
@@ -41,7 +43,7 @@ struct SubMinderApp: App {
 //    }
 
     @ViewBuilder func loader() -> some View {
-        if rootManager.isLoading() == true {
+        if baseManager.isLoading() == true {
             BaseLoader()
         }
     }

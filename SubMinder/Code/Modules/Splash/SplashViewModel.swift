@@ -15,7 +15,6 @@ final class SplashViewModel: ObservableObject {
     
     @Published var showJailbreakAlert = false
     @Published var successCheck = false
-    @Published var userSessionActive = false
     
     private let authService: AuthService
     
@@ -26,7 +25,6 @@ final class SplashViewModel: ObservableObject {
     func onAppear() {
         if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" {
             authService.updateUserSession()
-            userSessionActive = authService.userSession != nil
         }
         checkDevice()
     }
