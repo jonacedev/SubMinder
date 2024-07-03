@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    @EnvironmentObject var rootManager: RootManager
+    @StateObject var viewModel = LoginViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Login")
+        }
     }
 }
 

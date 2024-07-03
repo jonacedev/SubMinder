@@ -15,9 +15,9 @@ enum RootView {
 
 class RootManager: ObservableObject {
     
-    @Published var currentRoot: RootView = .splash
+    @Published private var currentRoot: RootView = .splash
     //@Published var alert: BaseAlert.Model?
-    @Published var loading: Bool = false
+    @Published private var loading: Bool = false
     
     func changeRootTo(_ root: RootView) {
         currentRoot = root
@@ -29,6 +29,14 @@ class RootManager: ObservableObject {
     
     func hideLoading() {
         loading = false
+    }
+    
+    func getCurrentRoot() -> RootView {
+        currentRoot
+    }
+    
+    func isLoading() -> Bool {
+        loading
     }
     
 //    func showAlert(alert: BaseAlert.Model) {
