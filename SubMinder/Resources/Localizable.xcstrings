@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "es",
   "strings" : {
+    "¿Ya tienes cuenta? Registrate" : {
+
+    },
     "button_ok" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -11,6 +14,12 @@
           }
         }
       }
+    },
+    "Email" : {
+
+    },
+    "Hello, World!" : {
+
     },
     "jailbreak_description" : {
       "extractionState" : "manual",
@@ -33,6 +42,15 @@
           }
         }
       }
+    },
+    "Login" : {
+
+    },
+    "Password" : {
+
+    },
+    "Splash" : {
+
     }
   },
   "version" : "1.0"
