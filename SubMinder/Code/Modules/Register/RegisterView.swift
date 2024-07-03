@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RegisterView: View {
     
+    @EnvironmentObject var baseManager: BaseManager
     @StateObject var viewModel: RegisterViewModel
     @Environment(\.dismiss) var dismiss
     
@@ -32,11 +33,7 @@ struct RegisterView: View {
             vwFields()
             
             MainButton(title: "register_btn".localized, action: {
-                Task {
-                    await viewModel.register(email: email, 
-                                             password: password,
-                                             username: username)
-                }
+                registerUser()
             })
             
             Divider()
@@ -80,6 +77,19 @@ struct RegisterView: View {
     }
 }
 
+extension RegisterView {
+    func registerUser() {
+        Task {
+            baseManager.showLoading()
+            await viewModel.register(email: email,
+                                     password: password,
+                                     username: username)
+            baseManager.hideLoading()
+        }
+    }
+}
+
 #Preview {
     RegisterView(authService: AuthService())
+        .environmentObject(BaseManager())
 }

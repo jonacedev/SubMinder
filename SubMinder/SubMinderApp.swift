@@ -18,8 +18,11 @@ struct SubMinderApp: App {
    
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .environmentObject(baseManager)
+            ZStack {
+                RootView()
+                    .environmentObject(baseManager)
+                loader()
+            }
         }
     }
     

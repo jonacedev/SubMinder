@@ -33,9 +33,7 @@ struct LoginView: View {
                 vwFields()
                 
                 MainButton(title: "login_btn".localized, action: {
-                    Task {
-                        await viewModel.login(email: email, password: password)
-                    }
+                    makeLogin()
                 })
                 
                 Divider()
@@ -45,6 +43,7 @@ struct LoginView: View {
             .padding(.horizontal, 20)
             .navigationDestination(isPresented: $navigateToRegister, destination: {
                 RegisterView(authService: authService)
+                    .environmentObject(baseManager)
             })
         }
         .tint(.additionalPurple)
@@ -77,6 +76,17 @@ struct LoginView: View {
     }
 }
 
+extension LoginView {
+    func makeLogin() {
+        Task {
+            baseManager.showLoading()
+            await viewModel.login(email: email, password: password)
+            baseManager.hideLoading()
+        }
+    }
+}
+
 #Preview {
     LoginView(authService: AuthService())
+        .environmentObject(BaseManager())
 }

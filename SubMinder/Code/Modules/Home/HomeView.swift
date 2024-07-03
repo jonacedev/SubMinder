@@ -28,4 +28,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView(authService: AuthService())
+        .environmentObject(BaseManager())
 }

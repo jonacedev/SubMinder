@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BaseLoader: View {
-    @State var backOpacity: CGFloat = 1
+    @State var backOpacity: CGFloat = 0.6
 
     var body: some View {
         ZStack {
@@ -23,7 +23,7 @@ struct BaseLoader: View {
         }
         .onAppear {
             withAnimation {
-                backOpacity = 0.6
+                backOpacity = 0.3
             }
         }
     }
