@@ -122,7 +122,7 @@ struct HomeView: View {
                     .overlay {
                         Image(model.image)
                             .resizable()
-                            .frame(width: 38, height: 38)
+                            .frame(width: 37, height: 37)
                             .shadow(radius: 5)
                     }
                     
@@ -135,13 +135,14 @@ struct HomeView: View {
                 }
             }
             
-            SMText(text: model.name, fontType: .bold, size: .large)
+            SMText(text: model.name, fontType: .bold, size: .mediumLarge)
                 .foregroundStyle(Color.secondary2)
             
             HStack(spacing: 10) {
                 SMCircularProgressBar(text: "3", progress: 0.6)
                     .frame(width: 28, height: 28)
-                SMText(text: "days left", fontType: .medium, size: .smallLarge)
+                SMText(text: "Dias restantes", fontType: .medium, size: .smallLarge)
+                    .foregroundStyle(Color.secondary2)
             }
         }
         .padding(.horizontal)
