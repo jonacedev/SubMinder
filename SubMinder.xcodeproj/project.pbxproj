@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,16 +30,19 @@
 		AB7B36B82C34DA93004AE578 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB7B36B72C34DA93004AE578 /* GoogleService-Info.plist */; };
 		AB7B36BE2C354F44004AE578 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36BD2C354F44004AE578 /* RegisterView.swift */; };
 		AB7B36C02C354F4F004AE578 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36BF2C354F4F004AE578 /* RegisterViewModel.swift */; };
-		AB7B36C22C355C76004AE578 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C12C355C76004AE578 /* MainButton.swift */; };
-		AB7B36C62C35622A004AE578 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C52C35622A004AE578 /* SecureTextField.swift */; };
-		AB7B36C82C356605004AE578 /* MainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C72C356605004AE578 /* MainTextField.swift */; };
+		AB7B36C22C355C76004AE578 /* SMMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C12C355C76004AE578 /* SMMainButton.swift */; };
+		AB7B36C62C35622A004AE578 /* SMSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C52C35622A004AE578 /* SMSecureTextField.swift */; };
+		AB7B36C82C356605004AE578 /* SMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C72C356605004AE578 /* SMTextField.swift */; };
 		AB7B36CB2C35992C004AE578 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36CA2C35992B004AE578 /* AuthService.swift */; };
 		ABEDC0282C35D09B0057EDC6 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC0272C35D09B0057EDC6 /* Roboto-Bold.ttf */; };
 		ABEDC02A2C35D0A20057EDC6 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC0292C35D0A20057EDC6 /* Roboto-Regular.ttf */; };
 		ABEDC02C2C35D0AC0057EDC6 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */; };
-		ABEDC02E2C35D41D0057EDC6 /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC02D2C35D41D0057EDC6 /* CustomText.swift */; };
+		ABEDC02E2C35D41D0057EDC6 /* SMText.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC02D2C35D41D0057EDC6 /* SMText.swift */; };
 		ABEDC0312C35DE680057EDC6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC02F2C35DE680057EDC6 /* Localizable.strings */; };
 		ABEDC0372C35F1D30057EDC6 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0362C35F1D30057EDC6 /* Color+Utils.swift */; };
+		ABEDC0392C3716520057EDC6 /* SMIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0382C3716520057EDC6 /* SMIconButton.swift */; };
+		ABEDC03B2C371CBE0057EDC6 /* SMScrollableTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC03A2C371CBE0057EDC6 /* SMScrollableTabView.swift */; };
+		ABEDC0412C3775EE0057EDC6 /* SMCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0402C3775EE0057EDC6 /* SMCircularProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,17 +87,34 @@
 		AB7B36B72C34DA93004AE578 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB7B36BD2C354F44004AE578 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		AB7B36BF2C354F4F004AE578 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
-		AB7B36C12C355C76004AE578 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
-		AB7B36C52C35622A004AE578 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
-		AB7B36C72C356605004AE578 /* MainTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextField.swift; sourceTree = "<group>"; };
+		AB7B36C12C355C76004AE578 /* SMMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMMainButton.swift; sourceTree = "<group>"; };
+		AB7B36C52C35622A004AE578 /* SMSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSecureTextField.swift; sourceTree = "<group>"; };
+		AB7B36C72C356605004AE578 /* SMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMTextField.swift; sourceTree = "<group>"; };
 		AB7B36CA2C35992B004AE578 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		ABEDC0272C35D09B0057EDC6 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		ABEDC0292C35D0A20057EDC6 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		ABEDC02D2C35D41D0057EDC6 /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
+		ABEDC02D2C35D41D0057EDC6 /* SMText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMText.swift; sourceTree = "<group>"; };
 		ABEDC0342C35E2F30057EDC6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ABEDC0362C35F1D30057EDC6 /* Color+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Utils.swift"; sourceTree = "<group>"; };
+		ABEDC0382C3716520057EDC6 /* SMIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMIconButton.swift; sourceTree = "<group>"; };
+		ABEDC03A2C371CBE0057EDC6 /* SMScrollableTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMScrollableTabView.swift; sourceTree = "<group>"; };
+		ABEDC0402C3775EE0057EDC6 /* SMCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMCircularProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		ABEDC03F2C3772610057EDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SuscriptionModel.swift,
+			);
+			target = AB7B36522C34A793004AE578 /* SubMinder */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		ABEDC03C2C3772460057EDC6 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ABEDC03F2C3772610057EDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AB7B36502C34A793004AE578 /* Frameworks */ = {
@@ -195,6 +215,7 @@
 		AB7B36822C34A996004AE578 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				ABEDC03C2C3772460057EDC6 /* Models */,
 				AB7B36C92C359914004AE578 /* Authentication */,
 				AB7B36832C34A99B004AE578 /* Managers */,
 				AB7B36AC2C34C00A004AE578 /* Utils */,
@@ -245,10 +266,13 @@
 		AB7B368B2C34A9ED004AE578 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				AB7B36C12C355C76004AE578 /* MainButton.swift */,
-				AB7B36C52C35622A004AE578 /* SecureTextField.swift */,
-				AB7B36C72C356605004AE578 /* MainTextField.swift */,
-				ABEDC02D2C35D41D0057EDC6 /* CustomText.swift */,
+				AB7B36C12C355C76004AE578 /* SMMainButton.swift */,
+				AB7B36C52C35622A004AE578 /* SMSecureTextField.swift */,
+				AB7B36C72C356605004AE578 /* SMTextField.swift */,
+				ABEDC02D2C35D41D0057EDC6 /* SMText.swift */,
+				ABEDC0382C3716520057EDC6 /* SMIconButton.swift */,
+				ABEDC03A2C371CBE0057EDC6 /* SMScrollableTabView.swift */,
+				ABEDC0402C3775EE0057EDC6 /* SMCircularProgressBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -469,12 +493,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB7B36C82C356605004AE578 /* MainTextField.swift in Sources */,
-				AB7B36C62C35622A004AE578 /* SecureTextField.swift in Sources */,
+				AB7B36C82C356605004AE578 /* SMTextField.swift in Sources */,
+				ABEDC03B2C371CBE0057EDC6 /* SMScrollableTabView.swift in Sources */,
+				AB7B36C62C35622A004AE578 /* SMSecureTextField.swift in Sources */,
 				AB7B368A2C34A9E0004AE578 /* HomeView.swift in Sources */,
 				AB7B36CB2C35992C004AE578 /* AuthService.swift in Sources */,
 				AB7B36B22C34CC07004AE578 /* HomeViewModel.swift in Sources */,
 				AB7B36BE2C354F44004AE578 /* RegisterView.swift in Sources */,
+				ABEDC0392C3716520057EDC6 /* SMIconButton.swift in Sources */,
 				AB7B36882C34A9D3004AE578 /* LoginView.swift in Sources */,
 				AB7B36912C34AA5E004AE578 /* SplashView.swift in Sources */,
 				AB7B36962C34AC31004AE578 /* BaseLoader.swift in Sources */,
@@ -484,11 +510,12 @@
 				AB7B368E2C34AA1B004AE578 /* BaseManager.swift in Sources */,
 				AB7B36C02C354F4F004AE578 /* RegisterViewModel.swift in Sources */,
 				AB7B36B62C34D974004AE578 /* String+Utils.swift in Sources */,
-				ABEDC02E2C35D41D0057EDC6 /* CustomText.swift in Sources */,
+				ABEDC02E2C35D41D0057EDC6 /* SMText.swift in Sources */,
 				AB7B36AE2C34C01F004AE578 /* DeviceInfo.swift in Sources */,
 				AB7B36B02C34CBAA004AE578 /* LoginViewModel.swift in Sources */,
+				ABEDC0412C3775EE0057EDC6 /* SMCircularProgressBar.swift in Sources */,
 				AB7B36AB2C34BCD0004AE578 /* SplashViewModel.swift in Sources */,
-				AB7B36C22C355C76004AE578 /* MainButton.swift in Sources */,
+				AB7B36C22C355C76004AE578 /* SMMainButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +701,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -705,6 +733,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

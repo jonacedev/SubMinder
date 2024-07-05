@@ -19,4 +19,13 @@ final class HomeViewModel: ObservableObject {
         authService.signOut()
     }
     
+    
+    // Function to calculate the progress
+    func calculateProgress(startDate: Date, endDate: Date) -> Double {
+        
+        //let startDate = Calendar.current.date(byAdding: .day, value: -15, to: Date()) ?? Date()
+        let totalDuration = endDate.timeIntervalSince(startDate)
+        let elapsed = Date().timeIntervalSince(startDate)
+        return min(max(elapsed / totalDuration, 0.0), 1.0)
+    }
 }

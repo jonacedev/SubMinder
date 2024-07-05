@@ -25,14 +25,14 @@ struct RegisterView: View {
        
         VStack(spacing: 40) {
             
-            CustomText(text: "register_header".localized,
+            SMText(text: "register_header".localized,
                        fontType: .bold,
                        size: .header)
             .padding(.bottom, 30)
                 
             vwFields()
             
-            MainButton(title: "register_btn".localized, action: {
+            SMMainButton(title: "register_btn".localized, action: {
                 registerUser()
             })
             
@@ -49,27 +49,27 @@ struct RegisterView: View {
         
         VStack(alignment: .leading) {
             
-            CustomText(text: "register_username".localized)
-            MainTextField(placeholder: "register_username_placeholder".localized, text: $username)
+            SMText(text: "register_username".localized)
+            SMTextField(placeholder: "register_username_placeholder".localized, text: $username)
                 .padding(.bottom, 20)
             
-            CustomText(text: "register_email".localized)
-            MainTextField(placeholder: "register_email_placeholder".localized, text: $email)
+            SMText(text: "register_email".localized)
+            SMTextField(placeholder: "register_email_placeholder".localized, text: $email)
                 .padding(.bottom, 20)
        
-            CustomText(text: "register_password".localized)
-            SecureTextField(placeholder: "register_password_placeholder".localized, text: $password)
+            SMText(text: "register_password".localized)
+            SMSecureTextField(placeholder: "register_password_placeholder".localized, text: $password)
         }
     }
     
     @ViewBuilder private func vwBottom() -> some View {
         HStack {
-            CustomText(text: "register_have_account".localized)
+            SMText(text: "register_have_account".localized)
             
             Button(action: {
                 dismiss()
             }, label: {
-                CustomText(text: "login_link".localized)
+                SMText(text: "login_link".localized)
                     .underline()
                     .foregroundStyle(LinearGradient(colors: [Color.additionalPurple, Color.additionalBlue], startPoint: .topLeading, endPoint: .trailing))
             })

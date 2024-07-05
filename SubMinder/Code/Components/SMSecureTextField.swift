@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SecureTextField: View {
+struct SMSecureTextField: View {
     
     var placeholder: String
     @Binding var text: String
@@ -20,7 +20,7 @@ struct SecureTextField: View {
     var body: some View {
         HStack {
             Group {
-                if isSecure{
+                if isSecure {
                     SecureField(placeholder, text: $text)
                     
                 } else {
@@ -50,5 +50,5 @@ struct SecureTextField: View {
 }
 
 #Preview {
-    SecureTextField(placeholder: "", text: .constant("example"))
+    SMSecureTextField(placeholder: "", text: .constant("example"))
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainTextField: View {
+struct SMTextField: View {
     
     var placeholder: String
     @Binding var text: String
@@ -31,5 +31,5 @@ struct MainTextField: View {
 }
 
 #Preview {
-    MainTextField(placeholder: "", text: .constant("example"))
+    SMTextField(placeholder: "", text: .constant("example"))
 }

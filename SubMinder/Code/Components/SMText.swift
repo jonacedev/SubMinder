@@ -15,13 +15,16 @@ enum FontType: String {
 
 enum TextSize: CGFloat {
     case small = 12
+    case smallLarge = 14
     case medium = 16
+    case mediumLarge = 18
     case large = 20
     case extraLarge = 24
     case header = 35
+    case headerLarge = 40
 }
 
-struct CustomText: View {
+struct SMText: View {
     
     let text: String
     let fontType: FontType
@@ -40,5 +43,5 @@ struct CustomText: View {
 }
 
 #Preview {
-    CustomText(text: "Example")
+    SMText(text: "Example")
 }

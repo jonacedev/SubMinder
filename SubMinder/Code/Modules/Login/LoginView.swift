@@ -25,14 +25,14 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 40) {
-                CustomText(text: "login_header".localized,
+                SMText(text: "login_header".localized,
                            fontType: .bold,
                            size: .header)
                 .padding(.bottom, 30)
                 
                 vwFields()
                 
-                MainButton(title: "login_btn".localized, action: {
+                SMMainButton(title: "login_btn".localized, action: {
                     makeLogin()
                 })
                 
@@ -53,22 +53,22 @@ struct LoginView: View {
         
         VStack(alignment: .leading) {
            
-            CustomText(text: "login_email".localized)
-            MainTextField(placeholder: "login_email_placeholder".localized, text: $email)
+            SMText(text: "login_email".localized)
+            SMTextField(placeholder: "login_email_placeholder".localized, text: $email)
                 .padding(.bottom, 20)
        
-            CustomText(text: "login_password".localized)
-            SecureTextField(placeholder: "login_password_placeholder".localized, text: $password)
+            SMText(text: "login_password".localized)
+            SMSecureTextField(placeholder: "login_password_placeholder".localized, text: $password)
         }
     }
     
     @ViewBuilder private func vwBottom() -> some View {
         HStack {
-            CustomText(text: "login_no_account".localized)
+            SMText(text: "login_no_account".localized)
             Button(action: {
                 navigateToRegister = true
             }, label: {
-                CustomText(text: "register_link".localized)
+                SMText(text: "register_link".localized)
                     .underline()
                     .foregroundStyle(LinearGradient(colors: [Color.additionalPurple, Color.additionalBlue], startPoint: .topLeading, endPoint: .trailing))
             })
