@@ -27,8 +27,10 @@
 	<key>IS_GCM_ENABLED</key>
 	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<false/>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:562590602738:ios:96bdebb72dde505406476b</string>
+	<key>DATABASE_URL</key>
+	<string>https://subminder-5e6a3-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>

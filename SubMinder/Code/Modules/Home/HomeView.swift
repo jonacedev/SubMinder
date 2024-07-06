@@ -11,13 +11,13 @@ struct HomeView: View {
     
     @EnvironmentObject var baseManager: BaseManager
     @StateObject var viewModel: HomeViewModel
-    private let authService: AuthService
+    private let firebaseManager: FirebaseManager
     
     @State var showAddModal: Bool = false
     
-    init(authService: AuthService) {
-        self.authService = authService
-        self._viewModel = StateObject(wrappedValue: HomeViewModel(authService: authService))
+    init(firebaseManager: FirebaseManager) {
+        self.firebaseManager = firebaseManager
+        self._viewModel = StateObject(wrappedValue: HomeViewModel(firebaseManager: firebaseManager))
     }
     
     var body: some View {
@@ -41,7 +41,7 @@ struct HomeView: View {
                 .padding(.trailing, 25)
                 .padding(.bottom, 25)
                 .fullScreenCover(isPresented: $showAddModal, content: {
-                    NewSubscriptionView(authService: authService)
+                    NewSubscriptionView(firebaseManager: firebaseManager)
                         .gesture(
                              DragGesture().onEnded { value in
                                if value.location.y - value.startLocation.y > 150 {
@@ -62,7 +62,7 @@ struct HomeView: View {
             VStack(alignment: .leading) {
                 SMText(text: "Bienvenido 👋🏼", fontType: .regular, size: .mediumLarge)
                     .foregroundStyle(Color.secondary2)
-                SMText(text: "Jonathan!", fontType: .medium, size: .mediumLarge)
+                SMText(text: viewModel.userData?.username ?? "", fontType: .medium, size: .mediumLarge)
             }
             
             Spacer()
@@ -200,6 +200,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(authService: AuthService())
+    HomeView(firebaseManager: FirebaseManager())
         .environmentObject(BaseManager())
 }

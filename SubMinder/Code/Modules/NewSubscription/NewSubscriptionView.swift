@@ -14,8 +14,8 @@ struct NewSubscriptionView: View {
     @State var showSubForm: Bool = false
     
     private let subscriptionsList: [SubscriptionModel] = SubscriptionsFactory.shared.getSubscriptions()
-    init(authService: AuthService) {
-        self._viewModel = StateObject(wrappedValue: NewSubscriptionViewModel(authService: authService))
+    init(firebaseManager: FirebaseManager) {
+        self._viewModel = StateObject(wrappedValue: NewSubscriptionViewModel(firebaseManager: firebaseManager))
     }
     
     var body: some View {
@@ -97,5 +97,5 @@ struct NewSubscriptionView: View {
 }
 
 #Preview {
-    NewSubscriptionView(authService: AuthService())
+    NewSubscriptionView(firebaseManager: FirebaseManager())
 }

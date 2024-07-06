@@ -17,8 +17,8 @@ struct RegisterView: View {
     @State var email: String = ""
     @State var password: String = ""
     
-    init(authService: AuthService) {
-        self._viewModel = StateObject(wrappedValue: RegisterViewModel(authService: authService))
+    init(firebaseManager: FirebaseManager) {
+        self._viewModel = StateObject(wrappedValue: RegisterViewModel(firebaseManager: firebaseManager))
     }
   
     var body: some View {
@@ -92,6 +92,6 @@ extension RegisterView {
 }
 
 #Preview {
-    RegisterView(authService: AuthService())
+    RegisterView(firebaseManager: FirebaseManager())
         .environmentObject(BaseManager())
 }

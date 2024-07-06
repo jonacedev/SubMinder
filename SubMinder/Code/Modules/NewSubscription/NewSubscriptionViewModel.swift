@@ -10,10 +10,10 @@ import Foundation
 class NewSubscriptionViewModel: ObservableObject {
     
     @Published var selectedSubscription: SubscriptionModel?
-    private let authService: AuthService
+    private let firebaseManager: FirebaseManager
     
-    init(authService: AuthService) {
-        self.authService = authService
+    init(firebaseManager: FirebaseManager) {
+        self.firebaseManager = firebaseManager
     }
     
     func tapSubscription(subscription: SubscriptionModel, success: @escaping () -> Void) {

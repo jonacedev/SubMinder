@@ -13,9 +13,9 @@ struct SplashView: View {
     @StateObject var viewModel: SplashViewModel
     @Binding var splashLoaded: Bool
     
-    init(authService: AuthService, splashLoaded: Binding<Bool>) {
+    init(firebaseManager: FirebaseManager, splashLoaded: Binding<Bool>) {
         self._splashLoaded = splashLoaded
-        self._viewModel = StateObject(wrappedValue: SplashViewModel(authService: authService))
+        self._viewModel = StateObject(wrappedValue: SplashViewModel(firebaseManager: firebaseManager))
     }
     
     var body: some View {
@@ -41,6 +41,6 @@ struct SplashView: View {
 }
 
 #Preview {
-    SplashView(authService: AuthService(), splashLoaded: .constant(false))
+    SplashView(firebaseManager: FirebaseManager(), splashLoaded: .constant(false))
         .environmentObject(BaseManager())
 }

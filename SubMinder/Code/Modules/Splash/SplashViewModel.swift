@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Combine
-import FirebaseAuth
 
 final class SplashViewModel: ObservableObject {
     
@@ -16,15 +15,15 @@ final class SplashViewModel: ObservableObject {
     @Published var showJailbreakAlert = false
     @Published var successCheck = false
     
-    private let authService: AuthService
+    private let firebaseManager: FirebaseManager
     
-    init(authService: AuthService) {
-        self.authService = authService
+    init(firebaseManager: FirebaseManager) {
+        self.firebaseManager = firebaseManager
     }
     
     func onAppear() {
-        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" {
-            authService.updateUserSession()
+        if !BaseActions.isPreview() {
+            firebaseManager.updateUserSession()
         }
         checkDevice()
     }

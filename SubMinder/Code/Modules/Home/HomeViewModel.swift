@@ -9,14 +9,31 @@ import SwiftUI
 
 final class HomeViewModel: ObservableObject {
     
-    private let authService: AuthService
     
-    init(authService: AuthService) {
-        self.authService = authService
+    @Published var userData: UserModel?
+    private let firebaseManager: FirebaseManager
+    
+    init(firebaseManager: FirebaseManager) {
+        self.firebaseManager = firebaseManager
+        homeRequests()
+    }
+    
+    func homeRequests() {
+        Task {
+            await getUserData()
+        }
+    }
+    
+    @MainActor func getUserData() async {
+        do {
+            self.userData = try await firebaseManager.getUserData()
+        } catch {
+            print("error: \(error.localizedDescription)")
+        }
     }
     
     @MainActor func signOut() {
-        authService.signOut()
+        firebaseManager.signOut()
     }
     
     

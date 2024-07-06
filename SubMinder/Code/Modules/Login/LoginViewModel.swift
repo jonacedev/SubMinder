@@ -9,16 +9,16 @@ import SwiftUI
 
 final class LoginViewModel: ObservableObject {
     
-    private let authService: AuthService
+    private let firebaseManager: FirebaseManager
     
-    init(authService: AuthService) {
-        self.authService = authService
+    init(firebaseManager: FirebaseManager) {
+        self.firebaseManager = firebaseManager
     }
     
     @MainActor
     func login(email: String, password: String) async {
         do {
-            try await authService.login(email: email, password: password)
+            try await firebaseManager.login(email: email, password: password)
         } catch {
             print("error: \(error.localizedDescription)")
         }

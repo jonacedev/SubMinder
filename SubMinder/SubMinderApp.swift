@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
-import FirebaseCore
 
 @main
 struct SubMinderApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var baseManager = BaseManager()
-    @StateObject private var authService = AuthService()
+    @StateObject private var firebaseManager = FirebaseManager()
     @State var splashLoaded = false
    
     var body: some Scene {
@@ -29,12 +28,12 @@ struct SubMinderApp: App {
     @ViewBuilder
     private func RootView() -> some View {
         if !splashLoaded {
-            SplashView(authService: authService, splashLoaded: $splashLoaded)
+            SplashView(firebaseManager: firebaseManager, splashLoaded: $splashLoaded)
         } else {
-            if authService.userSession != nil {
-                HomeView(authService: authService)
+            if firebaseManager.userSession != nil {
+                HomeView(firebaseManager: firebaseManager)
             } else {
-                LoginView(authService: authService)
+                LoginView(firebaseManager: firebaseManager)
             }
         }
     }

@@ -11,15 +11,15 @@ struct LoginView: View {
     
     @EnvironmentObject var baseManager: BaseManager
     @StateObject var viewModel: LoginViewModel
-    private let authService: AuthService
+    private let firebaseManager: FirebaseManager
     
     @State var navigateToRegister: Bool = false
     @State var email: String = ""
     @State var password: String = ""
     
-    init(authService: AuthService) {
-        self.authService = authService
-        self._viewModel = StateObject(wrappedValue: LoginViewModel(authService: authService))
+    init(firebaseManager: FirebaseManager) {
+        self.firebaseManager = firebaseManager
+        self._viewModel = StateObject(wrappedValue: LoginViewModel(firebaseManager: firebaseManager))
     }
     
     var body: some View {
@@ -44,7 +44,7 @@ struct LoginView: View {
             }
             .padding(.horizontal, 20)
             .navigationDestination(isPresented: $navigateToRegister, destination: {
-                RegisterView(authService: authService)
+                RegisterView(firebaseManager: firebaseManager)
                     .environmentObject(baseManager)
             })
         }
@@ -89,6 +89,6 @@ extension LoginView {
 }
 
 #Preview {
-    LoginView(authService: AuthService())
+    LoginView(firebaseManager: FirebaseManager())
         .environmentObject(BaseManager())
 }
