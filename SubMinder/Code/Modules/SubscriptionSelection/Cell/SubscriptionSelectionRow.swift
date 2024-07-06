@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewSubscriptionRow: View {
+struct SubscriptionSelectionRow: View {
     
     let subscription: SubscriptionModel
     
@@ -43,5 +43,5 @@ struct NewSubscriptionRow: View {
 }
 
 #Preview {
-    NewSubscriptionRow(subscription: SubscriptionsFactory.shared.getSubscriptions().first!)
+    SubscriptionSelectionRow(subscription: SubscriptionsFactory.shared.getSubscriptions().first!)
 }

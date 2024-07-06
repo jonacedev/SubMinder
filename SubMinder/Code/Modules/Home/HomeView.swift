@@ -41,7 +41,7 @@ struct HomeView: View {
                 .padding(.trailing, 25)
                 .padding(.bottom, 25)
                 .fullScreenCover(isPresented: $showAddModal, content: {
-                    NewSubscriptionView(firebaseManager: firebaseManager)
+                    SubscriptionSelectionView(firebaseManager: firebaseManager)
                         .gesture(
                              DragGesture().onEnded { value in
                                if value.location.y - value.startLocation.y > 150 {

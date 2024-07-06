@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct NewSubscriptionView: View {
+struct SubscriptionSelectionView: View {
     
     @Environment(\.dismiss) private var dismiss
-    @StateObject var viewModel: NewSubscriptionViewModel
+    @StateObject var viewModel: SubscriptionSelectionViewModel
     @State var showSubForm: Bool = false
     
     private let subscriptionsList: [SubscriptionModel] = SubscriptionsFactory.shared.getSubscriptions()
     init(firebaseManager: FirebaseManager) {
-        self._viewModel = StateObject(wrappedValue: NewSubscriptionViewModel(firebaseManager: firebaseManager))
+        self._viewModel = StateObject(wrappedValue: SubscriptionSelectionViewModel(firebaseManager: firebaseManager))
     }
     
     var body: some View {
@@ -70,7 +70,7 @@ struct NewSubscriptionView: View {
     
     @ViewBuilder private func vwList() -> some View {
         List(subscriptionsList) { subscription in
-            NewSubscriptionRow(subscription: subscription)
+            SubscriptionSelectionRow(subscription: subscription)
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets(top: 7, leading: 15, bottom: 7, trailing: 15))
                 .onTapGesture {
@@ -97,5 +97,5 @@ struct NewSubscriptionView: View {
 }
 
 #Preview {
-    NewSubscriptionView(firebaseManager: FirebaseManager())
+    SubscriptionSelectionView(firebaseManager: FirebaseManager())
 }

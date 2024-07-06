@@ -38,7 +38,7 @@
 		AB7B36C62C35622A004AE578 /* SMSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C52C35622A004AE578 /* SMSecureTextField.swift */; };
 		AB7B36C82C356605004AE578 /* SMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C72C356605004AE578 /* SMTextField.swift */; };
 		AB7B36CB2C35992C004AE578 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36CA2C35992B004AE578 /* FirebaseManager.swift */; };
-		AB94857A2C38BAFD00DF72BA /* NewSubscriptionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9485792C38BAFD00DF72BA /* NewSubscriptionRow.swift */; };
+		AB94857A2C38BAFD00DF72BA /* SubscriptionSelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9485792C38BAFD00DF72BA /* SubscriptionSelectionRow.swift */; };
 		AB94857D2C38C01300DF72BA /* NewSubscriptionFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94857C2C38C01300DF72BA /* NewSubscriptionFormView.swift */; };
 		AB94857F2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94857E2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift */; };
 		AB9485822C38C2B600DF72BA /* SubscriptionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9485812C38C2A600DF72BA /* SubscriptionsFactory.swift */; };
@@ -52,8 +52,8 @@
 		ABEDC03B2C371CBE0057EDC6 /* SMScrollableTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC03A2C371CBE0057EDC6 /* SMScrollableTabView.swift */; };
 		ABEDC0412C3775EE0057EDC6 /* SMCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0402C3775EE0057EDC6 /* SMCircularProgressBar.swift */; };
 		ABEDC0452C3857EA0057EDC6 /* SMAddIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0442C3857EA0057EDC6 /* SMAddIconButton.swift */; };
-		ABEDC0482C385DA50057EDC6 /* NewSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0472C385DA50057EDC6 /* NewSubscriptionView.swift */; };
-		ABEDC04A2C385DB90057EDC6 /* NewSubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0492C385DB90057EDC6 /* NewSubscriptionViewModel.swift */; };
+		ABEDC0482C385DA50057EDC6 /* SubscriptionSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0472C385DA50057EDC6 /* SubscriptionSelectionView.swift */; };
+		ABEDC04A2C385DB90057EDC6 /* SubscriptionSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0492C385DB90057EDC6 /* SubscriptionSelectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,7 +103,7 @@
 		AB7B36C52C35622A004AE578 /* SMSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSecureTextField.swift; sourceTree = "<group>"; };
 		AB7B36C72C356605004AE578 /* SMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMTextField.swift; sourceTree = "<group>"; };
 		AB7B36CA2C35992B004AE578 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		AB9485792C38BAFD00DF72BA /* NewSubscriptionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionRow.swift; sourceTree = "<group>"; };
+		AB9485792C38BAFD00DF72BA /* SubscriptionSelectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSelectionRow.swift; sourceTree = "<group>"; };
 		AB94857C2C38C01300DF72BA /* NewSubscriptionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionFormView.swift; sourceTree = "<group>"; };
 		AB94857E2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionFormViewModel.swift; sourceTree = "<group>"; };
 		AB9485812C38C2A600DF72BA /* SubscriptionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsFactory.swift; sourceTree = "<group>"; };
@@ -117,8 +117,8 @@
 		ABEDC03A2C371CBE0057EDC6 /* SMScrollableTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMScrollableTabView.swift; sourceTree = "<group>"; };
 		ABEDC0402C3775EE0057EDC6 /* SMCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMCircularProgressBar.swift; sourceTree = "<group>"; };
 		ABEDC0442C3857EA0057EDC6 /* SMAddIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMAddIconButton.swift; sourceTree = "<group>"; };
-		ABEDC0472C385DA50057EDC6 /* NewSubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionView.swift; sourceTree = "<group>"; };
-		ABEDC0492C385DB90057EDC6 /* NewSubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionViewModel.swift; sourceTree = "<group>"; };
+		ABEDC0472C385DA50057EDC6 /* SubscriptionSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSelectionView.swift; sourceTree = "<group>"; };
+		ABEDC0492C385DB90057EDC6 /* SubscriptionSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSelectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -266,7 +266,7 @@
 				AB7B36862C34A9B8004AE578 /* Login */,
 				AB7B36BC2C354F37004AE578 /* Register */,
 				AB7B36852C34A9B4004AE578 /* Home */,
-				ABEDC0462C385D3D0057EDC6 /* NewSubscription */,
+				ABEDC0462C385D3D0057EDC6 /* SubscriptionSelection */,
 				AB94857B2C38BFE500DF72BA /* NewSubscriptionForm */,
 			);
 			path = Modules;
@@ -370,7 +370,7 @@
 		AB9485782C38BADF00DF72BA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				AB9485792C38BAFD00DF72BA /* NewSubscriptionRow.swift */,
+				AB9485792C38BAFD00DF72BA /* SubscriptionSelectionRow.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -402,14 +402,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		ABEDC0462C385D3D0057EDC6 /* NewSubscription */ = {
+		ABEDC0462C385D3D0057EDC6 /* SubscriptionSelection */ = {
 			isa = PBXGroup;
 			children = (
 				AB9485782C38BADF00DF72BA /* Cell */,
-				ABEDC0472C385DA50057EDC6 /* NewSubscriptionView.swift */,
-				ABEDC0492C385DB90057EDC6 /* NewSubscriptionViewModel.swift */,
+				ABEDC0472C385DA50057EDC6 /* SubscriptionSelectionView.swift */,
+				ABEDC0492C385DB90057EDC6 /* SubscriptionSelectionViewModel.swift */,
 			);
-			path = NewSubscription;
+			path = SubscriptionSelection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -562,7 +562,7 @@
 			files = (
 				AB9485822C38C2B600DF72BA /* SubscriptionsFactory.swift in Sources */,
 				AB7B36C82C356605004AE578 /* SMTextField.swift in Sources */,
-				AB94857A2C38BAFD00DF72BA /* NewSubscriptionRow.swift in Sources */,
+				AB94857A2C38BAFD00DF72BA /* SubscriptionSelectionRow.swift in Sources */,
 				ABEDC03B2C371CBE0057EDC6 /* SMScrollableTabView.swift in Sources */,
 				AB94857D2C38C01300DF72BA /* NewSubscriptionFormView.swift in Sources */,
 				ABEDC0452C3857EA0057EDC6 /* SMAddIconButton.swift in Sources */,
@@ -570,7 +570,7 @@
 				AB7B368A2C34A9E0004AE578 /* HomeView.swift in Sources */,
 				AB94857F2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift in Sources */,
 				AB7B36CB2C35992C004AE578 /* FirebaseManager.swift in Sources */,
-				ABEDC04A2C385DB90057EDC6 /* NewSubscriptionViewModel.swift in Sources */,
+				ABEDC04A2C385DB90057EDC6 /* SubscriptionSelectionViewModel.swift in Sources */,
 				AB7B36B22C34CC07004AE578 /* HomeViewModel.swift in Sources */,
 				AB7B36BE2C354F44004AE578 /* RegisterView.swift in Sources */,
 				ABEDC0392C3716520057EDC6 /* SMIconButton.swift in Sources */,
@@ -580,7 +580,7 @@
 				AB7B36A62C34B782004AE578 /* AppDelegate.swift in Sources */,
 				AB7B36572C34A793004AE578 /* SubMinderApp.swift in Sources */,
 				ABEDC0372C35F1D30057EDC6 /* Color+Utils.swift in Sources */,
-				ABEDC0482C385DA50057EDC6 /* NewSubscriptionView.swift in Sources */,
+				ABEDC0482C385DA50057EDC6 /* SubscriptionSelectionView.swift in Sources */,
 				AB7B368E2C34AA1B004AE578 /* BaseManager.swift in Sources */,
 				AB7B36C02C354F4F004AE578 /* RegisterViewModel.swift in Sources */,
 				AB7B36B62C34D974004AE578 /* String+Utils.swift in Sources */,
