@@ -37,6 +37,8 @@ struct RegisterView: View {
             })
             
             Divider()
+                .frame(height: 0.9)
+                .background(Color.secondary4)
             
             vwBottom()
             

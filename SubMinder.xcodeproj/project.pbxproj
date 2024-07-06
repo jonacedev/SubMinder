@@ -34,6 +34,10 @@
 		AB7B36C62C35622A004AE578 /* SMSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C52C35622A004AE578 /* SMSecureTextField.swift */; };
 		AB7B36C82C356605004AE578 /* SMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C72C356605004AE578 /* SMTextField.swift */; };
 		AB7B36CB2C35992C004AE578 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36CA2C35992B004AE578 /* AuthService.swift */; };
+		AB94857A2C38BAFD00DF72BA /* NewSubscriptionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9485792C38BAFD00DF72BA /* NewSubscriptionRow.swift */; };
+		AB94857D2C38C01300DF72BA /* NewSubscriptionFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94857C2C38C01300DF72BA /* NewSubscriptionFormView.swift */; };
+		AB94857F2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94857E2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift */; };
+		AB9485822C38C2B600DF72BA /* SubscriptionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9485812C38C2A600DF72BA /* SubscriptionsFactory.swift */; };
 		ABEDC0282C35D09B0057EDC6 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC0272C35D09B0057EDC6 /* Roboto-Bold.ttf */; };
 		ABEDC02A2C35D0A20057EDC6 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC0292C35D0A20057EDC6 /* Roboto-Regular.ttf */; };
 		ABEDC02C2C35D0AC0057EDC6 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */; };
@@ -43,6 +47,9 @@
 		ABEDC0392C3716520057EDC6 /* SMIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0382C3716520057EDC6 /* SMIconButton.swift */; };
 		ABEDC03B2C371CBE0057EDC6 /* SMScrollableTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC03A2C371CBE0057EDC6 /* SMScrollableTabView.swift */; };
 		ABEDC0412C3775EE0057EDC6 /* SMCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0402C3775EE0057EDC6 /* SMCircularProgressBar.swift */; };
+		ABEDC0452C3857EA0057EDC6 /* SMAddIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0442C3857EA0057EDC6 /* SMAddIconButton.swift */; };
+		ABEDC0482C385DA50057EDC6 /* NewSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0472C385DA50057EDC6 /* NewSubscriptionView.swift */; };
+		ABEDC04A2C385DB90057EDC6 /* NewSubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0492C385DB90057EDC6 /* NewSubscriptionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +98,10 @@
 		AB7B36C52C35622A004AE578 /* SMSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSecureTextField.swift; sourceTree = "<group>"; };
 		AB7B36C72C356605004AE578 /* SMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMTextField.swift; sourceTree = "<group>"; };
 		AB7B36CA2C35992B004AE578 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		AB9485792C38BAFD00DF72BA /* NewSubscriptionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionRow.swift; sourceTree = "<group>"; };
+		AB94857C2C38C01300DF72BA /* NewSubscriptionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionFormView.swift; sourceTree = "<group>"; };
+		AB94857E2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionFormViewModel.swift; sourceTree = "<group>"; };
+		AB9485812C38C2A600DF72BA /* SubscriptionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsFactory.swift; sourceTree = "<group>"; };
 		ABEDC0272C35D09B0057EDC6 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		ABEDC0292C35D0A20057EDC6 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -100,13 +111,17 @@
 		ABEDC0382C3716520057EDC6 /* SMIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMIconButton.swift; sourceTree = "<group>"; };
 		ABEDC03A2C371CBE0057EDC6 /* SMScrollableTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMScrollableTabView.swift; sourceTree = "<group>"; };
 		ABEDC0402C3775EE0057EDC6 /* SMCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMCircularProgressBar.swift; sourceTree = "<group>"; };
+		ABEDC0442C3857EA0057EDC6 /* SMAddIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMAddIconButton.swift; sourceTree = "<group>"; };
+		ABEDC0472C385DA50057EDC6 /* NewSubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionView.swift; sourceTree = "<group>"; };
+		ABEDC0492C385DB90057EDC6 /* NewSubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		ABEDC03F2C3772610057EDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				SuscriptionModel.swift,
+				NewSubscriptionModel.swift,
+				SubscriptionModel.swift,
 			);
 			target = AB7B36522C34A793004AE578 /* SubMinder */;
 		};
@@ -215,6 +230,7 @@
 		AB7B36822C34A996004AE578 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				AB9485802C38C29E00DF72BA /* Factory */,
 				ABEDC03C2C3772460057EDC6 /* Models */,
 				AB7B36C92C359914004AE578 /* Authentication */,
 				AB7B36832C34A99B004AE578 /* Managers */,
@@ -237,10 +253,12 @@
 		AB7B36842C34A9AF004AE578 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				AB7B36BC2C354F37004AE578 /* Register */,
 				AB7B368F2C34AA52004AE578 /* Splash */,
 				AB7B36862C34A9B8004AE578 /* Login */,
+				AB7B36BC2C354F37004AE578 /* Register */,
 				AB7B36852C34A9B4004AE578 /* Home */,
+				ABEDC0462C385D3D0057EDC6 /* NewSubscription */,
+				AB94857B2C38BFE500DF72BA /* NewSubscriptionForm */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -273,6 +291,7 @@
 				ABEDC0382C3716520057EDC6 /* SMIconButton.swift */,
 				ABEDC03A2C371CBE0057EDC6 /* SMScrollableTabView.swift */,
 				ABEDC0402C3775EE0057EDC6 /* SMCircularProgressBar.swift */,
+				ABEDC0442C3857EA0057EDC6 /* SMAddIconButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -338,6 +357,31 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		AB9485782C38BADF00DF72BA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AB9485792C38BAFD00DF72BA /* NewSubscriptionRow.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AB94857B2C38BFE500DF72BA /* NewSubscriptionForm */ = {
+			isa = PBXGroup;
+			children = (
+				AB94857C2C38C01300DF72BA /* NewSubscriptionFormView.swift */,
+				AB94857E2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift */,
+			);
+			path = NewSubscriptionForm;
+			sourceTree = "<group>";
+		};
+		AB9485802C38C29E00DF72BA /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				AB9485812C38C2A600DF72BA /* SubscriptionsFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		ABEDC0322C35DFA30057EDC6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +390,16 @@
 				ABEDC0272C35D09B0057EDC6 /* Roboto-Bold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		ABEDC0462C385D3D0057EDC6 /* NewSubscription */ = {
+			isa = PBXGroup;
+			children = (
+				AB9485782C38BADF00DF72BA /* Cell */,
+				ABEDC0472C385DA50057EDC6 /* NewSubscriptionView.swift */,
+				ABEDC0492C385DB90057EDC6 /* NewSubscriptionViewModel.swift */,
+			);
+			path = NewSubscription;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,11 +547,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB9485822C38C2B600DF72BA /* SubscriptionsFactory.swift in Sources */,
 				AB7B36C82C356605004AE578 /* SMTextField.swift in Sources */,
+				AB94857A2C38BAFD00DF72BA /* NewSubscriptionRow.swift in Sources */,
 				ABEDC03B2C371CBE0057EDC6 /* SMScrollableTabView.swift in Sources */,
+				AB94857D2C38C01300DF72BA /* NewSubscriptionFormView.swift in Sources */,
+				ABEDC0452C3857EA0057EDC6 /* SMAddIconButton.swift in Sources */,
 				AB7B36C62C35622A004AE578 /* SMSecureTextField.swift in Sources */,
 				AB7B368A2C34A9E0004AE578 /* HomeView.swift in Sources */,
+				AB94857F2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift in Sources */,
 				AB7B36CB2C35992C004AE578 /* AuthService.swift in Sources */,
+				ABEDC04A2C385DB90057EDC6 /* NewSubscriptionViewModel.swift in Sources */,
 				AB7B36B22C34CC07004AE578 /* HomeViewModel.swift in Sources */,
 				AB7B36BE2C354F44004AE578 /* RegisterView.swift in Sources */,
 				ABEDC0392C3716520057EDC6 /* SMIconButton.swift in Sources */,
@@ -507,6 +567,7 @@
 				AB7B36A62C34B782004AE578 /* AppDelegate.swift in Sources */,
 				AB7B36572C34A793004AE578 /* SubMinderApp.swift in Sources */,
 				ABEDC0372C35F1D30057EDC6 /* Color+Utils.swift in Sources */,
+				ABEDC0482C385DA50057EDC6 /* NewSubscriptionView.swift in Sources */,
 				AB7B368E2C34AA1B004AE578 /* BaseManager.swift in Sources */,
 				AB7B36C02C354F4F004AE578 /* RegisterViewModel.swift in Sources */,
 				AB7B36B62C34D974004AE578 /* String+Utils.swift in Sources */,
@@ -615,7 +676,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -673,7 +734,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -702,7 +763,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -734,7 +795,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -756,7 +817,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V469DAHXMC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -775,7 +836,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V469DAHXMC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -793,6 +854,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V469DAHXMC;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -810,6 +872,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V469DAHXMC;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

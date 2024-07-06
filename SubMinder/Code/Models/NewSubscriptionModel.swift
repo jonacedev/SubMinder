@@ -13,10 +13,16 @@ enum SuscriptionType: String {
     case annual = "Anual"
 }
 
-struct SuscriptionModel {
+enum Divisa: String {
+    case usd = "USD"
+    case eur = "EUR"
+}
+
+struct NewSubscriptionModel {
     let id: Int
     let name: String
     let image: String
     let price: Double
     let type: SuscriptionType
+    let divisa: Divisa
 }

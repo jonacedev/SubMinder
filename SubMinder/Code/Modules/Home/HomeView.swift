@@ -11,8 +11,12 @@ struct HomeView: View {
     
     @EnvironmentObject var baseManager: BaseManager
     @StateObject var viewModel: HomeViewModel
+    private let authService: AuthService
+    
+    @State var showAddModal: Bool = false
     
     init(authService: AuthService) {
+        self.authService = authService
         self._viewModel = StateObject(wrappedValue: HomeViewModel(authService: authService))
     }
     
@@ -29,6 +33,26 @@ struct HomeView: View {
                     vwSuscriptionsSection()
                         .padding(.top, 20)
                 }
+            }
+            .overlay(alignment: .bottomTrailing) {
+                SMAddIconButton(action: {
+                    showAddModal = true
+                })
+                .padding(.trailing, 25)
+                .padding(.bottom, 25)
+                .fullScreenCover(isPresented: $showAddModal, content: {
+                    NewSubscriptionView(authService: authService)
+                        .gesture(
+                             DragGesture().onEnded { value in
+                               if value.location.y - value.startLocation.y > 150 {
+                                   withAnimation(.easeIn) {
+                                       showAddModal.toggle()
+                                   }
+                                  
+                               }
+                             }
+                        )
+                })
             }
         }
     }
@@ -104,14 +128,14 @@ struct HomeView: View {
             
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(0..<50) { index in
-                        vwSuscriptionGridItem(model: SuscriptionModel(id: 1, name: "Netflix", image: "netflix", price: 18.99, type: .quarterly))
+                        vwSuscriptionGridItem(model: NewSubscriptionModel(id: 1, name: "Netflix", image: "netflix", price: 18.99, type: .quarterly, divisa: .eur))
                             .frame(width: width, height: width)
                     }
                 }
         }
     }
     
-    @ViewBuilder private func vwSuscriptionGridItem(model: SuscriptionModel) -> some View {
+    @ViewBuilder private func vwSuscriptionGridItem(model: NewSubscriptionModel) -> some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
                 
