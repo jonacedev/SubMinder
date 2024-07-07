@@ -94,6 +94,7 @@ struct SubscriptionSelectionView: View {
             .padding(.top, 10)
             .padding(.horizontal, 20)
         }
+        .padding(.bottom, 10)
         .background(.white)
     }
 }
