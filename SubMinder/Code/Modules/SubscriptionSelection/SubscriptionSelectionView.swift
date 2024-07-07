@@ -44,7 +44,6 @@ struct SubscriptionSelectionView: View {
             .sheet(isPresented: $showSubForm, content: {
                 if let selectedSubscription = viewModel.selectedSubscription {
                     NewSubscriptionFormView(selectedSubscription: selectedSubscription, firebaseManager: firebaseManager)
-                   
                 }
             })
             .padding(.top, 10)

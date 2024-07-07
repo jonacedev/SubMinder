@@ -40,12 +40,8 @@ struct NewSubscriptionFormView: View {
     }
     
     var body: some View {
-        ZStack {
-            
-            Color.primary6
-                .ignoresSafeArea(edges: .top)
-            
-            VStack {
+        GeometryReader { _ in
+            VStack(spacing: 0) {
                 
                 vwHeader()
                 
@@ -56,44 +52,47 @@ struct NewSubscriptionFormView: View {
                         .background(Color.white)
                         .clipShape(.rect(topLeadingRadius: 24, bottomLeadingRadius: 0, bottomTrailingRadius: 0, topTrailingRadius: 24))
                 }
-                .ignoresSafeArea(.keyboard)
+                .ignoresSafeArea(edges: .bottom)
+                .background(Color.primary6)
             }
-        }
-        .onTapGesture {
-            hideKeyboard()
-        }
-        .onAppear {
-            let isOtherType = selectedSubscription.name.contains("Other")
-            self.name = isOtherType ? "" : selectedSubscription.name
+            .ignoresSafeArea(.keyboard)
+            .onTapGesture {
+                hideKeyboard()
+            }
+            .onAppear {
+                let isOtherType = selectedSubscription.name.contains("Other")
+                self.name = isOtherType ? "" : selectedSubscription.name
+            }
         }
     }
     
     @ViewBuilder private func vwHeader() -> some View {
         VStack {
-            SMText(text: selectedSubscription.name, fontType: .medium, size: .mediumLarge)
+            ZStack(alignment: .center) {
+                HStack {
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .resizable()
+                            .frame(width: 18, height: 18)
+                            .padding(.leading, 10)
+                    })
+                   
+                    Spacer()
+                }
+                .padding()
+
+                SMText(text: selectedSubscription.name, fontType: .medium, size: .mediumLarge)
+            }
+            .foregroundStyle(Color.white)
         }
-        .padding()
-        .frame(maxWidth: .infinity)
-        .overlay(alignment: .leading, content: {
-            Button(action: {
-                dismiss()
-            }, label: {
-                Image(systemName: "xmark")
-                    .resizable()
-                    .frame(width: 18, height: 18)
-                    .foregroundStyle(.white)
-                    .padding(.leading, 20)
-            })
-            
-        })
         .background(
             LinearGradient(colors: [Color.additionalPurple,
                                     Color.additionalBlue],
                            startPoint: .topLeading,
                            endPoint: .topTrailing)
-            .ignoresSafeArea(edges: .top)
         )
-        .foregroundStyle(Color.white)
     }
     
     @ViewBuilder private func vwSubHeader() -> some View {
@@ -112,7 +111,6 @@ struct NewSubscriptionFormView: View {
         .padding(.top, 50)
         .padding(.bottom, 40)
         .frame(maxWidth: .infinity)
-        .background(Color.primary6)
     }
     
     @ViewBuilder private func vwForm() -> some View {
@@ -120,7 +118,10 @@ struct NewSubscriptionFormView: View {
             HStack {
                 SMText(text: "Nombre", fontType: .regular, size: .medium)
                 TextField("Añade un nombre", text: $name)
+                    .keyboardType(.alphabet)
+                    .autocorrectionDisabled()
             }
+            .padding(.top, 40)
             
             Divider()
             
@@ -164,8 +165,9 @@ struct NewSubscriptionFormView: View {
             .opacity(isValidForm() ? 1 : 0.4)
             .disabled(!isValidForm())
             .padding(.top, 20)
+            
+            Spacer()
         }
-        .padding(.bottom, 120)
         .padding(.horizontal, 20)
         .multilineTextAlignment(.trailing)
     }

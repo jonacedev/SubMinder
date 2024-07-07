@@ -47,6 +47,7 @@ struct LoginView: View {
                 RegisterView(firebaseManager: firebaseManager)
                     .environmentObject(baseManager)
             })
+            .ignoresSafeArea(.keyboard)
         }
         .tint(.additionalPurple)
     }
