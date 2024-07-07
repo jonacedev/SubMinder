@@ -9,4 +9,9 @@ import Foundation
 
 class NewSubscriptionFormViewModel: ObservableObject {
     
+    private let firebaseManager: FirebaseManager
+    
+    init(firebaseManager: FirebaseManager) {
+        self.firebaseManager = firebaseManager
+    }
 }

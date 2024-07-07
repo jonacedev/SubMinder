@@ -42,6 +42,10 @@
 		AB94857D2C38C01300DF72BA /* NewSubscriptionFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94857C2C38C01300DF72BA /* NewSubscriptionFormView.swift */; };
 		AB94857F2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94857E2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift */; };
 		AB9485822C38C2B600DF72BA /* SubscriptionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9485812C38C2A600DF72BA /* SubscriptionsFactory.swift */; };
+		ABCEEBDF2C3A22EC000D7830 /* SMDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBDE2C3A22EC000D7830 /* SMDropDownMenu.swift */; };
+		ABCEEBE12C3A3AF8000D7830 /* View+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBE02C3A3AF8000D7830 /* View+Utils.swift */; };
+		ABCEEBE72C3B287A000D7830 /* Number+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBE62C3B287A000D7830 /* Number+Utils.swift */; };
+		ABCEEBE92C3B2B33000D7830 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBE82C3B2B33000D7830 /* Date+Utils.swift */; };
 		ABEDC0282C35D09B0057EDC6 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC0272C35D09B0057EDC6 /* Roboto-Bold.ttf */; };
 		ABEDC02A2C35D0A20057EDC6 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC0292C35D0A20057EDC6 /* Roboto-Regular.ttf */; };
 		ABEDC02C2C35D0AC0057EDC6 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */; };
@@ -107,6 +111,10 @@
 		AB94857C2C38C01300DF72BA /* NewSubscriptionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionFormView.swift; sourceTree = "<group>"; };
 		AB94857E2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionFormViewModel.swift; sourceTree = "<group>"; };
 		AB9485812C38C2A600DF72BA /* SubscriptionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsFactory.swift; sourceTree = "<group>"; };
+		ABCEEBDE2C3A22EC000D7830 /* SMDropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMDropDownMenu.swift; sourceTree = "<group>"; };
+		ABCEEBE02C3A3AF8000D7830 /* View+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Utils.swift"; sourceTree = "<group>"; };
+		ABCEEBE62C3B287A000D7830 /* Number+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Utils.swift"; sourceTree = "<group>"; };
+		ABCEEBE82C3B2B33000D7830 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		ABEDC0272C35D09B0057EDC6 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		ABEDC0292C35D0A20057EDC6 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -122,6 +130,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		ABCEEBE52C3B2404000D7830 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				WheelDatePickerView.swift,
+			);
+			target = AB7B36522C34A793004AE578 /* SubMinder */;
+		};
 		ABEDC03F2C3772610057EDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -134,6 +149,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		ABCEEBE42C3B23FF000D7830 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ABCEEBE52C3B2404000D7830 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
 		ABEDC03C2C3772460057EDC6 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ABEDC03F2C3772610057EDC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -241,7 +257,6 @@
 			children = (
 				AB9485802C38C29E00DF72BA /* Factory */,
 				ABEDC03C2C3772460057EDC6 /* Models */,
-				AB7B36C92C359914004AE578 /* Authentication */,
 				AB7B36832C34A99B004AE578 /* Managers */,
 				AB7B36AC2C34C00A004AE578 /* Utils */,
 				AB7B36922C34AAAD004AE578 /* Base */,
@@ -254,6 +269,7 @@
 		AB7B36832C34A99B004AE578 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				AB7B36CA2C35992B004AE578 /* FirebaseManager.swift */,
 				AB7B368D2C34AA1B004AE578 /* BaseManager.swift */,
 			);
 			path = Managers;
@@ -301,6 +317,7 @@
 				ABEDC03A2C371CBE0057EDC6 /* SMScrollableTabView.swift */,
 				ABEDC0402C3775EE0057EDC6 /* SMCircularProgressBar.swift */,
 				ABEDC0442C3857EA0057EDC6 /* SMAddIconButton.swift */,
+				ABCEEBDE2C3A22EC000D7830 /* SMDropDownMenu.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -346,6 +363,9 @@
 				AB7B36AD2C34C01F004AE578 /* DeviceInfo.swift */,
 				AB7B36B52C34D974004AE578 /* String+Utils.swift */,
 				ABEDC0362C35F1D30057EDC6 /* Color+Utils.swift */,
+				ABCEEBE02C3A3AF8000D7830 /* View+Utils.swift */,
+				ABCEEBE62C3B287A000D7830 /* Number+Utils.swift */,
+				ABCEEBE82C3B2B33000D7830 /* Date+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -359,14 +379,6 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
-		AB7B36C92C359914004AE578 /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				AB7B36CA2C35992B004AE578 /* FirebaseManager.swift */,
-			);
-			path = Authentication;
-			sourceTree = "<group>";
-		};
 		AB9485782C38BADF00DF72BA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +390,7 @@
 		AB94857B2C38BFE500DF72BA /* NewSubscriptionForm */ = {
 			isa = PBXGroup;
 			children = (
+				ABCEEBE42C3B23FF000D7830 /* View */,
 				AB94857C2C38C01300DF72BA /* NewSubscriptionFormView.swift */,
 				AB94857E2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift */,
 			);
@@ -566,6 +579,7 @@
 				ABEDC03B2C371CBE0057EDC6 /* SMScrollableTabView.swift in Sources */,
 				AB94857D2C38C01300DF72BA /* NewSubscriptionFormView.swift in Sources */,
 				ABEDC0452C3857EA0057EDC6 /* SMAddIconButton.swift in Sources */,
+				ABCEEBDF2C3A22EC000D7830 /* SMDropDownMenu.swift in Sources */,
 				AB7B36C62C35622A004AE578 /* SMSecureTextField.swift in Sources */,
 				AB7B368A2C34A9E0004AE578 /* HomeView.swift in Sources */,
 				AB94857F2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift in Sources */,
@@ -577,7 +591,9 @@
 				AB7B36882C34A9D3004AE578 /* LoginView.swift in Sources */,
 				AB7B36912C34AA5E004AE578 /* SplashView.swift in Sources */,
 				AB7B36962C34AC31004AE578 /* BaseLoader.swift in Sources */,
+				ABCEEBE92C3B2B33000D7830 /* Date+Utils.swift in Sources */,
 				AB7B36A62C34B782004AE578 /* AppDelegate.swift in Sources */,
+				ABCEEBE72C3B287A000D7830 /* Number+Utils.swift in Sources */,
 				AB7B36572C34A793004AE578 /* SubMinderApp.swift in Sources */,
 				ABEDC0372C35F1D30057EDC6 /* Color+Utils.swift in Sources */,
 				ABEDC0482C385DA50057EDC6 /* SubscriptionSelectionView.swift in Sources */,
@@ -590,6 +606,7 @@
 				AB59A50A2C3A09D9005A8F39 /* BaseActions.swift in Sources */,
 				ABEDC0412C3775EE0057EDC6 /* SMCircularProgressBar.swift in Sources */,
 				AB7B36AB2C34BCD0004AE578 /* SplashViewModel.swift in Sources */,
+				ABCEEBE12C3A3AF8000D7830 /* View+Utils.swift in Sources */,
 				AB7B36C22C355C76004AE578 /* SMMainButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

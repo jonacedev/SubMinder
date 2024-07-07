@@ -128,7 +128,7 @@ struct HomeView: View {
             
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(0..<50) { index in
-                        vwSuscriptionGridItem(model: NewSubscriptionModel(id: 1, name: "Netflix", image: "netflix", price: 18.99, type: .quarterly, divisa: .eur))
+                        vwSuscriptionGridItem(model: NewSubscriptionModel(name: "Netflix", image: "netflix", price: 18.99, paymentDate: "17-06-2024", type: "Mensual", divisa: "EUR"))
                             .frame(width: width, height: width)
                     }
                 }
@@ -154,7 +154,7 @@ struct HomeView: View {
                 
                 VStack(alignment: .leading) {
                     SMText(text: "\(model.price) €")
-                    SMText(text: "\(model.type.rawValue)", fontType: .medium, size: .smallLarge)
+                    SMText(text: "\(model.type)", fontType: .medium, size: .smallLarge)
                         .foregroundStyle(Color.primary3)
                 }
             }

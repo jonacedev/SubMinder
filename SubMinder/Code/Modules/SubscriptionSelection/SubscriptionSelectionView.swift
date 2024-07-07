@@ -14,7 +14,10 @@ struct SubscriptionSelectionView: View {
     @State var showSubForm: Bool = false
     
     private let subscriptionsList: [SubscriptionModel] = SubscriptionsFactory.shared.getSubscriptions()
+    private let firebaseManager: FirebaseManager
+    
     init(firebaseManager: FirebaseManager) {
+        self.firebaseManager = firebaseManager
         self._viewModel = StateObject(wrappedValue: SubscriptionSelectionViewModel(firebaseManager: firebaseManager))
     }
     
@@ -40,7 +43,7 @@ struct SubscriptionSelectionView: View {
             }
             .sheet(isPresented: $showSubForm, content: {
                 if let selectedSubscription = viewModel.selectedSubscription {
-                    NewSubscriptionFormView(selectedSubscription: selectedSubscription)
+                    NewSubscriptionFormView(selectedSubscription: selectedSubscription, firebaseManager: firebaseManager)
                    
                 }
             })
