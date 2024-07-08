@@ -17,6 +17,8 @@ class FirebaseManager: ObservableObject {
         self.userSession = Auth.auth().currentUser
     }
     
+    // MARK: - Auth methods
+    
     @MainActor
     func login(email: String, password: String) async throws {
         do {
@@ -53,8 +55,10 @@ class FirebaseManager: ObservableObject {
         }
     }
     
+    
+    // MARK: - User data
+    
     func getUserData() async throws -> UserModel? {
-        
         if !BaseActions.isPreview() {
             let userId = userSession?.uid ?? ""
             let userData = Firestore.firestore().collection("users").document(userId)
@@ -69,8 +73,51 @@ class FirebaseManager: ObservableObject {
         } else {
             return UserModel(id: "0", username: "User test", email: "example@gmail.com")
         }
+    }
+    
+    // MARK: - Add New subscription
+    
+    func addNewSubscription(model: NewSubscriptionModel) async throws {
+        do {
+            let userId = userSession?.uid ?? ""
+            let subscriptionData = try Firestore.Encoder().encode(model)
+            try await Firestore.firestore().collection("users").document(userId).collection("subscriptions").document().setData(subscriptionData)
+        } catch {
+            print("Upload user data error: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    // MARK: - Get subscriptions
+    
+    func getUserSubscriptions() async throws -> [SubscriptionModelDto] {
+        if !BaseActions.isPreview() {
+            let userId = userSession?.uid ?? ""
+            
+            do {
+                let querySnapshot = try await Firestore.firestore().collection("users").document(userId).collection("subscriptions").getDocuments()
+                let subscriptions = try querySnapshot.documents.compactMap { document in
+                    try document.data(as: NewSubscriptionModel.self)
+                }
+                return subscriptions.compactMap { SubscriptionModelDto(model: $0)}
+            } catch {
+                print("Fetch subscription data error: \(error.localizedDescription)")
+                throw error
+            }
+        } else {
+            let defaultModel = NewSubscriptionModel(name: "default", image: "netflix", price: 5.99, paymentDate: "17-06-2025", type: "Trimestral", divisa: "EUR")
+            return [SubscriptionModelDto(model: defaultModel),
+                    SubscriptionModelDto(model: defaultModel),
+                    SubscriptionModelDto(model: defaultModel),
+                    SubscriptionModelDto(model: defaultModel),
+                    SubscriptionModelDto(model: defaultModel),
+                    SubscriptionModelDto(model: defaultModel)]
+        }
         
     }
+    
+    
+    // MARK: - Sign out
     
     func signOut() {
         try? Auth.auth().signOut()

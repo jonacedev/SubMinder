@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SubscriptionModel: Identifiable {
+struct SubscriptionSelectorModel: Identifiable {
     let id = UUID()
     let name: String
     let image: String

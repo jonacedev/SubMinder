@@ -141,7 +141,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				NewSubscriptionModel.swift,
-				SubscriptionModel.swift,
+				SubscriptionModelDto.swift,
+				SubscriptionSelectorModel.swift,
 				UserModel.swift,
 			);
 			target = AB7B36522C34A793004AE578 /* SubMinder */;

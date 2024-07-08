@@ -18,8 +18,7 @@ import Foundation
 //    case eur = "EUR"
 //}
 
-struct NewSubscriptionModel {
-    let id = UUID()
+struct NewSubscriptionModel: Codable {
     let name: String
     let image: String
     let price: Double

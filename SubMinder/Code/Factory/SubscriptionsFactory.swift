@@ -10,17 +10,17 @@ class SubscriptionsFactory {
     static let shared = SubscriptionsFactory()
     private init() { }
     
-    func getSubscriptions() -> [SubscriptionModel] {
-        return [SubscriptionModel(name: "Netflix", image: "netflix"),
-                SubscriptionModel(name: "Youtube", image: "youtube"),
-                SubscriptionModel(name: "Spotify", image: "spotify"),
-                SubscriptionModel(name: "Linkedin", image: "linkedin"),
-                SubscriptionModel(name: "Twitch", image: "twitch"),
-                SubscriptionModel(name: "Crunchyroll", image: "crunchyroll"),
-                SubscriptionModel(name: "Behance", image: "behance")]
+    func getSubscriptions() -> [SubscriptionSelectorModel] {
+        return [SubscriptionSelectorModel(name: "Netflix", image: "netflix"),
+                SubscriptionSelectorModel(name: "Youtube", image: "youtube"),
+                SubscriptionSelectorModel(name: "Spotify", image: "spotify"),
+                SubscriptionSelectorModel(name: "Linkedin", image: "linkedin"),
+                SubscriptionSelectorModel(name: "Twitch", image: "twitch"),
+                SubscriptionSelectorModel(name: "Crunchyroll", image: "crunchyroll"),
+                SubscriptionSelectorModel(name: "Behance", image: "behance")]
     }
     
-    func getDefaultSubscription() -> SubscriptionModel {
-        SubscriptionModel(name: "Other", image: "netflix")
+    func getDefaultSubscription() -> SubscriptionSelectorModel {
+        SubscriptionSelectorModel(name: "Other", image: "netflix")
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class NewSubscriptionFormViewModel: ObservableObject {
     
@@ -13,5 +14,13 @@ class NewSubscriptionFormViewModel: ObservableObject {
     
     init(firebaseManager: FirebaseManager) {
         self.firebaseManager = firebaseManager
+    }
+    
+    func addNewSubscription(model: NewSubscriptionModel) async {
+        do {
+            try await firebaseManager.addNewSubscription(model: model)
+        } catch {
+            print("error: \(error.localizedDescription)")
+        }
     }
 }

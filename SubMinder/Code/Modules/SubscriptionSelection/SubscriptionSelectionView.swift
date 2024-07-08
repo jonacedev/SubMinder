@@ -9,11 +9,10 @@ import SwiftUI
 
 struct SubscriptionSelectionView: View {
     
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var modalState: ModalState
     @StateObject var viewModel: SubscriptionSelectionViewModel
-    @State var showSubForm: Bool = false
     
-    private let subscriptionsList: [SubscriptionModel] = SubscriptionsFactory.shared.getSubscriptions()
+    private let subscriptionsList: [SubscriptionSelectorModel] = SubscriptionsFactory.shared.getSubscriptions()
     private let firebaseManager: FirebaseManager
     
     init(firebaseManager: FirebaseManager) {
@@ -41,9 +40,10 @@ struct SubscriptionSelectionView: View {
                     vwBottom()
                 })
             }
-            .sheet(isPresented: $showSubForm, content: {
+            .sheet(isPresented: $modalState.showSecondModal, content: {
                 if let selectedSubscription = viewModel.selectedSubscription {
                     NewSubscriptionFormView(selectedSubscription: selectedSubscription, firebaseManager: firebaseManager)
+                        .environmentObject(modalState)
                 }
             })
             .padding(.top, 10)
@@ -57,7 +57,7 @@ struct SubscriptionSelectionView: View {
         .frame(maxWidth: .infinity)
         .overlay(alignment: .leading, content: {
             Button(action: {
-                dismiss()
+                modalState.showFirstModal = false
             }, label: {
                 Image(systemName: "xmark")
                     .resizable()
@@ -77,7 +77,7 @@ struct SubscriptionSelectionView: View {
                 .listRowInsets(EdgeInsets(top: 7, leading: 15, bottom: 7, trailing: 15))
                 .onTapGesture {
                     viewModel.tapSubscription(subscription: subscription, success: {
-                        showSubForm = true
+                        modalState.showSecondModal = true
                     })
                 }
         }
@@ -88,7 +88,7 @@ struct SubscriptionSelectionView: View {
         VStack {
             SMMainButton(title: "Otra suscripción", action: {
                 viewModel.tapOtherSubscription {
-                    showSubForm = true
+                    modalState.showSecondModal = true
                 }
             })
             .padding(.top, 10)
@@ -101,4 +101,5 @@ struct SubscriptionSelectionView: View {
 
 #Preview {
     SubscriptionSelectionView(firebaseManager: FirebaseManager())
+        .environmentObject(ModalState())
 }

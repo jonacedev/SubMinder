@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewSubscriptionFormView: View {
     
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var modalState: ModalState
     @StateObject var viewModel: NewSubscriptionFormViewModel
     
     
@@ -32,9 +32,9 @@ struct NewSubscriptionFormView: View {
     let divisaOptions = ["EUR", "USD"]
     @State var divisaDropdownIndex = 0
     
-    var selectedSubscription: SubscriptionModel
+    var selectedSubscription: SubscriptionSelectorModel
     
-    init(selectedSubscription: SubscriptionModel, firebaseManager: FirebaseManager) {
+    init(selectedSubscription: SubscriptionSelectorModel, firebaseManager: FirebaseManager) {
         self.selectedSubscription = selectedSubscription
         self._viewModel = StateObject(wrappedValue: NewSubscriptionFormViewModel(firebaseManager: firebaseManager))
     }
@@ -71,7 +71,7 @@ struct NewSubscriptionFormView: View {
             ZStack(alignment: .center) {
                 HStack {
                     Button(action: {
-                        dismiss()
+                        modalState.showSecondModal = false
                     }, label: {
                         Image(systemName: "xmark")
                             .resizable()
@@ -160,7 +160,7 @@ struct NewSubscriptionFormView: View {
             .zIndex(1)
             
             SMMainButton(title: "Añadir", action: {
-                let newSubscription = NewSubscriptionModel(name: self.name, image: self.selectedSubscription.image, price: price.toDouble() ?? 0, paymentDate: paymentDate.toString(), type: typeOptions[typeDropdownIndex], divisa: divisaOptions[divisaDropdownIndex])
+                addNewSubscription()
             })
             .opacity(isValidForm() ? 1 : 0.4)
             .disabled(!isValidForm())
@@ -172,6 +172,16 @@ struct NewSubscriptionFormView: View {
         .multilineTextAlignment(.trailing)
     }
     
+    func addNewSubscription() {
+        let newSubscription = NewSubscriptionModel(name: self.name, image: self.selectedSubscription.image, price: price.toDouble() ?? 0, paymentDate: paymentDate.toString(), type: typeOptions[typeDropdownIndex], divisa: divisaOptions[divisaDropdownIndex])
+        
+        Task {
+            await viewModel.addNewSubscription(model: newSubscription)
+            modalState.showSecondModal = false
+            modalState.showFirstModal = false
+        }
+    }
+    
     func isValidForm() -> Bool {
         !name.isEmpty && price.toDouble() != nil
     }
@@ -179,4 +189,5 @@ struct NewSubscriptionFormView: View {
 
 #Preview {
     NewSubscriptionFormView(selectedSubscription: SubscriptionsFactory.shared.getDefaultSubscription(), firebaseManager: FirebaseManager())
+        .environmentObject(ModalState())
 }

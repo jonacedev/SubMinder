@@ -9,14 +9,14 @@ import Foundation
 
 class SubscriptionSelectionViewModel: ObservableObject {
     
-    @Published var selectedSubscription: SubscriptionModel?
+    @Published var selectedSubscription: SubscriptionSelectorModel?
     private let firebaseManager: FirebaseManager
     
     init(firebaseManager: FirebaseManager) {
         self.firebaseManager = firebaseManager
     }
     
-    func tapSubscription(subscription: SubscriptionModel, success: @escaping () -> Void) {
+    func tapSubscription(subscription: SubscriptionSelectorModel, success: @escaping () -> Void) {
         self.selectedSubscription = subscription
         success()
     }

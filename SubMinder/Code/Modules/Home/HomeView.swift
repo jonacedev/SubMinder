@@ -7,13 +7,18 @@
 
 import SwiftUI
 
+class ModalState: ObservableObject {
+    @Published var showFirstModal: Bool = false
+    @Published var showSecondModal: Bool = false
+}
+
 struct HomeView: View {
     
     @EnvironmentObject var baseManager: BaseManager
     @StateObject var viewModel: HomeViewModel
-    private let firebaseManager: FirebaseManager
+    @StateObject var modalState = ModalState()
     
-    @State var showAddModal: Bool = false
+    private let firebaseManager: FirebaseManager
     
     init(firebaseManager: FirebaseManager) {
         self.firebaseManager = firebaseManager
@@ -33,24 +38,30 @@ struct HomeView: View {
                     vwSuscriptionsSection()
                         .padding(.top, 20)
                 }
+                .refreshable {
+                    viewModel.fetchHomeData()
+                }
             }
             .overlay(alignment: .bottomTrailing) {
                 SMAddIconButton(action: {
-                    showAddModal = true
+                    modalState.showFirstModal = true
                 })
                 .padding(.trailing, 25)
                 .padding(.bottom, 25)
-                .fullScreenCover(isPresented: $showAddModal, content: {
+                .fullScreenCover(isPresented: $modalState.showFirstModal, onDismiss: {
+                    viewModel.fetchHomeData()
+                }, content: {
                     SubscriptionSelectionView(firebaseManager: firebaseManager)
+                        .environmentObject(modalState)
                         .gesture(
-                             DragGesture().onEnded { value in
-                               if value.location.y - value.startLocation.y > 150 {
-                                   withAnimation(.easeIn) {
-                                       showAddModal.toggle()
-                                   }
-                                  
-                               }
-                             }
+                            DragGesture().onEnded { value in
+                                if value.location.y - value.startLocation.y > 150 {
+                                    withAnimation(.easeIn) {
+                                        modalState.showFirstModal.toggle()
+                                    }
+                                    
+                                }
+                            }
                         )
                 })
             }
@@ -81,7 +92,7 @@ struct HomeView: View {
         )
         
         HStack(spacing: 14) {
-            vwSummaryItem(value: "10", 
+            vwSummaryItem(value: viewModel.getTotalSubscriptions(),
                           text: "Suscripciones",
                           gradient: LinearGradient(
                             colors: [Color.additionalGreen,
@@ -92,7 +103,7 @@ struct HomeView: View {
                 
             })
             
-            vwSummaryItem(value: "2", 
+            vwSummaryItem(value: viewModel.getWeeklyPayments(),
                           text: "Pagos esta semana",
                           gradient: LinearGradient(
                             colors: [Color.additionalPurple,
@@ -103,7 +114,7 @@ struct HomeView: View {
                 
             })
             
-            vwSummaryItem(value: "1", 
+            vwSummaryItem(value: viewModel.getFreeTrials(),
                           text: "Pruebas gratuitas",
                           gradient: LinearGradient(
                             colors: [Color.additionalPurple, Color.additionalPurple],
@@ -127,15 +138,15 @@ struct HomeView: View {
                 .padding(.horizontal, 20)
             
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(0..<50) { index in
-                        vwSuscriptionGridItem(model: NewSubscriptionModel(name: "Netflix", image: "netflix", price: 18.99, paymentDate: "17-06-2024", type: "Mensual", divisa: "EUR"))
+                    ForEach(viewModel.subscriptions ?? []) { subscription in
+                        vwSuscriptionGridItem(model: subscription)
                             .frame(width: width, height: width)
                     }
                 }
         }
     }
     
-    @ViewBuilder private func vwSuscriptionGridItem(model: NewSubscriptionModel) -> some View {
+    @ViewBuilder private func vwSuscriptionGridItem(model: SubscriptionModelDto) -> some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
                 

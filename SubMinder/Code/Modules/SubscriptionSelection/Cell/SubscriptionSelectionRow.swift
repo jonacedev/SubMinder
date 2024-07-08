@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SubscriptionSelectionRow: View {
     
-    let subscription: SubscriptionModel
+    let subscription: SubscriptionSelectorModel
     
     var body: some View {
         VStack {
