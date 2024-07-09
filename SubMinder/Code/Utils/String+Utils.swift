@@ -32,4 +32,11 @@ extension String {
         }
         return stringIfNil ?? ""
     }
+    
+    func toDate(with format: String = "dd-MM-yyyy", localeIdentifier: String = "es_ES") -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: localeIdentifier)
+        dateFormatter.dateFormat = format
+        return dateFormatter.date(from: self)
+    }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-final class SplashViewModel: ObservableObject {
+final class SplashViewModel: BaseViewModel {
     
     // MARK: - Properties
     
@@ -19,6 +19,7 @@ final class SplashViewModel: ObservableObject {
     
     init(firebaseManager: FirebaseManager) {
         self.firebaseManager = firebaseManager
+        super.init()
     }
     
     func onAppear() {

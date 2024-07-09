@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @EnvironmentObject var baseManager: BaseManager
     @StateObject var viewModel: SplashViewModel
     @Binding var splashLoaded: Bool
     
@@ -19,6 +18,10 @@ struct SplashView: View {
     }
     
     var body: some View {
+        BaseView(content: content, viewModel: viewModel)
+    }
+    
+    @ViewBuilder private func content() -> some View {
         VStack {
             Text("Splash")
         }
@@ -42,5 +45,4 @@ struct SplashView: View {
 
 #Preview {
     SplashView(firebaseManager: FirebaseManager(), splashLoaded: .constant(false))
-        .environmentObject(BaseManager())
 }

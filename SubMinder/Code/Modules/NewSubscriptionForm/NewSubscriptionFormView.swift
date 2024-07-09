@@ -25,7 +25,7 @@ struct NewSubscriptionFormView: View {
     @State var paymentDate: Date = Date()
     
     // MARK: - Subscription type
-    let typeOptions = ["Mensual", "Trimestral", "Semanal", "Prueba"]
+    let typeOptions = ["Mensual", "Trimestral", "Anual", "Semanal", "Prueba"]
     @State var typeDropdownIndex = 0
     
     // MARK: - Subscription divisa
@@ -40,6 +40,10 @@ struct NewSubscriptionFormView: View {
     }
     
     var body: some View {
+        BaseView(content: content, viewModel: viewModel)
+    }
+    
+    @ViewBuilder private func content() -> some View {
         GeometryReader { _ in
             VStack(spacing: 0) {
                 
@@ -54,10 +58,6 @@ struct NewSubscriptionFormView: View {
                 }
                 .ignoresSafeArea(edges: .bottom)
                 .background(Color.primary6)
-            }
-            .ignoresSafeArea(.keyboard)
-            .onTapGesture {
-                hideKeyboard()
             }
             .onAppear {
                 let isOtherType = selectedSubscription.name.contains("Other")
@@ -146,7 +146,12 @@ struct NewSubscriptionFormView: View {
             HStack {
                 SMText(text: "Tipo", fontType: .regular, size: .medium)
                 Spacer()
-                SMDropDownMenu(options: typeOptions, selectedOptionIndex: $typeDropdownIndex)
+                SMDropDownMenu(options: typeOptions, selectedOptionIndex: $typeDropdownIndex, selectedAction: {
+                    let subscriptionType = SubscriptionType(type: typeOptions[typeDropdownIndex])
+                    if subscriptionType == .freeTrial {
+                        self.price = "0,00"
+                    }
+                })
             }
             .zIndex(2)
             
@@ -155,7 +160,7 @@ struct NewSubscriptionFormView: View {
             HStack {
                 SMText(text: "Divisa", fontType: .regular, size: .medium)
                 Spacer()
-                SMDropDownMenu(options: divisaOptions, selectedOptionIndex: $divisaDropdownIndex, menuWidth: 120)
+                SMDropDownMenu(options: divisaOptions, selectedOptionIndex: $divisaDropdownIndex, selectedAction: { }, menuWidth: 120)
             }
             .zIndex(1)
             

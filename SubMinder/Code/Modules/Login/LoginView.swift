@@ -9,11 +9,10 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @EnvironmentObject var baseManager: BaseManager
     @StateObject var viewModel: LoginViewModel
     private let firebaseManager: FirebaseManager
     
-    @State var navigateToRegister: Bool = false
+    @State var pushRegisterView: Bool = false
     @State var email: String = ""
     @State var password: String = ""
     
@@ -23,6 +22,10 @@ struct LoginView: View {
     }
     
     var body: some View {
+        BaseView(content: content, viewModel: viewModel)
+    }
+    
+    @ViewBuilder private func content() -> some View {
         NavigationStack {
             VStack(spacing: 40) {
                 SMText(text: "login_header".localized,
@@ -43,9 +46,8 @@ struct LoginView: View {
                 vwBottom()
             }
             .padding(.horizontal, 20)
-            .navigationDestination(isPresented: $navigateToRegister, destination: {
+            .navigationDestination(isPresented: $pushRegisterView, destination: {
                 RegisterView(firebaseManager: firebaseManager)
-                    .environmentObject(baseManager)
             })
             .ignoresSafeArea(.keyboard)
         }
@@ -69,7 +71,7 @@ struct LoginView: View {
         HStack {
             SMText(text: "login_no_account".localized)
             Button(action: {
-                navigateToRegister = true
+                pushRegisterView = true
             }, label: {
                 SMText(text: "register_link".localized)
                     .underline()
@@ -82,14 +84,11 @@ struct LoginView: View {
 extension LoginView {
     func makeLogin() {
         Task {
-            baseManager.showLoading()
             await viewModel.login(email: email, password: password)
-            baseManager.hideLoading()
         }
     }
 }
 
 #Preview {
     LoginView(firebaseManager: FirebaseManager())
-        .environmentObject(BaseManager())
 }

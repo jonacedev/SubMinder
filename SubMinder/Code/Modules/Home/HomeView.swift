@@ -26,6 +26,10 @@ struct HomeView: View {
     }
     
     var body: some View {
+        BaseView(content: content, viewModel: viewModel)
+    }
+    
+    @ViewBuilder private func content() -> some View {
         NavigationStack {
             VStack {
                 vwTopBar()
@@ -78,7 +82,7 @@ struct HomeView: View {
             
             Spacer()
             
-            SMIconButton(image: "bell", action: {
+            SMIconButton(image: "person", action: {
                 viewModel.signOut()
             })
         }
@@ -86,9 +90,9 @@ struct HomeView: View {
     
     @ViewBuilder private func vwSummary() -> some View {
         SMScrollableTabView(info: [
-            ScrollableInfo(text: "10€", description: "Gastos de esta semana"),
-            ScrollableInfo(text: "20€", description: "Gastos de este mes"),
-            ScrollableInfo(text: "30€", description: "Gastos totales")]
+            ScrollableInfo(text: "\(viewModel.getWeeklyAmount())€", description: "Gastos de esta semana"),
+            ScrollableInfo(text: "\(viewModel.getMonthlyAmount())€", description: "Gastos de este mes"),
+            ScrollableInfo(text: "\(viewModel.getAnualAmount())€", description: "Gastos del año en curso")]
         )
         
         HStack(spacing: 14) {
@@ -133,16 +137,27 @@ struct HomeView: View {
                        GridItem(.fixed(width))]
         
         VStack(alignment: .leading) {
-            SMText(text: "Suscripciones", fontType: .bold, size: .large)
+            SMText(text: "Proximos pagos", fontType: .bold, size: .large)
                 .foregroundStyle(Color.secondary2)
                 .padding(.horizontal, 20)
             
+            if viewModel.upcomingSubscriptions?.isEmpty == true {
+                SMEmptyView(title: "No tienes pagos en los proximos 15 dias")
+                    .padding(.horizontal, 20)
+                
+                SMLinkButtonStyled(title: "Ir a mis suscripciones", action: {
+                    
+                })
+                .padding(.top, 10)
+                
+            } else {
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(viewModel.subscriptions ?? []) { subscription in
+                    ForEach(viewModel.upcomingSubscriptions ?? []) { subscription in
                         vwSuscriptionGridItem(model: subscription)
                             .frame(width: width, height: width)
                     }
                 }
+            }
         }
     }
     
@@ -152,33 +167,37 @@ struct HomeView: View {
                 
                 Rectangle()
                     .frame(width: 60, height: 60)
-                    .foregroundStyle(Color.secondary1.opacity(0.9))
+                    .foregroundStyle(Color.white.opacity(0.6))
                     .clipShape(.rect(cornerRadius: 14))
                     .overlay {
                         Image(model.image)
                             .resizable()
-                            .frame(width: 37, height: 37)
-                            .shadow(radius: 5)
+                            .frame(width: 38, height: 38)
+                            .shadow(radius: 0.3)
                     }
-                    
-                Spacer()
+                    .padding(.trailing, 5)
                 
                 VStack(alignment: .leading) {
                     SMText(text: "\(model.price) €")
-                    SMText(text: "\(model.type)", fontType: .medium, size: .smallLarge)
+                    SMText(text: "\(model.type.rawValue)", fontType: .medium, size: .smallLarge)
                         .foregroundStyle(Color.primary3)
                 }
+                
+                Spacer(minLength: 5)
             }
             
             SMText(text: model.name, fontType: .bold, size: .mediumLarge)
                 .foregroundStyle(Color.secondary2)
             
+//            SMText(text: "\(model.paymentDate.toDate()?.formatted(date: .abbreviated, time: .omitted) ?? "")", fontType: .medium, size: .smallLarge)
+            
             HStack(spacing: 10) {
-                SMCircularProgressBar(text: "3", progress: 0.6)
-                    .frame(width: 28, height: 28)
+                SMCircularProgressBar(text: "\(model.paymentDate.toDate()?.getDaysIntervalFromNow() ?? 0)", progress: viewModel.calculateProgress(type: model.type, endDate: model.paymentDate.toDate() ?? .now))
+                    .frame(width: 29, height: 29)
                 SMText(text: "Dias restantes", fontType: .medium, size: .smallLarge)
                     .foregroundStyle(Color.secondary2)
             }
+           
         }
         .padding(.horizontal)
         .frame(width: 175, height: 175)

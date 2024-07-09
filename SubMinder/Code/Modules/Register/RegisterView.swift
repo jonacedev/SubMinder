@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RegisterView: View {
     
-    @EnvironmentObject var baseManager: BaseManager
     @StateObject var viewModel: RegisterViewModel
     @Environment(\.dismiss) var dismiss
     
@@ -22,7 +21,10 @@ struct RegisterView: View {
     }
   
     var body: some View {
-       
+        BaseView(content: content, viewModel: viewModel)
+    }
+    
+    @ViewBuilder private func content() -> some View {
         VStack(spacing: 40) {
             
             SMText(text: "register_header".localized,
@@ -82,16 +84,13 @@ struct RegisterView: View {
 extension RegisterView {
     func registerUser() {
         Task {
-            baseManager.showLoading()
             await viewModel.register(email: email,
                                      password: password,
                                      username: username)
-            baseManager.hideLoading()
         }
     }
 }
 
 #Preview {
     RegisterView(firebaseManager: FirebaseManager())
-        .environmentObject(BaseManager())
 }

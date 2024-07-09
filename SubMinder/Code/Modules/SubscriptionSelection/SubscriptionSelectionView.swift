@@ -21,6 +21,10 @@ struct SubscriptionSelectionView: View {
     }
     
     var body: some View {
+        BaseView(content: content, viewModel: viewModel)
+    }
+    
+    @ViewBuilder private func content() -> some View {
         ZStack {
             LinearGradient(colors: [Color.additionalPurple,
                                     Color.additionalBlue],

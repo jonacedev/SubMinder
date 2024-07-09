@@ -11,6 +11,7 @@ struct SMDropDownMenu: View {
     
     let options: [String]
     @Binding var selectedOptionIndex: Int
+    let selectedAction: () -> Void
     
     var menuWidth: CGFloat = 150
     var buttonHeight: CGFloat = 40
@@ -48,6 +49,7 @@ struct SMDropDownMenu: View {
                                         withAnimation {
                                             selectedOptionIndex = index
                                             showDropdown.toggle()
+                                            selectedAction()
                                         }
                                     }, label: {
                                         HStack {

@@ -7,13 +7,14 @@
 
 import Foundation
 
-class SubscriptionSelectionViewModel: ObservableObject {
+class SubscriptionSelectionViewModel: BaseViewModel {
     
     @Published var selectedSubscription: SubscriptionSelectorModel?
     private let firebaseManager: FirebaseManager
     
     init(firebaseManager: FirebaseManager) {
         self.firebaseManager = firebaseManager
+        super.init()
     }
     
     func tapSubscription(subscription: SubscriptionSelectorModel, success: @escaping () -> Void) {
@@ -25,6 +26,4 @@ class SubscriptionSelectionViewModel: ObservableObject {
         self.selectedSubscription = SubscriptionsFactory.shared.getDefaultSubscription()
         success()
     }
-    
-    
 }

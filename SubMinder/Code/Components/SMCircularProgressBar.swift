@@ -11,7 +11,7 @@ struct SMCircularProgressBar: View {
     
     var text: String
     var progress: Double
-    var lineWidth: CGFloat = 3.5
+    var lineWidth: CGFloat = 4
 
     var body: some View {
         ZStack {
@@ -33,7 +33,7 @@ struct SMCircularProgressBar: View {
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.linear, value: progress)
             
-            SMText(text: text, fontType: .medium, size: .smallLarge)
+            SMText(text: text, fontType: .medium, size: text.count > 2 ? .small : .smallLarge)
         }
     }
 }

@@ -7,20 +7,26 @@
 
 import Foundation
 
-final class RegisterViewModel: ObservableObject {
+final class RegisterViewModel: BaseViewModel {
     
     private let firebaseManager: FirebaseManager
     
     init(firebaseManager: FirebaseManager) {
         self.firebaseManager = firebaseManager
+        super.init()
     }
     
     @MainActor
     func register(email: String, password: String, username: String) async {
+        showLoading()
         do {
             try await firebaseManager.registerUser(email: email, password: password, username: username)
+            hideLoading()
         } catch {
-            print("error: \(error.localizedDescription)")
+            manageError(alert: BaseAlert.Model(title: "Error",
+                                             description: error.localizedDescription,
+                                             buttonText1: "Aceptar",
+                                             action1: { self.hideAlert() }))
         }
     }
 }
