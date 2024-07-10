@@ -42,6 +42,15 @@ struct SubscriptionModelDto: Identifiable {
     let divisa: String
     var daysUntilPayment: Int? = nil
     
+    init(name: String, image: String, price: Double, paymentDate: String, type: SubscriptionType, divisa: String) {
+        self.name = name
+        self.image = image
+        self.price = price
+        self.paymentDate = paymentDate
+        self.type = type
+        self.divisa = divisa
+    }
+    
     init(model: NewSubscriptionModel) {
         self.name = model.name
         self.image = model.image

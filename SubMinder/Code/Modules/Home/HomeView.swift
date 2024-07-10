@@ -14,9 +14,13 @@ class ModalState: ObservableObject {
 
 struct HomeView: View {
     
-    @EnvironmentObject var baseManager: BaseManager
     @StateObject var viewModel: HomeViewModel
     @StateObject var modalState = ModalState()
+    
+    @State private var pushAllSubs = false
+    @State private var pushWeeklySubs = false
+    @State private var pushFreeTrialsSubs = false
+    @State private var selectedListType: ListType? = nil
     
     private let firebaseManager: FirebaseManager
     
@@ -70,6 +74,7 @@ struct HomeView: View {
                 })
             }
         }
+        .tint(Color.secondary2)
     }
     
     @ViewBuilder private func vwTopBar() -> some View {
@@ -96,6 +101,7 @@ struct HomeView: View {
         )
         
         HStack(spacing: 14) {
+           
             vwSummaryItem(value: viewModel.getTotalSubscriptions(),
                           text: "Suscripciones",
                           gradient: LinearGradient(
@@ -104,9 +110,12 @@ struct HomeView: View {
                             startPoint: .topLeading,
                             endPoint: .trailing),
                           action: {
-                
+                pushAllSubs = true
             })
-            
+            .navigationDestination(isPresented: $pushAllSubs, destination: {
+                SubscriptionListView(firebaseManager: firebaseManager, subscriptions: viewModel.subscriptions, listType: .all)
+            })
+           
             vwSummaryItem(value: viewModel.getWeeklyPayments(),
                           text: "Pagos esta semana",
                           gradient: LinearGradient(
@@ -115,7 +124,10 @@ struct HomeView: View {
                             startPoint: .topLeading,
                             endPoint: .trailing),
                           action: {
-                
+                pushWeeklySubs = true
+            })
+            .navigationDestination(isPresented: $pushWeeklySubs, destination: {
+                SubscriptionListView(firebaseManager: firebaseManager, subscriptions: viewModel.subscriptions, listType: .weekly)
             })
             
             vwSummaryItem(value: viewModel.getFreeTrials(),
@@ -125,7 +137,10 @@ struct HomeView: View {
                             startPoint: .bottom,
                             endPoint: .trailing),
                           action: {
-                
+                pushFreeTrialsSubs = true
+            })
+            .navigationDestination(isPresented: $pushFreeTrialsSubs, destination: {
+                SubscriptionListView(firebaseManager: firebaseManager, subscriptions: viewModel.subscriptions, listType: .freeTrial)
             })
         }
     }
@@ -153,8 +168,19 @@ struct HomeView: View {
             } else {
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(viewModel.upcomingSubscriptions ?? []) { subscription in
-                        vwSuscriptionGridItem(model: subscription)
-                            .frame(width: width, height: width)
+                        if #available(iOS 17.0, *) {
+                            vwSuscriptionGridItem(model: subscription)
+                                .frame(width: width, height: width)
+                                .scrollTransition(.animated) { content, phase in
+                                    content
+                                        .opacity(phase.isIdentity ? 1 : 0.8)
+                                        .scaleEffect(phase.isIdentity ? 1 : 0.8)
+                                }
+                        } else {
+                            vwSuscriptionGridItem(model: subscription)
+                                .frame(width: width, height: width)
+                                .transition(.move(edge: .trailing))
+                        }
                     }
                 }
             }
@@ -188,8 +214,6 @@ struct HomeView: View {
             
             SMText(text: model.name, fontType: .bold, size: .mediumLarge)
                 .foregroundStyle(Color.secondary2)
-            
-//            SMText(text: "\(model.paymentDate.toDate()?.formatted(date: .abbreviated, time: .omitted) ?? "")", fontType: .medium, size: .smallLarge)
             
             HStack(spacing: 10) {
                 SMCircularProgressBar(text: "\(model.paymentDate.toDate()?.getDaysIntervalFromNow() ?? 0)", progress: viewModel.calculateProgress(type: model.type, endDate: model.paymentDate.toDate() ?? .now))
@@ -231,5 +255,4 @@ struct HomeView: View {
 
 #Preview {
     HomeView(firebaseManager: FirebaseManager())
-        .environmentObject(BaseManager())
 }

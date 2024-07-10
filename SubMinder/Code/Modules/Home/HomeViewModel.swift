@@ -33,7 +33,8 @@ final class HomeViewModel: BaseViewModel {
         }
     }
     
-    @MainActor func getUserData() async {
+    @MainActor 
+    func getUserData() async {
         do {
             self.userData = try await firebaseManager.getUserData()
         } catch {
@@ -44,7 +45,8 @@ final class HomeViewModel: BaseViewModel {
         }
     }
     
-    @MainActor func getUserSubscriptions() async {
+    @MainActor 
+    func getUserSubscriptions() async {
         do {
             self.subscriptions = try await firebaseManager.getUserSubscriptions()
             self.upcomingSubscriptions = subscriptions?.filter { $0.paymentDate.toDate()?.isWithinNext15Days() == true }

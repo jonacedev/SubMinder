@@ -30,6 +30,7 @@ struct RegisterView: View {
             SMText(text: "register_header".localized,
                        fontType: .bold,
                        size: .header)
+            .foregroundStyle(Color.secondary2)
             .padding(.bottom, 30)
                 
             vwFields()

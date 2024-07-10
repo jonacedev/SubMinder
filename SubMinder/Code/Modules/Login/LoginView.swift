@@ -31,6 +31,7 @@ struct LoginView: View {
                 SMText(text: "login_header".localized,
                            fontType: .bold,
                            size: .header)
+                .foregroundStyle(Color.secondary2)
                 .padding(.bottom, 30)
                 
                 vwFields()
@@ -51,7 +52,7 @@ struct LoginView: View {
             })
             .ignoresSafeArea(.keyboard)
         }
-        .tint(.additionalPurple)
+        .tint(Color.secondary2)
     }
     
     @ViewBuilder private func vwFields() -> some View {
