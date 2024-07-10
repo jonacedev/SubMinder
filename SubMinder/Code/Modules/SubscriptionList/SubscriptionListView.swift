@@ -7,14 +7,14 @@
 
 import SwiftUI
 
+
 struct SubscriptionListView: View {
     
-    @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: SubscriptionListViewModel
     
     init(firebaseManager: FirebaseManager, subscriptions: [SubscriptionModelDto]? = [], listType: ListType) {
         self._viewModel = StateObject(wrappedValue: SubscriptionListViewModel(firebaseManager: firebaseManager, subscriptions: subscriptions, listType: listType))
-        setNavigationBarColor()
+        setNavigationBarStyle()
     }
     
     var body: some View {
@@ -41,20 +41,14 @@ struct SubscriptionListView: View {
     
     @ViewBuilder private func vwList() -> some View {
         ForEach(viewModel.subscriptions) { subscription in
-            if #available(iOS 17.0, *) {
-                SubscriptionListRow(subscription: subscription)
-                    .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
-                        content
-                            .opacity(phase.isIdentity ? 1 : 0.8)
-                            .scaleEffect(phase.isIdentity ? 1 : 0.8)
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 3)
-            } else {
-                SubscriptionListRow(subscription: subscription)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 3)
-            }
+            SubscriptionListRow(subscription: subscription)
+                .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
+                    content
+                        .opacity(phase.isIdentity ? 1 : 0.8)
+                        .scaleEffect(phase.isIdentity ? 1 : 0.8)
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 3)
         }
     }
     
@@ -64,8 +58,8 @@ struct SubscriptionListView: View {
         }
     }
     
-    func setNavigationBarColor() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.secondary2)]
+    func setNavigationBarStyle() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [ .font: UIFont(name: "Roboto-Bold", size: 28) ?? .systemFont(ofSize: 24),.foregroundColor: UIColor(Color.secondary2)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.secondary2)]
     }
 }

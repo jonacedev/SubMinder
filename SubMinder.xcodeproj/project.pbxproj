@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB5916A52C3F1762007A0EE5 /* SMBorderConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916982C3F1762007A0EE5 /* SMBorderConstant.swift */; };
+		AB5916A62C3F1762007A0EE5 /* SMTooltipShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB59169E2C3F1762007A0EE5 /* SMTooltipShape.swift */; };
+		AB5916A72C3F1762007A0EE5 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916952C3F1762007A0EE5 /* View+Extensions.swift */; };
+		AB5916A92C3F1762007A0EE5 /* SMArrowConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916972C3F1762007A0EE5 /* SMArrowConstant.swift */; };
+		AB5916AB2C3F1762007A0EE5 /* SMConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916992C3F1762007A0EE5 /* SMConstant.swift */; };
+		AB5916AC2C3F1762007A0EE5 /* SMFrameModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916A12C3F1762007A0EE5 /* SMFrameModifier.swift */; };
+		AB5916AF2C3F1762007A0EE5 /* SMShadowConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB59169A2C3F1762007A0EE5 /* SMShadowConstant.swift */; };
+		AB5916B12C3F1842007A0EE5 /* SMTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916B02C3F1842007A0EE5 /* SMTooltip.swift */; };
 		AB59A4FA2C39CD5E005A8F39 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AB59A4F92C39CD5E005A8F39 /* FirebaseDatabase */; };
 		AB59A5042C39D17D005A8F39 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AB59A5032C39D17D005A8F39 /* FirebaseStorage */; };
 		AB59A5062C39D253005A8F39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB59A5052C39D253005A8F39 /* GoogleService-Info.plist */; };
@@ -86,6 +94,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB5916952C3F1762007A0EE5 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		AB5916972C3F1762007A0EE5 /* SMArrowConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMArrowConstant.swift; sourceTree = "<group>"; };
+		AB5916982C3F1762007A0EE5 /* SMBorderConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMBorderConstant.swift; sourceTree = "<group>"; };
+		AB5916992C3F1762007A0EE5 /* SMConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMConstant.swift; sourceTree = "<group>"; };
+		AB59169A2C3F1762007A0EE5 /* SMShadowConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMShadowConstant.swift; sourceTree = "<group>"; };
+		AB59169E2C3F1762007A0EE5 /* SMTooltipShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMTooltipShape.swift; sourceTree = "<group>"; };
+		AB5916A12C3F1762007A0EE5 /* SMFrameModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMFrameModifier.swift; sourceTree = "<group>"; };
+		AB5916B02C3F1842007A0EE5 /* SMTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMTooltip.swift; sourceTree = "<group>"; };
 		AB59A5052C39D253005A8F39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB59A5092C3A09D9005A8F39 /* BaseActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseActions.swift; sourceTree = "<group>"; };
 		AB7B36532C34A793004AE578 /* SubMinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubMinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +217,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB5916B22C3F188D007A0EE5 /* Tooltip */ = {
+			isa = PBXGroup;
+			children = (
+				AB5916B02C3F1842007A0EE5 /* SMTooltip.swift */,
+				AB5916B92C3F195D007A0EE5 /* Utils */,
+				AB5916B82C3F1953007A0EE5 /* Shape */,
+				AB5916B72C3F192F007A0EE5 /* Extensions */,
+				AB5916B52C3F18FE007A0EE5 /* Constants */,
+			);
+			path = Tooltip;
+			sourceTree = "<group>";
+		};
+		AB5916B52C3F18FE007A0EE5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				AB5916972C3F1762007A0EE5 /* SMArrowConstant.swift */,
+				AB5916982C3F1762007A0EE5 /* SMBorderConstant.swift */,
+				AB5916992C3F1762007A0EE5 /* SMConstant.swift */,
+				AB59169A2C3F1762007A0EE5 /* SMShadowConstant.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		AB5916B72C3F192F007A0EE5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AB5916952C3F1762007A0EE5 /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AB5916B82C3F1953007A0EE5 /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				AB59169E2C3F1762007A0EE5 /* SMTooltipShape.swift */,
+			);
+			path = Shape;
+			sourceTree = "<group>";
+		};
+		AB5916B92C3F195D007A0EE5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AB5916A12C3F1762007A0EE5 /* SMFrameModifier.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		AB7B364A2C34A793004AE578 = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +390,7 @@
 		AB7B368B2C34A9ED004AE578 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AB5916B22C3F188D007A0EE5 /* Tooltip */,
 				AB7B36C12C355C76004AE578 /* SMMainButton.swift */,
 				AB7B36C52C35622A004AE578 /* SMSecureTextField.swift */,
 				AB7B36C72C356605004AE578 /* SMTextField.swift */,
@@ -630,10 +694,18 @@
 				ABCEEC0B2C3DD154000D7830 /* SubscriptionListRow.swift in Sources */,
 				ABEDC04A2C385DB90057EDC6 /* SubscriptionSelectionViewModel.swift in Sources */,
 				ABCEEBF72C3DB3DE000D7830 /* SubscriptionViewModel.swift in Sources */,
+				AB5916B12C3F1842007A0EE5 /* SMTooltip.swift in Sources */,
 				AB7B36B22C34CC07004AE578 /* HomeViewModel.swift in Sources */,
 				AB7B36BE2C354F44004AE578 /* RegisterView.swift in Sources */,
 				ABCEEBF02C3D53B8000D7830 /* SMEmptyView.swift in Sources */,
 				ABEDC0392C3716520057EDC6 /* SMIconButton.swift in Sources */,
+				AB5916A52C3F1762007A0EE5 /* SMBorderConstant.swift in Sources */,
+				AB5916A62C3F1762007A0EE5 /* SMTooltipShape.swift in Sources */,
+				AB5916A72C3F1762007A0EE5 /* View+Extensions.swift in Sources */,
+				AB5916A92C3F1762007A0EE5 /* SMArrowConstant.swift in Sources */,
+				AB5916AB2C3F1762007A0EE5 /* SMConstant.swift in Sources */,
+				AB5916AC2C3F1762007A0EE5 /* SMFrameModifier.swift in Sources */,
+				AB5916AF2C3F1762007A0EE5 /* SMShadowConstant.swift in Sources */,
 				ABCEEBFD2C3DB621000D7830 /* BaseAlert.swift in Sources */,
 				AB7B36882C34A9D3004AE578 /* LoginView.swift in Sources */,
 				AB7B36912C34AA5E004AE578 /* SplashView.swift in Sources */,
@@ -758,7 +830,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -817,7 +889,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -849,7 +921,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -885,7 +957,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -910,7 +982,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V469DAHXMC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -933,7 +1005,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V469DAHXMC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -955,7 +1027,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V469DAHXMC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -977,7 +1049,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V469DAHXMC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

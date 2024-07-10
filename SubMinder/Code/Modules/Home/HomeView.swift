@@ -17,6 +17,8 @@ struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     @StateObject var modalState = ModalState()
     
+    @State var showTooltip = false
+    
     @State private var pushAllSubs = false
     @State private var pushWeeklySubs = false
     @State private var pushFreeTrialsSubs = false
@@ -152,9 +154,32 @@ struct HomeView: View {
                        GridItem(.fixed(width))]
         
         VStack(alignment: .leading) {
-            SMText(text: "Proximos pagos", fontType: .bold, size: .large)
-                .foregroundStyle(Color.secondary2)
-                .padding(.horizontal, 20)
+            HStack(alignment: .top) {
+                SMText(text: "Proximos pagos", fontType: .bold, size: .large)
+                    .foregroundStyle(Color.secondary2)
+                    .padding(.leading, 20)
+                
+                Button(action: {
+                    showTooltip.toggle()
+                }, label: {
+                    Image(systemName: "info.circle")
+                        .resizable()
+                        .frame(width: 16, height: 16)
+                        .tint(Color.secondary2)
+                    
+                })
+                .smToolTip(isPresented: $showTooltip, background: {
+                    Color.primary6
+                }, foreground: {
+                    SMText(text: "En los proximos 15 dias", fontType: .medium, size: .smallLarge)
+                        .foregroundStyle(Color.sec2)
+                        .padding()
+                })
+                .frame(width: 16)
+                
+                Spacer()
+            }
+            .zIndex(1)
             
             if viewModel.upcomingSubscriptions?.isEmpty == true {
                 SMEmptyView(title: "No tienes pagos en los proximos 15 dias")
@@ -168,19 +193,13 @@ struct HomeView: View {
             } else {
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(viewModel.upcomingSubscriptions ?? []) { subscription in
-                        if #available(iOS 17.0, *) {
-                            vwSuscriptionGridItem(model: subscription)
-                                .frame(width: width, height: width)
-                                .scrollTransition(.animated) { content, phase in
-                                    content
-                                        .opacity(phase.isIdentity ? 1 : 0.8)
-                                        .scaleEffect(phase.isIdentity ? 1 : 0.8)
-                                }
-                        } else {
-                            vwSuscriptionGridItem(model: subscription)
-                                .frame(width: width, height: width)
-                                .transition(.move(edge: .trailing))
-                        }
+                        vwSuscriptionGridItem(model: subscription)
+                            .frame(width: width, height: width)
+                            .scrollTransition(.animated) { content, phase in
+                                content
+                                    .opacity(phase.isIdentity ? 1 : 0.8)
+                                    .scaleEffect(phase.isIdentity ? 1 : 0.8)
+                            }
                     }
                 }
             }
