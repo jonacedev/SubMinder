@@ -17,6 +17,13 @@ class SubscriptionsFactory {
                 SubscriptionSelectorModel(name: "Linkedin", image: "linkedin"),
                 SubscriptionSelectorModel(name: "Twitch", image: "twitch"),
                 SubscriptionSelectorModel(name: "Crunchyroll", image: "crunchyroll"),
+                SubscriptionSelectorModel(name: "Behance", image: "behance"), 
+                SubscriptionSelectorModel(name: "Netflix", image: "netflix"),
+                SubscriptionSelectorModel(name: "Youtube", image: "youtube"),
+                SubscriptionSelectorModel(name: "Spotify", image: "spotify"),
+                SubscriptionSelectorModel(name: "Linkedin", image: "linkedin"),
+                SubscriptionSelectorModel(name: "Twitch", image: "twitch"),
+                SubscriptionSelectorModel(name: "Crunchyroll", image: "crunchyroll"),
                 SubscriptionSelectorModel(name: "Behance", image: "behance")]
     }
     

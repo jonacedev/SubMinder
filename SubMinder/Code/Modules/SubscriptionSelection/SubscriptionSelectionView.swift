@@ -11,47 +11,51 @@ struct SubscriptionSelectionView: View {
     
     @EnvironmentObject var modalState: ModalState
     @StateObject var viewModel: SubscriptionSelectionViewModel
-    
+    @State var searchText = ""
+  
     private let subscriptionsList: [SubscriptionSelectorModel] = SubscriptionsFactory.shared.getSubscriptions()
     private let firebaseManager: FirebaseManager
     
     init(firebaseManager: FirebaseManager) {
         self.firebaseManager = firebaseManager
         self._viewModel = StateObject(wrappedValue: SubscriptionSelectionViewModel(firebaseManager: firebaseManager))
+        setNavigationBarStyle()
     }
     
     var body: some View {
         BaseView(content: content, viewModel: viewModel)
+            .ignoresSafeArea(.keyboard)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Añadir gastos")
+            .toolbar{
+                ToolbarItem(placement: .topBarLeading, content: {
+                    Button(action: {
+                        modalState.showFirstModal = false
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .tint(Color.secondary2)
+                            
+                    })
+                })
+            }
     }
     
     @ViewBuilder private func content() -> some View {
-        ZStack {
-            LinearGradient(colors: [Color.additionalPurple,
-                                    Color.additionalBlue],
-                           startPoint: .topLeading,
-                           endPoint: .topTrailing)
-            .ignoresSafeArea(edges: .top)
-            
-            VStack {
-                vwHeader()
-                    .padding(.bottom, 14)
-                
-                VStack {
-                    vwList()
-                }
-                .background(Color.white)
-                .overlay(alignment: .bottom, content: {
-                    vwBottom()
-                })
-            }
-            .sheet(isPresented: $modalState.showSecondModal, content: {
-                if let selectedSubscription = viewModel.selectedSubscription {
-                    NewSubscriptionFormView(selectedSubscription: selectedSubscription, firebaseManager: firebaseManager)
-                        .environmentObject(modalState)
-                }
-            })
-            .padding(.top, 10)
+        VStack {
+            SMSearchBar(text: $searchText, placeholder: "Buscar")
+                .keyboardType(.alphabet)
+                .autocorrectionDisabled()
+                .padding(.horizontal, 18)
+                .padding(.vertical, 5)
+            vwList()
+            vwBottom()
         }
+        .sheet(isPresented: $modalState.showSecondModal, content: {
+            if let selectedSubscription = viewModel.selectedSubscription {
+                NewSubscriptionFormView(selectedSubscription: selectedSubscription, firebaseManager: firebaseManager)
+                    .environmentObject(modalState)
+            }
+        })
     }
     
     @ViewBuilder private func vwHeader() -> some View {
@@ -75,7 +79,7 @@ struct SubscriptionSelectionView: View {
     }
     
     @ViewBuilder private func vwList() -> some View {
-        List(subscriptionsList) { subscription in
+        List(filteredProducts()) { subscription in
             SubscriptionSelectionRow(subscription: subscription)
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets(top: 7, leading: 15, bottom: 7, trailing: 15))
@@ -85,7 +89,9 @@ struct SubscriptionSelectionView: View {
                     })
                 }
         }
+        .id(UUID())
         .listStyle(.plain)
+        .scrollDismissesKeyboard(.interactively)
     }
     
     @ViewBuilder private func vwBottom() -> some View {
@@ -100,6 +106,16 @@ struct SubscriptionSelectionView: View {
         }
         .padding(.bottom, 10)
         .background(.white)
+    }
+    
+    func setNavigationBarStyle() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [ .font: UIFont(name: "Roboto-Bold", size: 28) ?? .systemFont(ofSize: 26),.foregroundColor: UIColor(Color.secondary2)]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.secondary2)]
+    }
+    
+    func filteredProducts() -> [SubscriptionSelectorModel] {
+        searchText.isEmpty ? subscriptionsList : subscriptionsList.filter { ($0.name).localizedCaseInsensitiveContains(searchText) }
+        
     }
 }
 

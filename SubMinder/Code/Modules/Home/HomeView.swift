@@ -61,18 +61,10 @@ struct HomeView: View {
                 .fullScreenCover(isPresented: $modalState.showFirstModal, onDismiss: {
                     viewModel.fetchHomeData()
                 }, content: {
-                    SubscriptionSelectionView(firebaseManager: firebaseManager)
-                        .environmentObject(modalState)
-                        .gesture(
-                            DragGesture().onEnded { value in
-                                if value.location.y - value.startLocation.y > 150 {
-                                    withAnimation(.easeIn) {
-                                        modalState.showFirstModal.toggle()
-                                    }
-                                    
-                                }
-                            }
-                        )
+                    NavigationStack {
+                        SubscriptionSelectionView(firebaseManager: firebaseManager)
+                            .environmentObject(modalState)
+                    }
                 })
             }
         }

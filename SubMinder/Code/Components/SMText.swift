@@ -22,6 +22,7 @@ enum TextSize: CGFloat {
     case extraLarge = 24
     case header = 35
     case headerLarge = 40
+    case searchBar = 17
 }
 
 struct SMText: View {

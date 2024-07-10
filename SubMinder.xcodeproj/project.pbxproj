@@ -15,6 +15,7 @@
 		AB5916AC2C3F1762007A0EE5 /* SMFrameModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916A12C3F1762007A0EE5 /* SMFrameModifier.swift */; };
 		AB5916AF2C3F1762007A0EE5 /* SMShadowConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB59169A2C3F1762007A0EE5 /* SMShadowConstant.swift */; };
 		AB5916B12C3F1842007A0EE5 /* SMTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916B02C3F1842007A0EE5 /* SMTooltip.swift */; };
+		AB5916BD2C3F3A49007A0EE5 /* SMSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916BC2C3F3A49007A0EE5 /* SMSearchBar.swift */; };
 		AB59A4FA2C39CD5E005A8F39 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AB59A4F92C39CD5E005A8F39 /* FirebaseDatabase */; };
 		AB59A5042C39D17D005A8F39 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AB59A5032C39D17D005A8F39 /* FirebaseStorage */; };
 		AB59A5062C39D253005A8F39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB59A5052C39D253005A8F39 /* GoogleService-Info.plist */; };
@@ -102,6 +103,7 @@
 		AB59169E2C3F1762007A0EE5 /* SMTooltipShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMTooltipShape.swift; sourceTree = "<group>"; };
 		AB5916A12C3F1762007A0EE5 /* SMFrameModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMFrameModifier.swift; sourceTree = "<group>"; };
 		AB5916B02C3F1842007A0EE5 /* SMTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMTooltip.swift; sourceTree = "<group>"; };
+		AB5916BC2C3F3A49007A0EE5 /* SMSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSearchBar.swift; sourceTree = "<group>"; };
 		AB59A5052C39D253005A8F39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB59A5092C3A09D9005A8F39 /* BaseActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseActions.swift; sourceTree = "<group>"; };
 		AB7B36532C34A793004AE578 /* SubMinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubMinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -402,6 +404,7 @@
 				ABCEEBDE2C3A22EC000D7830 /* SMDropDownMenu.swift */,
 				ABCEEBEF2C3D53B8000D7830 /* SMEmptyView.swift */,
 				ABCEEBF12C3D5603000D7830 /* SMLinkButtonStyled.swift */,
+				AB5916BC2C3F3A49007A0EE5 /* SMSearchBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB5916BD2C3F3A49007A0EE5 /* SMSearchBar.swift in Sources */,
 				ABCEEBF52C3DB3CA000D7830 /* SubscriptionListView.swift in Sources */,
 				AB9485822C38C2B600DF72BA /* SubscriptionsFactory.swift in Sources */,
 				AB7B36C82C356605004AE578 /* SMTextField.swift in Sources */,

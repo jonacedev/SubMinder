@@ -22,6 +22,7 @@ struct SubscriptionListRow: View {
                 VStack(alignment: .leading) {
                     HStack {
                         SMText(text: subscription.name, fontType: .medium, size: .medium)
+                            .foregroundStyle(Color.secondary2)
                             .lineLimit(2)
                             .multilineTextAlignment(.leading)
                         SMText(text: subscription.type.rawValue, fontType: .medium, size: .small)
@@ -38,9 +39,11 @@ struct SubscriptionListRow: View {
                 
                 Spacer()
                 
-                SMText(text: "\(subscription.price) €")
+                SMText(text: "\(subscription.price) €", fontType: .medium, size: .mediumLarge)
+                    .foregroundStyle(Color.secondary2)
             }
-            .padding(20)
+            .padding(.vertical, 20)
+            .padding(.horizontal, 18)
         }
         .background(Color.primary6)
         .clipShape(.rect(cornerRadius: 20))

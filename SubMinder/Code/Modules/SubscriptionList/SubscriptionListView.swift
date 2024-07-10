@@ -59,7 +59,7 @@ struct SubscriptionListView: View {
     }
     
     func setNavigationBarStyle() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [ .font: UIFont(name: "Roboto-Bold", size: 28) ?? .systemFont(ofSize: 24),.foregroundColor: UIColor(Color.secondary2)]
+        UINavigationBar.appearance().largeTitleTextAttributes = [ .font: UIFont(name: "Roboto-Bold", size: 28) ?? .systemFont(ofSize: 26),.foregroundColor: UIColor(Color.secondary2)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.secondary2)]
     }
 }
