@@ -30,6 +30,7 @@ struct SubscriptionListView: View {
                 vwList()
             } else {
                 SMEmptyView(title: "No se han encontrado resultados")
+                    .padding(.horizontal, 20)
                 Spacer()
             }
         }
@@ -42,10 +43,10 @@ struct SubscriptionListView: View {
         ForEach(viewModel.subscriptions) { subscription in
             if #available(iOS 17.0, *) {
                 SubscriptionListRow(subscription: subscription)
-                    .scrollTransition(.animated.threshold(.visible(0.3))) { content, phase in
+                    .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
                         content
                             .opacity(phase.isIdentity ? 1 : 0.8)
-                            .scaleEffect(phase.isIdentity ? 1 : 0.7)
+                            .scaleEffect(phase.isIdentity ? 1 : 0.8)
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 3)
