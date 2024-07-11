@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct SubscriptionSelectionView: View {
+struct NewSubscriptionView: View {
     
     @EnvironmentObject var modalState: ModalState
-    @StateObject var viewModel: SubscriptionSelectionViewModel
+    @StateObject var viewModel: NewSubscriptionViewModel
     @State var searchText = ""
   
     private let subscriptionsList: [SubscriptionSelectorModel] = SubscriptionsFactory.shared.getSubscriptions()
@@ -18,7 +18,7 @@ struct SubscriptionSelectionView: View {
     
     init(firebaseManager: FirebaseManager) {
         self.firebaseManager = firebaseManager
-        self._viewModel = StateObject(wrappedValue: SubscriptionSelectionViewModel(firebaseManager: firebaseManager))
+        self._viewModel = StateObject(wrappedValue: NewSubscriptionViewModel(firebaseManager: firebaseManager))
         setNavigationBarStyle()
     }
     
@@ -80,7 +80,7 @@ struct SubscriptionSelectionView: View {
     
     @ViewBuilder private func vwList() -> some View {
         List(filteredProducts()) { subscription in
-            SubscriptionSelectionRow(subscription: subscription)
+            NewSubscriptionRow(subscription: subscription)
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets(top: 7, leading: 15, bottom: 7, trailing: 15))
                 .onTapGesture {
@@ -89,7 +89,6 @@ struct SubscriptionSelectionView: View {
                     })
                 }
         }
-        .id(UUID())
         .listStyle(.plain)
         .scrollDismissesKeyboard(.interactively)
     }
@@ -120,6 +119,6 @@ struct SubscriptionSelectionView: View {
 }
 
 #Preview {
-    SubscriptionSelectionView(firebaseManager: FirebaseManager())
+    NewSubscriptionView(firebaseManager: FirebaseManager())
         .environmentObject(ModalState())
 }

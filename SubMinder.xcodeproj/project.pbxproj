@@ -16,6 +16,8 @@
 		AB5916AF2C3F1762007A0EE5 /* SMShadowConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB59169A2C3F1762007A0EE5 /* SMShadowConstant.swift */; };
 		AB5916B12C3F1842007A0EE5 /* SMTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916B02C3F1842007A0EE5 /* SMTooltip.swift */; };
 		AB5916BD2C3F3A49007A0EE5 /* SMSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916BC2C3F3A49007A0EE5 /* SMSearchBar.swift */; };
+		AB5916F32C40184A007A0EE5 /* SubscriptionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916F22C40184A007A0EE5 /* SubscriptionDetailView.swift */; };
+		AB5916F52C40185D007A0EE5 /* SubscriptionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916F42C40185D007A0EE5 /* SubscriptionDetailViewModel.swift */; };
 		AB59A4FA2C39CD5E005A8F39 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AB59A4F92C39CD5E005A8F39 /* FirebaseDatabase */; };
 		AB59A5042C39D17D005A8F39 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AB59A5032C39D17D005A8F39 /* FirebaseStorage */; };
 		AB59A5062C39D253005A8F39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB59A5052C39D253005A8F39 /* GoogleService-Info.plist */; };
@@ -47,7 +49,7 @@
 		AB7B36C62C35622A004AE578 /* SMSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C52C35622A004AE578 /* SMSecureTextField.swift */; };
 		AB7B36C82C356605004AE578 /* SMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36C72C356605004AE578 /* SMTextField.swift */; };
 		AB7B36CB2C35992C004AE578 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36CA2C35992B004AE578 /* FirebaseManager.swift */; };
-		AB94857A2C38BAFD00DF72BA /* SubscriptionSelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9485792C38BAFD00DF72BA /* SubscriptionSelectionRow.swift */; };
+		AB94857A2C38BAFD00DF72BA /* NewSubscriptionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9485792C38BAFD00DF72BA /* NewSubscriptionRow.swift */; };
 		AB94857D2C38C01300DF72BA /* NewSubscriptionFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94857C2C38C01300DF72BA /* NewSubscriptionFormView.swift */; };
 		AB94857F2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94857E2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift */; };
 		AB9485822C38C2B600DF72BA /* SubscriptionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9485812C38C2A600DF72BA /* SubscriptionsFactory.swift */; };
@@ -58,7 +60,7 @@
 		ABCEEBF02C3D53B8000D7830 /* SMEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBEF2C3D53B8000D7830 /* SMEmptyView.swift */; };
 		ABCEEBF22C3D5603000D7830 /* SMLinkButtonStyled.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBF12C3D5603000D7830 /* SMLinkButtonStyled.swift */; };
 		ABCEEBF52C3DB3CA000D7830 /* SubscriptionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBF42C3DB3CA000D7830 /* SubscriptionListView.swift */; };
-		ABCEEBF72C3DB3DE000D7830 /* SubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBF62C3DB3DE000D7830 /* SubscriptionViewModel.swift */; };
+		ABCEEBF72C3DB3DE000D7830 /* SubscriptionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBF62C3DB3DE000D7830 /* SubscriptionListViewModel.swift */; };
 		ABCEEBF92C3DB553000D7830 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBF82C3DB553000D7830 /* BaseView.swift */; };
 		ABCEEBFB2C3DB55C000D7830 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBFA2C3DB55C000D7830 /* BaseViewModel.swift */; };
 		ABCEEBFD2C3DB621000D7830 /* BaseAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBFC2C3DB621000D7830 /* BaseAlert.swift */; };
@@ -73,8 +75,8 @@
 		ABEDC03B2C371CBE0057EDC6 /* SMScrollableTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC03A2C371CBE0057EDC6 /* SMScrollableTabView.swift */; };
 		ABEDC0412C3775EE0057EDC6 /* SMCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0402C3775EE0057EDC6 /* SMCircularProgressBar.swift */; };
 		ABEDC0452C3857EA0057EDC6 /* SMAddIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0442C3857EA0057EDC6 /* SMAddIconButton.swift */; };
-		ABEDC0482C385DA50057EDC6 /* SubscriptionSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0472C385DA50057EDC6 /* SubscriptionSelectionView.swift */; };
-		ABEDC04A2C385DB90057EDC6 /* SubscriptionSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0492C385DB90057EDC6 /* SubscriptionSelectionViewModel.swift */; };
+		ABEDC0482C385DA50057EDC6 /* NewSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0472C385DA50057EDC6 /* NewSubscriptionView.swift */; };
+		ABEDC04A2C385DB90057EDC6 /* NewSubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0492C385DB90057EDC6 /* NewSubscriptionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		AB5916A12C3F1762007A0EE5 /* SMFrameModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMFrameModifier.swift; sourceTree = "<group>"; };
 		AB5916B02C3F1842007A0EE5 /* SMTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMTooltip.swift; sourceTree = "<group>"; };
 		AB5916BC2C3F3A49007A0EE5 /* SMSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSearchBar.swift; sourceTree = "<group>"; };
+		AB5916F22C40184A007A0EE5 /* SubscriptionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailView.swift; sourceTree = "<group>"; };
+		AB5916F42C40185D007A0EE5 /* SubscriptionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailViewModel.swift; sourceTree = "<group>"; };
 		AB59A5052C39D253005A8F39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB59A5092C3A09D9005A8F39 /* BaseActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseActions.swift; sourceTree = "<group>"; };
 		AB7B36532C34A793004AE578 /* SubMinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubMinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +137,7 @@
 		AB7B36C52C35622A004AE578 /* SMSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSecureTextField.swift; sourceTree = "<group>"; };
 		AB7B36C72C356605004AE578 /* SMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMTextField.swift; sourceTree = "<group>"; };
 		AB7B36CA2C35992B004AE578 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		AB9485792C38BAFD00DF72BA /* SubscriptionSelectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSelectionRow.swift; sourceTree = "<group>"; };
+		AB9485792C38BAFD00DF72BA /* NewSubscriptionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionRow.swift; sourceTree = "<group>"; };
 		AB94857C2C38C01300DF72BA /* NewSubscriptionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionFormView.swift; sourceTree = "<group>"; };
 		AB94857E2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionFormViewModel.swift; sourceTree = "<group>"; };
 		AB9485812C38C2A600DF72BA /* SubscriptionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsFactory.swift; sourceTree = "<group>"; };
@@ -144,7 +148,7 @@
 		ABCEEBEF2C3D53B8000D7830 /* SMEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMEmptyView.swift; sourceTree = "<group>"; };
 		ABCEEBF12C3D5603000D7830 /* SMLinkButtonStyled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMLinkButtonStyled.swift; sourceTree = "<group>"; };
 		ABCEEBF42C3DB3CA000D7830 /* SubscriptionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListView.swift; sourceTree = "<group>"; };
-		ABCEEBF62C3DB3DE000D7830 /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
+		ABCEEBF62C3DB3DE000D7830 /* SubscriptionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListViewModel.swift; sourceTree = "<group>"; };
 		ABCEEBF82C3DB553000D7830 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ABCEEBFA2C3DB55C000D7830 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		ABCEEBFC2C3DB621000D7830 /* BaseAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAlert.swift; sourceTree = "<group>"; };
@@ -159,8 +163,8 @@
 		ABEDC03A2C371CBE0057EDC6 /* SMScrollableTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMScrollableTabView.swift; sourceTree = "<group>"; };
 		ABEDC0402C3775EE0057EDC6 /* SMCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMCircularProgressBar.swift; sourceTree = "<group>"; };
 		ABEDC0442C3857EA0057EDC6 /* SMAddIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMAddIconButton.swift; sourceTree = "<group>"; };
-		ABEDC0472C385DA50057EDC6 /* SubscriptionSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSelectionView.swift; sourceTree = "<group>"; };
-		ABEDC0492C385DB90057EDC6 /* SubscriptionSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSelectionViewModel.swift; sourceTree = "<group>"; };
+		ABEDC0472C385DA50057EDC6 /* NewSubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionView.swift; sourceTree = "<group>"; };
+		ABEDC0492C385DB90057EDC6 /* NewSubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -254,6 +258,15 @@
 				AB5916A12C3F1762007A0EE5 /* SMFrameModifier.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		AB5916F12C401825007A0EE5 /* SubscriptionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				AB5916F22C40184A007A0EE5 /* SubscriptionDetailView.swift */,
+				AB5916F42C40185D007A0EE5 /* SubscriptionDetailViewModel.swift */,
+			);
+			path = SubscriptionDetail;
 			sourceTree = "<group>";
 		};
 		AB7B364A2C34A793004AE578 = {
@@ -355,7 +368,8 @@
 				AB7B36BC2C354F37004AE578 /* Register */,
 				AB7B36852C34A9B4004AE578 /* Home */,
 				ABCEEBF32C3DB39D000D7830 /* SubscriptionList */,
-				ABEDC0462C385D3D0057EDC6 /* SubscriptionSelection */,
+				AB5916F12C401825007A0EE5 /* SubscriptionDetail */,
+				ABEDC0462C385D3D0057EDC6 /* NewSubscription */,
 				AB94857B2C38BFE500DF72BA /* NewSubscriptionForm */,
 			);
 			path = Modules;
@@ -462,7 +476,7 @@
 		AB9485782C38BADF00DF72BA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				AB9485792C38BAFD00DF72BA /* SubscriptionSelectionRow.swift */,
+				AB9485792C38BAFD00DF72BA /* NewSubscriptionRow.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -490,7 +504,7 @@
 			children = (
 				ABCEEC092C3DD13D000D7830 /* Cell */,
 				ABCEEBF42C3DB3CA000D7830 /* SubscriptionListView.swift */,
-				ABCEEBF62C3DB3DE000D7830 /* SubscriptionViewModel.swift */,
+				ABCEEBF62C3DB3DE000D7830 /* SubscriptionListViewModel.swift */,
 			);
 			path = SubscriptionList;
 			sourceTree = "<group>";
@@ -513,14 +527,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		ABEDC0462C385D3D0057EDC6 /* SubscriptionSelection */ = {
+		ABEDC0462C385D3D0057EDC6 /* NewSubscription */ = {
 			isa = PBXGroup;
 			children = (
 				AB9485782C38BADF00DF72BA /* Cell */,
-				ABEDC0472C385DA50057EDC6 /* SubscriptionSelectionView.swift */,
-				ABEDC0492C385DB90057EDC6 /* SubscriptionSelectionViewModel.swift */,
+				ABEDC0472C385DA50057EDC6 /* NewSubscriptionView.swift */,
+				ABEDC0492C385DB90057EDC6 /* NewSubscriptionViewModel.swift */,
 			);
-			path = SubscriptionSelection;
+			path = NewSubscription;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -679,7 +693,7 @@
 				AB9485822C38C2B600DF72BA /* SubscriptionsFactory.swift in Sources */,
 				AB7B36C82C356605004AE578 /* SMTextField.swift in Sources */,
 				ABCEEBF22C3D5603000D7830 /* SMLinkButtonStyled.swift in Sources */,
-				AB94857A2C38BAFD00DF72BA /* SubscriptionSelectionRow.swift in Sources */,
+				AB94857A2C38BAFD00DF72BA /* NewSubscriptionRow.swift in Sources */,
 				ABEDC03B2C371CBE0057EDC6 /* SMScrollableTabView.swift in Sources */,
 				AB94857D2C38C01300DF72BA /* NewSubscriptionFormView.swift in Sources */,
 				ABEDC0452C3857EA0057EDC6 /* SMAddIconButton.swift in Sources */,
@@ -687,10 +701,11 @@
 				AB7B36C62C35622A004AE578 /* SMSecureTextField.swift in Sources */,
 				AB7B368A2C34A9E0004AE578 /* HomeView.swift in Sources */,
 				AB94857F2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift in Sources */,
+				AB5916F52C40185D007A0EE5 /* SubscriptionDetailViewModel.swift in Sources */,
 				AB7B36CB2C35992C004AE578 /* FirebaseManager.swift in Sources */,
 				ABCEEC0B2C3DD154000D7830 /* SubscriptionListRow.swift in Sources */,
-				ABEDC04A2C385DB90057EDC6 /* SubscriptionSelectionViewModel.swift in Sources */,
-				ABCEEBF72C3DB3DE000D7830 /* SubscriptionViewModel.swift in Sources */,
+				ABEDC04A2C385DB90057EDC6 /* NewSubscriptionViewModel.swift in Sources */,
+				ABCEEBF72C3DB3DE000D7830 /* SubscriptionListViewModel.swift in Sources */,
 				AB5916B12C3F1842007A0EE5 /* SMTooltip.swift in Sources */,
 				AB7B36B22C34CC07004AE578 /* HomeViewModel.swift in Sources */,
 				AB7B36BE2C354F44004AE578 /* RegisterView.swift in Sources */,
@@ -712,7 +727,7 @@
 				ABCEEBE72C3B287A000D7830 /* Number+Utils.swift in Sources */,
 				AB7B36572C34A793004AE578 /* SubMinderApp.swift in Sources */,
 				ABEDC0372C35F1D30057EDC6 /* Color+Utils.swift in Sources */,
-				ABEDC0482C385DA50057EDC6 /* SubscriptionSelectionView.swift in Sources */,
+				ABEDC0482C385DA50057EDC6 /* NewSubscriptionView.swift in Sources */,
 				AB7B368E2C34AA1B004AE578 /* BaseManager.swift in Sources */,
 				AB7B36C02C354F4F004AE578 /* RegisterViewModel.swift in Sources */,
 				AB7B36B62C34D974004AE578 /* String+Utils.swift in Sources */,
@@ -726,6 +741,7 @@
 				ABCEEBF92C3DB553000D7830 /* BaseView.swift in Sources */,
 				ABCEEBE12C3A3AF8000D7830 /* View+Utils.swift in Sources */,
 				AB7B36C22C355C76004AE578 /* SMMainButton.swift in Sources */,
+				AB5916F32C40184A007A0EE5 /* SubscriptionDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

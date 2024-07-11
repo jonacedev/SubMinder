@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SubscriptionSelectionViewModel: BaseViewModel {
+class NewSubscriptionViewModel: BaseViewModel {
     
     @Published var selectedSubscription: SubscriptionSelectorModel?
     private let firebaseManager: FirebaseManager

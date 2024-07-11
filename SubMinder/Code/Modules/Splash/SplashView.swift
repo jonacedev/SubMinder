@@ -28,10 +28,8 @@ struct SplashView: View {
         .onAppear {
             viewModel.onAppear()
         }
-        .onChange(of: viewModel.successCheck) { success in
-            if success {
-                splashLoaded = true
-            }
+        .onChange(of: viewModel.successCheck) {
+            splashLoaded = true
         }
         .alert(isPresented: $viewModel.showJailbreakAlert) {
             Alert(

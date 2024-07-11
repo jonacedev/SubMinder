@@ -12,6 +12,7 @@ struct WheelDatePickerView: View {
     let title: String
     @Binding var paymentDate: Date
     let action: () -> Void
+    let minDate: Date = Date()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -21,8 +22,8 @@ struct WheelDatePickerView: View {
             .padding()
 
             Divider()
-            
-            DatePicker("", selection: $paymentDate, displayedComponents: .date)
+          
+            DatePicker("", selection: $paymentDate, in: minDate..., displayedComponents: .date)
                 .labelsHidden()
                 .datePickerStyle(.wheel)
             

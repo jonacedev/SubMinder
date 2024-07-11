@@ -62,7 +62,7 @@ struct HomeView: View {
                     viewModel.fetchHomeData()
                 }, content: {
                     NavigationStack {
-                        SubscriptionSelectionView(firebaseManager: firebaseManager)
+                        NewSubscriptionView(firebaseManager: firebaseManager)
                             .environmentObject(modalState)
                     }
                 })
@@ -89,9 +89,9 @@ struct HomeView: View {
     
     @ViewBuilder private func vwSummary() -> some View {
         SMScrollableTabView(info: [
-            ScrollableInfo(text: "\(viewModel.getWeeklyAmount())€", description: "Gastos de esta semana"),
-            ScrollableInfo(text: "\(viewModel.getMonthlyAmount())€", description: "Gastos de este mes"),
-            ScrollableInfo(text: "\(viewModel.getAnualAmount())€", description: "Gastos del año en curso")]
+            ScrollableInfo(text: "\(viewModel.averageCost(period: .weekly))€", description: "Media semanal"),
+            ScrollableInfo(text: "\(viewModel.averageCost(period: .monthly))€", description: "Media mensual"),
+            ScrollableInfo(text: "\(viewModel.averageCost(period: .yearly))€", description: "Media anual")]
         )
         
         HStack(spacing: 14) {

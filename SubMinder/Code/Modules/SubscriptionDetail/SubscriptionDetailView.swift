@@ -1,16 +1,15 @@
 //
-//  NewSubscriptionFormvIEW.swift
+//  SubscriptionDetailView.swift
 //  SubMinder
 //
-//  Created by Jonathan Miguel Onrubia Solis on 6/7/24.
+//  Created by Jonathan Miguel Onrubia Solis on 11/7/24.
 //
 
 import SwiftUI
 
-struct NewSubscriptionFormView: View {
+struct SubscriptionDetailView: View {
     
-    @EnvironmentObject var modalState: ModalState
-    @StateObject var viewModel: NewSubscriptionFormViewModel
+    @StateObject var viewModel: SubscriptionDetailViewModel
     
     // MARK: - Gradient
     @State var start = UnitPoint(x: 0, y: 0)
@@ -36,11 +35,8 @@ struct NewSubscriptionFormView: View {
     let divisaOptions = ["EUR", "USD"]
     @State var divisaDropdownIndex = 0
     
-    var selectedSubscription: SubscriptionSelectorModel
-    
-    init(selectedSubscription: SubscriptionSelectorModel, firebaseManager: FirebaseManager) {
-        self.selectedSubscription = selectedSubscription
-        self._viewModel = StateObject(wrappedValue: NewSubscriptionFormViewModel(firebaseManager: firebaseManager))
+    init(firebaseManager: FirebaseManager, subscription: SubscriptionModelDto) {
+        self._viewModel = StateObject(wrappedValue: SubscriptionDetailViewModel(firebaseManager: firebaseManager, subscription: subscription))
     }
     
     var body: some View {
@@ -68,23 +64,19 @@ struct NewSubscriptionFormView: View {
                 }
                 .ignoresSafeArea(edges: .bottom)
             }
-            .onAppear {
-                let isOtherType = selectedSubscription.name.contains("Other")
-                self.name = isOtherType ? "" : selectedSubscription.name
-            }
         }
     }
     
     @ViewBuilder private func vwHeader() -> some View {
         VStack {
-            Image(selectedSubscription.image)
+            Image(viewModel.subscription?.image ?? "")
                 .renderingMode(.template)
                 .resizable()
                 .frame(width: 60, height: 60)
                 .foregroundStyle(.white)
                 .padding(.bottom, 10)
         
-            SMText(text: selectedSubscription.name, fontType: .medium, size: .extraLarge)
+            SMText(text: viewModel.subscription?.name ?? "", fontType: .medium, size: .extraLarge)
                 .foregroundStyle(.white)
                 .padding(.bottom, 10)
             
@@ -155,8 +147,8 @@ struct NewSubscriptionFormView: View {
             }
             .zIndex(1)
             
-            SMMainButton(title: "Añadir", action: {
-                addNewSubscription()
+            SMMainButton(title: "Continuar", action: {
+                updateSubscription()
             })
             .opacity(isValidForm() ? 1 : 0.4)
             .disabled(!isValidForm())
@@ -168,14 +160,14 @@ struct NewSubscriptionFormView: View {
         .multilineTextAlignment(.trailing)
     }
     
-    func addNewSubscription() {
-        let newSubscription = NewSubscriptionModel(name: self.name, image: self.selectedSubscription.image, price: price.toDouble() ?? 0, paymentDate: paymentDate.toString(), type: typeOptions[typeDropdownIndex], divisa: divisaOptions[divisaDropdownIndex])
-        
-        Task {
-            await viewModel.addNewSubscription(model: newSubscription)
-            modalState.showSecondModal = false
-            modalState.showFirstModal = false
-        }
+    func updateSubscription() {
+//        let newSubscription = NewSubscriptionModel(name: self.name, image: self.selectedSubscription.image, price: price.toDouble() ?? 0, paymentDate: paymentDate.toString(), type: typeOptions[typeDropdownIndex], divisa: divisaOptions[divisaDropdownIndex])
+//        
+//        Task {
+//            await viewModel.addNewSubscription(model: newSubscription)
+//            modalState.showSecondModal = false
+//            modalState.showFirstModal = false
+//        }
     }
     
     func isValidForm() -> Bool {
@@ -184,6 +176,5 @@ struct NewSubscriptionFormView: View {
 }
 
 #Preview {
-    NewSubscriptionFormView(selectedSubscription: SubscriptionsFactory.shared.getDefaultSubscription(), firebaseManager: FirebaseManager())
-        .environmentObject(ModalState())
+    SubscriptionDetailView(firebaseManager: FirebaseManager(), subscription: SubscriptionModelDto(name: "Netflix", image: "netflix", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR"))
 }

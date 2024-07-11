@@ -81,7 +81,7 @@ class FirebaseManager: ObservableObject {
         do {
             let userId = userSession?.uid ?? ""
             let subscriptionData = try Firestore.Encoder().encode(model)
-            try await Firestore.firestore().collection("users").document(userId).collection("subscriptions").document().setData(subscriptionData)
+            try await Firestore.firestore().collection("users").document(userId).collection("subscriptions").document(model.id).setData(subscriptionData)
         } catch {
             print("Upload user data error: \(error.localizedDescription)")
             throw error
@@ -121,7 +121,42 @@ class FirebaseManager: ObservableObject {
                     SubscriptionModelDto(model: thisWeekModel3),
                     SubscriptionModelDto(model: freeTrialModel)]
         }
-        
+    }
+    
+    func updateExpiratedSubscriptions(subscriptionId: String, newExpirationDate: String) async throws {
+        let userId = userSession?.uid ?? ""
+        do {
+            let docRef = Firestore.firestore()
+                .collection("users")
+                .document(userId)
+                .collection("subscriptions")
+                .document(subscriptionId)
+            
+            try await docRef.updateData([
+                "paymentDate": newExpirationDate
+            ])
+            
+        } catch {
+            print("Register error: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func removeSubscription(subscriptionId: String) async throws {
+        let userId = userSession?.uid ?? ""
+        do {
+            let docRef = Firestore.firestore()
+                .collection("users")
+                .document(userId)
+                .collection("subscriptions")
+                .document(subscriptionId)
+            
+            try await docRef.delete()
+            
+        } catch {
+            print("Register error: \(error.localizedDescription)")
+            throw error
+        }
     }
     
     

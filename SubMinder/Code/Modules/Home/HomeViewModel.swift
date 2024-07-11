@@ -13,6 +13,7 @@ final class HomeViewModel: BaseViewModel {
     @Published var userData: UserModel?
     @Published var subscriptions: [SubscriptionModelDto]?
     @Published var upcomingSubscriptions: [SubscriptionModelDto]?
+    var needToUpdate = false
     
     private let firebaseManager: FirebaseManager
     
@@ -48,6 +49,11 @@ final class HomeViewModel: BaseViewModel {
     @MainActor 
     func getUserSubscriptions() async {
         do {
+            if !BaseActions.isPreview() {
+                let subscriptionsDto = try await firebaseManager.getUserSubscriptions()
+                await checkExpiratedSubscriptions(subscriptions: subscriptionsDto)
+            }
+            
             self.subscriptions = try await firebaseManager.getUserSubscriptions()
             self.upcomingSubscriptions = subscriptions?.filter { $0.paymentDate.toDate()?.isWithinNext15Days() == true }
         } catch {
@@ -62,22 +68,96 @@ final class HomeViewModel: BaseViewModel {
         firebaseManager.signOut()
     }
     
-    func getWeeklyAmount() -> String {
-        let weeklySubscriptions = subscriptions?.filter { $0.paymentDate.toDate()?.isDateInCurrentWeek() == true }
-        let weeklyAmount = weeklySubscriptions?.reduce(0.0) { $0 + $1.price }
-        return String.convertDoubleToString(weeklyAmount)
+    @MainActor
+    func checkExpiratedSubscriptions(subscriptions: [SubscriptionModelDto]) async {
+        
+        let currentDate = Date()
+        for subscription in subscriptions {
+            if let expirationDate = subscription.paymentDate.toDate(), expirationDate <= currentDate {
+                
+                if subscription.type != .freeTrial, let newExpirationDate = expirationDate.nextExpirationDate(type: subscription.type)?.toString() {
+                    do {
+                        try await firebaseManager.updateExpiratedSubscriptions(subscriptionId: subscription.id, newExpirationDate: newExpirationDate)
+                    } catch {
+                        manageError(alert: BaseAlert.Model(title: "Error",
+                                                           description: error.localizedDescription,
+                                                           buttonText1: "Aceptar",
+                                                           action1: { self.hideAlert() }))
+                    }
+                } else {
+                    do {
+                        try await firebaseManager.removeSubscription(subscriptionId: subscription.id)
+                    } catch {
+                        manageError(alert: BaseAlert.Model(title: "Error",
+                                                           description: error.localizedDescription,
+                                                           buttonText1: "Aceptar",
+                                                           action1: { self.hideAlert() }))
+                    }
+                }
+                
+            }
+        }
     }
     
-    func getMonthlyAmount() -> String {
-        let monthlySubscriptions = subscriptions?.filter { $0.paymentDate.toDate()?.isDateInCurrentMonth() == true }
-        let monthlyAmount = monthlySubscriptions?.reduce(0.0) { $0 + $1.price }
-        return String.convertDoubleToString(monthlyAmount)
-    }
-    
-    func getAnualAmount() -> String {
-        let anualSubscriptions = subscriptions?.filter { $0.paymentDate.toDate()?.isDateInCurrentYear() == true }
-        let anualAmount = anualSubscriptions?.reduce(0.0) { $0 + $1.price }
-        return String.convertDoubleToString(anualAmount)
+    func averageCost(period: SubscriptionType) -> String {
+        
+        let conversionFactor: (SubscriptionModelDto) -> Double
+        switch period {
+        case .weekly:
+            conversionFactor = { subscription in
+                switch subscription.type {
+                case .weekly:
+                    return subscription.price
+                case .monthly:
+                    return subscription.price / 4 // Dividir por el número promedio de semanas en un mes
+                case .yearly:
+                    return subscription.price / 48 // Dividir por el número de semanas en un año
+                case .quarterly:
+                    return subscription.price / 12 // Dividir por el número de semanas en un trimestre
+                case .freeTrial:
+                    return 0 // O ignorar si no se quieren considerar los free trials
+                }
+            }
+        case .monthly:
+            conversionFactor = { subscription in
+                switch subscription.type {
+                case .weekly:
+                    return subscription.price * 4 // Convertir a costos mensuales
+                case .monthly:
+                    return subscription.price
+                case .yearly:
+                    return subscription.price / 12 // Dividir por el número de meses en un año
+                case .quarterly:
+                    return subscription.price / 3 // Dividir por el número de meses en un trimestre
+                case .freeTrial:
+                    return 0 // O ignorar si no se quieren considerar los free trials
+                }
+            }
+        case .yearly:
+            conversionFactor = { subscription in
+                switch subscription.type {
+                case .weekly:
+                    return subscription.price * 48 // Convertir a costos anuales
+                case .monthly:
+                    return subscription.price * 12 // Convertir a costos anuales
+                case .yearly:
+                    return subscription.price
+                case .quarterly:
+                    return subscription.price * 4 // Convertir a costos anuales
+                case .freeTrial:
+                    return 0 // O ignorar si no se quieren considerar los free trials
+                }
+            }
+            
+        default:
+            return ""
+        }
+        
+        // Aplicar el factor de conversión y calcular la media
+        let costs = subscriptions?.map(conversionFactor)
+        let totalCosts = costs?.reduce(0, +) ?? 0
+        let average = costs?.isEmpty == true ? 0.0 : totalCosts
+        return String.convertDoubleToString(average)
     }
     
     func getTotalSubscriptions() -> String {

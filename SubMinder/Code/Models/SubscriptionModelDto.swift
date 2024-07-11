@@ -33,7 +33,7 @@ enum SubscriptionType: String {
 }
 
 struct SubscriptionModelDto: Identifiable {
-    let id = UUID()
+    let id: String
     let name: String
     let image: String
     let price: Double
@@ -43,6 +43,7 @@ struct SubscriptionModelDto: Identifiable {
     var daysUntilPayment: Int? = nil
     
     init(name: String, image: String, price: Double, paymentDate: String, type: SubscriptionType, divisa: String) {
+        self.id = UUID().uuidString
         self.name = name
         self.image = image
         self.price = price
@@ -52,6 +53,7 @@ struct SubscriptionModelDto: Identifiable {
     }
     
     init(model: NewSubscriptionModel) {
+        self.id = model.id
         self.name = model.name
         self.image = model.image
         self.price = model.price

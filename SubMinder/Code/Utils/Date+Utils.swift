@@ -65,4 +65,35 @@ extension Date {
         let endDate = Calendar.current.date(byAdding: .day, value: 15, to: now)!
         return self >= now && self <= endDate
     }
+    
+    func nextExpirationDate(type: SubscriptionType) -> Date? {
+        let calendar = Calendar.current
+        let expiredDay = calendar.component(.day, from: self)
+        var dateComponents = DateComponents()
+
+        switch type {
+        case .monthly:
+            dateComponents.month = 1
+        case .yearly:
+            dateComponents.year = 1
+        case .weekly:
+            return calendar.date(byAdding: .day, value: 7, to: self)
+        case .quarterly:
+            return calendar.date(byAdding: .month, value: 3, to: self)
+        default:
+            return nil
+        }
+
+        guard let nextDate = calendar.date(byAdding: dateComponents, to: self) else {
+            return nil
+        }
+
+        let nextDay = calendar.component(.day, from: nextDate)
+        if nextDay != expiredDay {
+            var correctedComponents = calendar.dateComponents([.year, .month], from: nextDate)
+            correctedComponents.day = expiredDay
+            return calendar.date(from: correctedComponents)
+        }
+        return nextDate
+    }
 }
