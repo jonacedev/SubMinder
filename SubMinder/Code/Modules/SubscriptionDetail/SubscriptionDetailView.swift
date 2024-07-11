@@ -16,6 +16,9 @@ struct SubscriptionDetailView: View {
     @State var end = UnitPoint(x: 0, y: 2)
     let colors = [Color.additionalBlue, Color.additionalPurple, Color.additionalPink]
     
+    // MARK: - Logo animation
+    @State var logoAnimation = true
+    
     // MARK: - Subscription name
     @State var name: String = ""
     
@@ -60,7 +63,11 @@ struct SubscriptionDetailView: View {
                         .padding(.bottom, 10)
                     vwForm()
                         .background(Color.white)
-                        .clipShape(.rect(topLeadingRadius: 24, bottomLeadingRadius: 0, bottomTrailingRadius: 0, topTrailingRadius: 24))
+                        .clipShape(.rect(topLeadingRadius: 24,
+                                         bottomLeadingRadius: 0,
+                                         bottomTrailingRadius: 0,
+                                         topTrailingRadius: 24)
+                        )
                 }
                 .ignoresSafeArea(edges: .bottom)
             }
@@ -69,12 +76,22 @@ struct SubscriptionDetailView: View {
     
     @ViewBuilder private func vwHeader() -> some View {
         VStack {
+            
             Image(viewModel.subscription?.image ?? "")
-                .renderingMode(.template)
                 .resizable()
+                .scaledToFill()
                 .frame(width: 60, height: 60)
-                .foregroundStyle(.white)
                 .padding(.bottom, 10)
+                .rotation3DEffect(logoAnimation ? Angle(degrees: 45) : .zero,
+                              axis: (x: 1, y: 0, z: 0)
+                )
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        withAnimation {
+                            logoAnimation.toggle()
+                        }
+                    }
+                }
         
             SMText(text: viewModel.subscription?.name ?? "", fontType: .medium, size: .extraLarge)
                 .foregroundStyle(.white)
@@ -176,5 +193,5 @@ struct SubscriptionDetailView: View {
 }
 
 #Preview {
-    SubscriptionDetailView(firebaseManager: FirebaseManager(), subscription: SubscriptionModelDto(name: "Netflix", image: "netflix", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR"))
+    SubscriptionDetailView(firebaseManager: FirebaseManager(), subscription: SubscriptionModelDto(name: "Netflix", image: "youtube", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR"))
 }

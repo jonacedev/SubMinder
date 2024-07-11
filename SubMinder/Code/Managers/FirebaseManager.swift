@@ -58,6 +58,7 @@ class FirebaseManager: ObservableObject {
     
     // MARK: - User data
     
+    @MainActor
     func getUserData() async throws -> UserModel? {
         if !BaseActions.isPreview() {
             let userId = userSession?.uid ?? ""
@@ -77,6 +78,7 @@ class FirebaseManager: ObservableObject {
     
     // MARK: - Add New subscription
     
+    @MainActor
     func addNewSubscription(model: NewSubscriptionModel) async throws {
         do {
             let userId = userSession?.uid ?? ""
@@ -90,6 +92,7 @@ class FirebaseManager: ObservableObject {
     
     // MARK: - Get subscriptions
     
+    @MainActor
     func getUserSubscriptions() async throws -> [SubscriptionModelDto] {
         if !BaseActions.isPreview() {
             let userId = userSession?.uid ?? ""
@@ -142,6 +145,7 @@ class FirebaseManager: ObservableObject {
         }
     }
     
+    @MainActor
     func removeSubscription(subscriptionId: String) async throws {
         let userId = userSession?.uid ?? ""
         do {
@@ -162,6 +166,7 @@ class FirebaseManager: ObservableObject {
     
     // MARK: - Sign out
     
+    @MainActor
     func signOut() {
         try? Auth.auth().signOut()
         self.userSession = nil

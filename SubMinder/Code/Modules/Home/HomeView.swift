@@ -36,39 +36,41 @@ struct HomeView: View {
     }
     
     @ViewBuilder private func content() -> some View {
-        NavigationStack {
-            VStack {
-                vwTopBar()
-                    .frame(height: 40)
-                    .padding(.top, 10)
-                    .padding(.horizontal, 20)
-                
-                ScrollView {
-                    vwSummary()
-                    vwSuscriptionsSection()
-                        .padding(.top, 20)
-                }
-                .refreshable {
-                    viewModel.fetchHomeData()
-                }
-            }
-            .overlay(alignment: .bottomTrailing) {
-                SMAddIconButton(action: {
-                    modalState.showFirstModal = true
-                })
-                .padding(.trailing, 25)
-                .padding(.bottom, 25)
-                .fullScreenCover(isPresented: $modalState.showFirstModal, onDismiss: {
-                    viewModel.fetchHomeData()
-                }, content: {
-                    NavigationStack {
-                        NewSubscriptionView(firebaseManager: firebaseManager)
-                            .environmentObject(modalState)
+        GeometryReader { geo in
+            NavigationStack {
+                VStack {
+                    vwTopBar()
+                        .frame(height: 40)
+                        .padding(.top, 10)
+                        .padding(.horizontal, 20)
+                    
+                    ScrollView {
+                        vwSummary()
+                        vwSuscriptionsSection(geometry: geo)
+                            .padding(.top, 20)
                     }
-                })
+                    .refreshable {
+                        viewModel.fetchHomeData()
+                    }
+                }
+                .overlay(alignment: .bottomTrailing) {
+                    SMAddIconButton(action: {
+                        modalState.showFirstModal = true
+                    })
+                    .padding(.trailing, 25)
+                    .padding(.bottom, 25)
+                    .fullScreenCover(isPresented: $modalState.showFirstModal, onDismiss: {
+                        viewModel.fetchHomeData()
+                    }, content: {
+                        NavigationStack {
+                            NewSubscriptionView(firebaseManager: firebaseManager)
+                                .environmentObject(modalState)
+                        }
+                    })
+                }
             }
+            .tint(Color.secondary2)
         }
-        .tint(Color.secondary2)
     }
     
     @ViewBuilder private func vwTopBar() -> some View {
@@ -139,9 +141,8 @@ struct HomeView: View {
         }
     }
     
-    @ViewBuilder private func vwSuscriptionsSection() -> some View {
-        
-        let width: CGFloat = 180
+    @ViewBuilder private func vwSuscriptionsSection(geometry: GeometryProxy) -> some View {
+        let width = geometry.size.width / 2 - 20
         let columns = [GridItem(.fixed(width)),
                        GridItem(.fixed(width))]
         
@@ -178,7 +179,7 @@ struct HomeView: View {
                     .padding(.horizontal, 20)
                 
                 SMLinkButtonStyled(title: "Ir a mis suscripciones", action: {
-                    
+                    pushAllSubs = true
                 })
                 .padding(.top, 10)
                 
@@ -234,8 +235,8 @@ struct HomeView: View {
             }
            
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal)
-        .frame(width: 175, height: 175)
         .background(Color.primary6)
         .clipShape(.rect(cornerRadius: 30))
         .shadow(radius: 0.5)
