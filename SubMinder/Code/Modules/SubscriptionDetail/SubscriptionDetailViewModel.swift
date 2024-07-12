@@ -18,4 +18,32 @@ class SubscriptionDetailViewModel: BaseViewModel {
         super.init()
     }
     
+    @MainActor
+    func updateSubscriptionWithData(updatedModel: SubscriptionModelDto) async {
+        showLoading()
+        do {
+            try await firebaseManager.updateSubscriptionWithData(updatedModel: updatedModel)
+            hideLoading()
+        } catch {
+            manageError(alert: BaseAlert.Model(title: "Error",
+                                               description: error.localizedDescription,
+                                               buttonText1: "Aceptar",
+                                               action1: { self.hideAlert() }))
+        }
+    }
+    
+    @MainActor
+    func removeSubscription(subscriptionId: String) async {
+        showLoading()
+        do {
+            try await firebaseManager.removeSubscription(subscriptionId: subscriptionId)
+            hideLoading()
+        } catch {
+            manageError(alert: BaseAlert.Model(title: "Error",
+                                               description: error.localizedDescription,
+                                               buttonText1: "Aceptar",
+                                               action1: { self.hideAlert() }))
+        }
+    }
+    
 }

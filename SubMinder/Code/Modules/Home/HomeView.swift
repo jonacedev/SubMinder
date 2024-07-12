@@ -19,10 +19,13 @@ struct HomeView: View {
     
     @State var showTooltip = false
     
+    @State private var showSelectedItemModal = false
     @State private var pushAllSubs = false
     @State private var pushWeeklySubs = false
     @State private var pushFreeTrialsSubs = false
     @State private var selectedListType: ListType? = nil
+    
+    @State var needToUpdate = false
     
     private let firebaseManager: FirebaseManager
     
@@ -54,19 +57,7 @@ struct HomeView: View {
                     }
                 }
                 .overlay(alignment: .bottomTrailing) {
-                    SMAddIconButton(action: {
-                        modalState.showFirstModal = true
-                    })
-                    .padding(.trailing, 25)
-                    .padding(.bottom, 25)
-                    .fullScreenCover(isPresented: $modalState.showFirstModal, onDismiss: {
-                        viewModel.fetchHomeData()
-                    }, content: {
-                        NavigationStack {
-                            NewSubscriptionView(firebaseManager: firebaseManager)
-                                .environmentObject(modalState)
-                        }
-                    })
+                    vwOverlayAddButton()
                 }
             }
             .tint(Color.secondary2)
@@ -109,7 +100,10 @@ struct HomeView: View {
                 pushAllSubs = true
             })
             .navigationDestination(isPresented: $pushAllSubs, destination: {
-                SubscriptionListView(firebaseManager: firebaseManager, subscriptions: viewModel.subscriptions, listType: .all)
+                SubscriptionListView(firebaseManager: firebaseManager, subscriptions: viewModel.subscriptions, listType: .all, needToUpdate: $needToUpdate)
+                    .onDisappear {
+                        checkNeedToUpdate()
+                    }
             })
            
             vwSummaryItem(value: viewModel.getWeeklyPayments(),
@@ -123,7 +117,10 @@ struct HomeView: View {
                 pushWeeklySubs = true
             })
             .navigationDestination(isPresented: $pushWeeklySubs, destination: {
-                SubscriptionListView(firebaseManager: firebaseManager, subscriptions: viewModel.subscriptions, listType: .weekly)
+                SubscriptionListView(firebaseManager: firebaseManager, subscriptions: viewModel.subscriptions, listType: .weekly, needToUpdate: $needToUpdate)
+                    .onDisappear {
+                        checkNeedToUpdate()
+                    }
             })
             
             vwSummaryItem(value: viewModel.getFreeTrials(),
@@ -136,15 +133,19 @@ struct HomeView: View {
                 pushFreeTrialsSubs = true
             })
             .navigationDestination(isPresented: $pushFreeTrialsSubs, destination: {
-                SubscriptionListView(firebaseManager: firebaseManager, subscriptions: viewModel.subscriptions, listType: .freeTrial)
+                SubscriptionListView(firebaseManager: firebaseManager, subscriptions: viewModel.subscriptions, listType: .freeTrial, needToUpdate: $needToUpdate)
+                    .onDisappear {
+                        checkNeedToUpdate()
+                    }
             })
         }
     }
     
     @ViewBuilder private func vwSuscriptionsSection(geometry: GeometryProxy) -> some View {
+        
         let isIpad = DeviceInfo.isIpad() ? true : false
-        let width = geometry.size.width / (isIpad ? 3 : 2) - 20
-        let height = isIpad ? 200 : geometry.size.width / 2 - 20
+        let width = geometry.size.width / (isIpad ? 3 : 2) - 18
+        let height = isIpad ? 200 : geometry.size.width / 2 - 18
         let columns = [GridItem(.fixed(width)),
                        GridItem(.fixed(width))]
         let columnsIpad = [GridItem(.fixed(width)),
@@ -180,6 +181,7 @@ struct HomeView: View {
             .zIndex(1)
             
             if viewModel.upcomingSubscriptions?.isEmpty == true {
+                
                 SMEmptyView(title: "No tienes pagos en los proximos 15 dias")
                     .padding(.horizontal, 20)
                 
@@ -198,6 +200,18 @@ struct HomeView: View {
                                     .opacity(phase.isIdentity ? 1 : 0.8)
                                     .scaleEffect(phase.isIdentity ? 1 : 0.8)
                             }
+                            .onTapGesture {
+                                viewModel.tapSubscription(subscription: subscription, success: {
+                                    showSelectedItemModal = true
+                                })
+                            }
+                            .sheet(isPresented: $showSelectedItemModal, onDismiss: {
+                                checkNeedToUpdate()
+                            }, content: {
+                                if let selectedSubscription = viewModel.selectedSubscription {
+                                    SubscriptionDetailView(firebaseManager: firebaseManager, subscription: selectedSubscription, needToUpdate: $needToUpdate)
+                                }
+                            })
                     }
                 }
             }
@@ -221,16 +235,17 @@ struct HomeView: View {
                     .padding(.trailing, 5)
                 
                 VStack(alignment: .leading) {
-                    SMText(text: "\(model.price) €")
+                    SMText(text: "\(model.price)\(model.divisa.getCurrency())")
                     SMText(text: "\(model.type.rawValue)", fontType: .medium, size: .smallLarge)
                         .foregroundStyle(Color.primary3)
                 }
                 
-                Spacer(minLength: 5)
+                Spacer(minLength: 4)
             }
             
             SMText(text: model.name, fontType: .bold, size: .mediumLarge)
                 .foregroundStyle(Color.secondary2)
+                .lineLimit(1)
             
             HStack(spacing: 10) {
                 SMCircularProgressBar(text: "\(model.paymentDate.toDate()?.getDaysIntervalFromNow() ?? 0)", progress: viewModel.calculateProgress(type: model.type, endDate: model.paymentDate.toDate() ?? .now))
@@ -267,6 +282,29 @@ struct HomeView: View {
             .clipShape(.rect(cornerRadius: 30))
             .shadow(radius: 5)
         })
+    }
+    
+    @ViewBuilder private func vwOverlayAddButton() -> some View {
+        SMAddIconButton(action: {
+            modalState.showFirstModal = true
+        })
+        .padding(.trailing, 25)
+        .padding(.bottom, 25)
+        .fullScreenCover(isPresented: $modalState.showFirstModal, onDismiss: {
+            viewModel.fetchHomeData()
+        }, content: {
+            NavigationStack {
+                NewSubscriptionView(firebaseManager: firebaseManager)
+                    .environmentObject(modalState)
+            }
+        })
+    }
+    
+    func checkNeedToUpdate() {
+        if needToUpdate {
+            viewModel.fetchHomeData()
+        }
+        needToUpdate = false
     }
 }
 

@@ -11,6 +11,9 @@ struct SubscriptionDetailView: View {
     
     @StateObject var viewModel: SubscriptionDetailViewModel
     
+    @Binding var needToUpdate: Bool
+    @Environment(\.dismiss) var dismiss
+    
     // MARK: - Gradient
     @State var start = UnitPoint(x: 0, y: 0)
     @State var end = UnitPoint(x: 0, y: 2)
@@ -38,7 +41,8 @@ struct SubscriptionDetailView: View {
     let divisaOptions = ["EUR", "USD"]
     @State var divisaDropdownIndex = 0
     
-    init(firebaseManager: FirebaseManager, subscription: SubscriptionModelDto) {
+    init(firebaseManager: FirebaseManager, subscription: SubscriptionModelDto, needToUpdate: Binding<Bool>) {
+        self._needToUpdate = needToUpdate
         self._viewModel = StateObject(wrappedValue: SubscriptionDetailViewModel(firebaseManager: firebaseManager, subscription: subscription))
     }
     
@@ -71,6 +75,12 @@ struct SubscriptionDetailView: View {
                 }
                 .ignoresSafeArea(edges: .bottom)
             }
+            .overlay(alignment: .topTrailing, content: {
+                vwTrashOverlay()
+            })
+        }
+        .onAppear {
+            configSubscription()
         }
     }
     
@@ -95,15 +105,34 @@ struct SubscriptionDetailView: View {
         
             SMText(text: viewModel.subscription?.name ?? "", fontType: .medium, size: .extraLarge)
                 .foregroundStyle(.white)
+                .lineLimit(1)
+                .padding(.horizontal, 50)
                 .padding(.bottom, 10)
             
-            TextField("", text: $price, prompt: Text(pricePlaceholder).foregroundStyle(Color.white.opacity(0.3)))
-                .frame(width: 150)
-                .font(.custom(FontType.medium.rawValue, size: TextSize.header.rawValue))
+            HStack {
+                Spacer()
+                TextField("", 
+                          text: $price,
+                          prompt:
+                            Text(pricePlaceholder).foregroundStyle(Color.white.opacity(0.3))
+                )
+                .fixedSize(horizontal: true, vertical: false)
+                .font(.custom(FontType.regular.rawValue, size: TextSize.title.rawValue))
                 .multilineTextAlignment(.center)
                 .keyboardType(.decimalPad)
                 .tint(Color.white)
                 .foregroundStyle(Color.white)
+                .onChange(of: price) { newValue in
+                      if newValue.count > 8 {
+                          price = String(newValue.prefix(8))
+                      }
+                 }
+                
+                SMText(text: divisaOptions[divisaDropdownIndex].getCurrency(), fontType: .medium, size: .title2)
+                    .foregroundStyle(Color.white)
+                Spacer()
+            }
+           
         }
     }
     
@@ -116,6 +145,11 @@ struct SubscriptionDetailView: View {
                     .keyboardType(.alphabet)
                     .autocorrectionDisabled()
                     .tint(Color.additionalBlue)
+                    .onChange(of: name) { newValue in
+                          if newValue.count > 8 {
+                              name = String(newValue.prefix(13))
+                          }
+                     }
                    
             }
             .padding(.top, 40)
@@ -149,6 +183,8 @@ struct SubscriptionDetailView: View {
                     let subscriptionType = SubscriptionType(type: typeOptions[typeDropdownIndex])
                     if subscriptionType == .freeTrial {
                         self.price = "0,00"
+                    } else if price.toDouble() == 0 {
+                        self.price = ""
                     }
                 })
             }
@@ -177,14 +213,42 @@ struct SubscriptionDetailView: View {
         .multilineTextAlignment(.trailing)
     }
     
+    @ViewBuilder private func vwTrashOverlay() -> some View {
+        Button(action: {
+            if let subscriptionId = viewModel.subscription?.id {
+                Task {
+                    await viewModel.removeSubscription(subscriptionId: subscriptionId)
+                    dismiss()
+                }
+            }
+        }, label: {
+            Image(systemName: "trash")
+                .resizable()
+                .frame(width: 25, height: 25)
+                .foregroundColor(.white)
+                .padding(.top, 30)
+                .padding(.horizontal, 20)
+        })
+    }
+    
+    func configSubscription() {
+        price = String.convertDoubleToString(viewModel.subscription?.price)
+        name = viewModel.subscription?.name ?? ""
+        paymentDate = viewModel.subscription?.paymentDate.toDate() ?? Date()
+        typeDropdownIndex = typeOptions.firstIndex(where: { $0.lowercased().contains(viewModel.subscription?.type.rawValue.lowercased() ?? "")}) ?? 0
+        divisaDropdownIndex = divisaOptions.firstIndex(where: { $0.lowercased().contains(viewModel.subscription?.divisa.lowercased() ?? "")}) ?? 0
+    }
+    
     func updateSubscription() {
-//        let newSubscription = NewSubscriptionModel(name: self.name, image: self.selectedSubscription.image, price: price.toDouble() ?? 0, paymentDate: paymentDate.toString(), type: typeOptions[typeDropdownIndex], divisa: divisaOptions[divisaDropdownIndex])
-//        
-//        Task {
-//            await viewModel.addNewSubscription(model: newSubscription)
-//            modalState.showSecondModal = false
-//            modalState.showFirstModal = false
-//        }
+        if let subscriptionId = viewModel.subscription?.id, let image = viewModel.subscription?.image, let price = price.toDouble() {
+            let updatedSubscription = SubscriptionModelDto(id: subscriptionId, name: name, image: image, price: price, paymentDate: paymentDate.toString(), type: SubscriptionType(type: typeOptions[typeDropdownIndex]), divisa: divisaOptions[divisaDropdownIndex])
+            
+            Task {
+                await viewModel.updateSubscriptionWithData(updatedModel: updatedSubscription)
+                needToUpdate = true
+                dismiss()
+            }
+        }
     }
     
     func isValidForm() -> Bool {
@@ -193,5 +257,5 @@ struct SubscriptionDetailView: View {
 }
 
 #Preview {
-    SubscriptionDetailView(firebaseManager: FirebaseManager(), subscription: SubscriptionModelDto(name: "Netflix", image: "youtube", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR"))
+    SubscriptionDetailView(firebaseManager: FirebaseManager(), subscription: SubscriptionModelDto(name: "Netflix", image: "youtube", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR"), needToUpdate: .constant(false))
 }

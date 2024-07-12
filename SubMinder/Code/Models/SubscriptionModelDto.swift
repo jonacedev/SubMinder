@@ -40,7 +40,16 @@ struct SubscriptionModelDto: Identifiable {
     let paymentDate: String
     let type: SubscriptionType
     let divisa: String
-    var daysUntilPayment: Int? = nil
+    
+    init(id: String, name: String, image: String, price: Double, paymentDate: String, type: SubscriptionType, divisa: String) {
+        self.id = id
+        self.name = name
+        self.image = image
+        self.price = price
+        self.paymentDate = paymentDate
+        self.type = type
+        self.divisa = divisa
+    }
     
     init(name: String, image: String, price: Double, paymentDate: String, type: SubscriptionType, divisa: String) {
         self.id = UUID().uuidString
@@ -60,9 +69,5 @@ struct SubscriptionModelDto: Identifiable {
         self.paymentDate = model.paymentDate
         self.type = SubscriptionType(type: model.type)
         self.divisa = model.divisa
-    }
-    
-    mutating func setDaysUntilPayment(_ days: Int) {
-        self.daysUntilPayment = days
     }
 }

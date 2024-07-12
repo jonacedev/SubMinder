@@ -23,23 +23,21 @@ struct SubscriptionListRow: View {
                     HStack {
                         SMText(text: subscription.name, fontType: .medium, size: .medium)
                             .foregroundStyle(Color.secondary2)
-                            .lineLimit(2)
+                            .lineLimit(1)
                             .multilineTextAlignment(.leading)
                         SMText(text: subscription.type.rawValue, fontType: .medium, size: .small)
                             .foregroundStyle(Color.primary3)
-                            .lineLimit(2)
                             .multilineTextAlignment(.leading)
                     }
                    
                     SMText(text: subscription.paymentDate.toDate()?.formatted(date: .abbreviated, time: .omitted) ?? "", fontType: .medium, size: .smallLarge)
                         .foregroundStyle(Color.secondary3)
-                        .lineLimit(2)
                         .multilineTextAlignment(.leading)
                 }
                 
                 Spacer()
                 
-                SMText(text: "\(subscription.price) €", fontType: .medium, size: .mediumLarge)
+                SMText(text: "\(subscription.price)\(subscription.divisa.getCurrency())", fontType: .medium, size: .mediumLarge)
                     .foregroundStyle(Color.secondary2)
             }
             .padding(.vertical, 20)

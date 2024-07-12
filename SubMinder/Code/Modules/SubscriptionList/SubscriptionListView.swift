@@ -12,7 +12,15 @@ struct SubscriptionListView: View {
     
     @StateObject var viewModel: SubscriptionListViewModel
     
-    init(firebaseManager: FirebaseManager, subscriptions: [SubscriptionModelDto]? = [], listType: ListType) {
+    @Binding var needToUpdate: Bool
+    @Environment(\.dismiss) var dismiss
+    @State var showSelectedItemModal = false
+    
+    private let firebaseManager: FirebaseManager
+    
+    init(firebaseManager: FirebaseManager, subscriptions: [SubscriptionModelDto]? = [], listType: ListType, needToUpdate: Binding<Bool>) {
+        self.firebaseManager = firebaseManager
+        self._needToUpdate = needToUpdate
         self._viewModel = StateObject(wrappedValue: SubscriptionListViewModel(firebaseManager: firebaseManager, subscriptions: subscriptions, listType: listType))
         setNavigationBarStyle()
     }
@@ -47,6 +55,20 @@ struct SubscriptionListView: View {
                         .opacity(phase.isIdentity ? 1 : 0.8)
                         .scaleEffect(phase.isIdentity ? 1 : 0.8)
                 }
+                .onTapGesture {
+                    viewModel.tapSubscription(subscription: subscription, success: {
+                        showSelectedItemModal = true
+                    })
+                }
+                .sheet(isPresented: $showSelectedItemModal, onDismiss: {
+                    if needToUpdate {
+                        dismiss()
+                    }
+                }, content: {
+                    if let selectedSubscription = viewModel.selectedSubscription {
+                        SubscriptionDetailView(firebaseManager: firebaseManager, subscription: selectedSubscription, needToUpdate: $needToUpdate)
+                    }
+                })
                 .padding(.horizontal, 20)
                 .padding(.vertical, 3)
         }
@@ -65,5 +87,5 @@ struct SubscriptionListView: View {
 }
 
 #Preview {
-    SubscriptionListView(firebaseManager: FirebaseManager(), subscriptions: [SubscriptionModelDto(name: "default", image: "netflix", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR"), SubscriptionModelDto(name: "default", image: "netflix", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR"), SubscriptionModelDto(name: "default", image: "netflix", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR"), SubscriptionModelDto(name: "default", image: "netflix", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR")], listType: .all)
+    SubscriptionListView(firebaseManager: FirebaseManager(), subscriptions: [SubscriptionModelDto(name: "default", image: "netflix", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR"), SubscriptionModelDto(name: "default", image: "netflix", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR"), SubscriptionModelDto(name: "default", image: "netflix", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR"), SubscriptionModelDto(name: "default", image: "netflix", price: 9.99, paymentDate: "15-07-2024", type: .monthly, divisa: "EUR")], listType: .all, needToUpdate: .constant(false))
 }

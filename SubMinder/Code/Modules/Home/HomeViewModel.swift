@@ -13,7 +13,7 @@ final class HomeViewModel: BaseViewModel {
     @Published var userData: UserModel?
     @Published var subscriptions: [SubscriptionModelDto]?
     @Published var upcomingSubscriptions: [SubscriptionModelDto]?
-    var needToUpdate = false
+    @Published var selectedSubscription: SubscriptionModelDto?
     
     private let firebaseManager: FirebaseManager
     
@@ -98,57 +98,60 @@ final class HomeViewModel: BaseViewModel {
             }
         }
     }
-    
+        
     func averageCost(period: SubscriptionType) -> String {
         
+        let usdToEurRate = 0.85
         let conversionFactor: (SubscriptionModelDto) -> Double
         switch period {
         case .weekly:
             conversionFactor = { subscription in
+                let priceInEur = subscription.divisa == "USD" ? subscription.price * usdToEurRate : subscription.price
                 switch subscription.type {
                 case .weekly:
-                    return subscription.price
+                    return priceInEur
                 case .monthly:
-                    return subscription.price / 4 // Dividir por el número promedio de semanas en un mes
+                    return priceInEur / 4 // Average number of weeks in a month
                 case .yearly:
-                    return subscription.price / 48 // Dividir por el número de semanas en un año
+                    return priceInEur / 48 // Number of weeks in a year
                 case .quarterly:
-                    return subscription.price / 12 // Dividir por el número de semanas en un trimestre
+                    return priceInEur / 12 // Number of weeks in a quarter
                 case .freeTrial:
-                    return 0 // O ignorar si no se quieren considerar los free trials
+                    return 0 // Ignore free trials
                 }
             }
         case .monthly:
             conversionFactor = { subscription in
+                let priceInEur = subscription.divisa == "USD" ? subscription.price * usdToEurRate : subscription.price
                 switch subscription.type {
                 case .weekly:
-                    return subscription.price * 4 // Convertir a costos mensuales
+                    return priceInEur * 4 // Convert to monthly costs
                 case .monthly:
-                    return subscription.price
+                    return priceInEur
                 case .yearly:
-                    return subscription.price / 12 // Dividir por el número de meses en un año
+                    return priceInEur / 12 // Number of months in a year
                 case .quarterly:
-                    return subscription.price / 3 // Dividir por el número de meses en un trimestre
+                    return priceInEur / 3 // Number of months in a quarter
                 case .freeTrial:
-                    return 0 // O ignorar si no se quieren considerar los free trials
+                    return 0 // Ignore free trials
                 }
             }
         case .yearly:
             conversionFactor = { subscription in
+                let priceInEur = subscription.divisa == "USD" ? subscription.price * usdToEurRate : subscription.price
                 switch subscription.type {
                 case .weekly:
-                    return subscription.price * 48 // Convertir a costos anuales
+                    return priceInEur * 48 // Convert to yearly costs
                 case .monthly:
-                    return subscription.price * 12 // Convertir a costos anuales
+                    return priceInEur * 12 // Convert to yearly costs
                 case .yearly:
-                    return subscription.price
+                    return priceInEur
                 case .quarterly:
-                    return subscription.price * 4 // Convertir a costos anuales
+                    return priceInEur * 4 // Convert to yearly costs
                 case .freeTrial:
-                    return 0 // O ignorar si no se quieren considerar los free trials
+                    return 0 // Ignore free trials
                 }
             }
-            
         default:
             return ""
         }
@@ -177,5 +180,10 @@ final class HomeViewModel: BaseViewModel {
         let totalDuration = endDate.timeIntervalSince(startDate)
         let elapsed = Date().timeIntervalSince(startDate)
         return min(max(elapsed / totalDuration, 0.0), 1.0)
+    }
+    
+    func tapSubscription(subscription: SubscriptionModelDto, success: @escaping () -> Void) {
+        self.selectedSubscription = subscription
+        success()
     }
 }

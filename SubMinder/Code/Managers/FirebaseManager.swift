@@ -145,6 +145,31 @@ class FirebaseManager: ObservableObject {
         }
     }
     
+    func updateSubscriptionWithData(updatedModel: SubscriptionModelDto) async throws {
+        let userId = userSession?.uid ?? ""
+        let subscriptionId = updatedModel.id
+        do {
+            let docRef = Firestore.firestore()
+                .collection("users")
+                .document(userId)
+                .collection("subscriptions")
+                .document(subscriptionId)
+            
+            try await docRef.updateData([
+                "id": updatedModel.id,
+                "name": updatedModel.name,
+                "image": updatedModel.image,
+                "price": updatedModel.price,
+                "paymentDate": updatedModel.paymentDate,
+                "type": updatedModel.type.rawValue,
+                "divisa": updatedModel.divisa
+            ])
+        } catch {
+            print("Register error: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
     @MainActor
     func removeSubscription(subscriptionId: String) async throws {
         let userId = userSession?.uid ?? ""

@@ -39,4 +39,27 @@ extension String {
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: self)
     }
+    
+    func getCurrency() -> String {
+        switch self {
+            case "EUR": // Euro
+                return "€"
+            case "USD": // Dolar
+                return "$"
+            case "SEK": // Corona sueca
+                return "kr"
+            case "CHF": // Franco suizo
+                return "Fr"
+            case "GBP": // Libra
+                return "£"
+            case "JPY": // Yen Japonés
+                return "¥"
+            case "PEN": // Sol Peruano
+                return "S/"
+            case "CLP": // Peso chileno
+                return "$"
+        default:
+            return "€"
+        }
+    }
 }

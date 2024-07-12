@@ -102,28 +102,52 @@ struct NewSubscriptionFormView: View {
         
             SMText(text: selectedSubscription.name, fontType: .medium, size: .extraLarge)
                 .foregroundStyle(.white)
+                .lineLimit(1)
+                .padding(.horizontal, 50)
                 .padding(.bottom, 10)
             
-            TextField("", text: $price, prompt: Text(pricePlaceholder).foregroundStyle(Color.white.opacity(0.3)))
-                .frame(width: 150)
-                .font(.custom(FontType.medium.rawValue, size: TextSize.header.rawValue))
+            HStack {
+                Spacer()
+                TextField("",
+                          text: $price,
+                          prompt:
+                            Text(pricePlaceholder).foregroundStyle(Color.white.opacity(0.3))
+                )
+                .fixedSize(horizontal: true, vertical: false)
+                .font(.custom(FontType.regular.rawValue, size: TextSize.title.rawValue))
                 .multilineTextAlignment(.center)
                 .keyboardType(.decimalPad)
                 .tint(Color.white)
                 .foregroundStyle(Color.white)
+                .onChange(of: price) { newValue in
+                      if newValue.count > 8 {
+                          price = String(newValue.prefix(8))
+                      }
+                 }
+                
+                SMText(text: divisaOptions[divisaDropdownIndex].getCurrency(), fontType: .medium, size: .title2)
+                    .foregroundStyle(Color.white)
+                Spacer()
+            }
         }
     }
     
     @ViewBuilder private func vwForm() -> some View {
         VStack(spacing: 15) {
+            
             HStack {
                 SMText(text: "Nombre", fontType: .regular, size: .medium)
                     .foregroundStyle(Color.secondary2)
+                
                 TextField("Añade un nombre", text: $name)
                     .keyboardType(.alphabet)
                     .autocorrectionDisabled()
                     .tint(Color.additionalBlue)
-                   
+                    .onChange(of: name) { newValue in
+                          if newValue.count > 8 {
+                              name = String(newValue.prefix(13))
+                          }
+                     }
             }
             .padding(.top, 40)
             
@@ -156,6 +180,8 @@ struct NewSubscriptionFormView: View {
                     let subscriptionType = SubscriptionType(type: typeOptions[typeDropdownIndex])
                     if subscriptionType == .freeTrial {
                         self.price = "0,00"
+                    } else if price.toDouble() == 0 {
+                        self.price = ""
                     }
                 })
             }

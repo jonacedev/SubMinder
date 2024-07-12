@@ -16,6 +16,8 @@ enum ListType {
 class SubscriptionListViewModel: BaseViewModel {
     
     @Published var subscriptions: [SubscriptionModelDto] = []
+    @Published var selectedSubscription: SubscriptionModelDto?
+    
     private let firebaseManager: FirebaseManager
     let listType: ListType
     
@@ -50,6 +52,11 @@ class SubscriptionListViewModel: BaseViewModel {
                                                buttonText1: "Aceptar",
                                                action1: { self.hideAlert() }))
         }
+    }
+    
+    func tapSubscription(subscription: SubscriptionModelDto, success: @escaping () -> Void) {
+        self.selectedSubscription = subscription
+        success()
     }
     
     func getTitle() -> String {

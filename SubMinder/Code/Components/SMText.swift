@@ -20,6 +20,8 @@ enum TextSize: CGFloat {
     case mediumLarge = 18
     case large = 20
     case extraLarge = 24
+    case title2 = 28
+    case title = 30
     case header = 35
     case headerLarge = 40
     case searchBar = 17
