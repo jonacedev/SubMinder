@@ -23,6 +23,10 @@ public class DeviceInfo {
         return ""
     }
     
+    public static func isIpad() -> Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+    
     /// Returns the OS version running on the current device
     /// - Returns: A String representing the current device's OS version, for example "4.0"
     

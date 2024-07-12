@@ -142,9 +142,14 @@ struct HomeView: View {
     }
     
     @ViewBuilder private func vwSuscriptionsSection(geometry: GeometryProxy) -> some View {
-        let width = geometry.size.width / 2 - 20
+        let isIpad = DeviceInfo.isIpad() ? true : false
+        let width = geometry.size.width / (isIpad ? 3 : 2) - 20
+        let height = isIpad ? 200 : geometry.size.width / 2 - 20
         let columns = [GridItem(.fixed(width)),
                        GridItem(.fixed(width))]
+        let columnsIpad = [GridItem(.fixed(width)),
+                           GridItem(.fixed(width)),
+                           GridItem(.fixed(width))]
         
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
@@ -184,10 +189,10 @@ struct HomeView: View {
                 .padding(.top, 10)
                 
             } else {
-                LazyVGrid(columns: columns, spacing: 10) {
+                LazyVGrid(columns: isIpad ? columnsIpad : columns, spacing: 10) {
                     ForEach(viewModel.upcomingSubscriptions ?? []) { subscription in
                         vwSuscriptionGridItem(model: subscription)
-                            .frame(width: width, height: width)
+                            .frame(width: width, height: height)
                             .scrollTransition(.animated) { content, phase in
                                 content
                                     .opacity(phase.isIdentity ? 1 : 0.8)
