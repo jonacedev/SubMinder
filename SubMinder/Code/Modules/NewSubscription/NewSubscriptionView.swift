@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewSubscriptionView: View {
     
-    @EnvironmentObject var modalState: ModalState
+    @EnvironmentObject var modalState: AddModalState
     @StateObject var viewModel: NewSubscriptionViewModel
     @State var searchText = ""
   
@@ -120,5 +120,5 @@ struct NewSubscriptionView: View {
 
 #Preview {
     NewSubscriptionView(firebaseManager: FirebaseManager())
-        .environmentObject(ModalState())
+        .environmentObject(AddModalState())
 }

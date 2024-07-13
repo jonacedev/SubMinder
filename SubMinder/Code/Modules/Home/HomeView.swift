@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ModalState: ObservableObject {
+class AddModalState: ObservableObject {
     @Published var showFirstModal: Bool = false
     @Published var showSecondModal: Bool = false
 }
@@ -15,11 +15,12 @@ class ModalState: ObservableObject {
 struct HomeView: View {
     
     @StateObject var viewModel: HomeViewModel
-    @StateObject var modalState = ModalState()
-    
+    @StateObject var modalState = AddModalState()
     @State var showTooltip = false
     
     @State private var showSelectedItemModal = false
+    @State private var pushSettings = false
+    
     @State private var pushAllSubs = false
     @State private var pushWeeklySubs = false
     @State private var pushFreeTrialsSubs = false
@@ -75,9 +76,12 @@ struct HomeView: View {
             Spacer()
             
             SMIconButton(image: "person", action: {
-                viewModel.signOut()
+                pushSettings.toggle()
             })
         }
+        .navigationDestination(isPresented: $pushSettings, destination: {
+            SettingsView(firebaseManager: firebaseManager)
+        })
     }
     
     @ViewBuilder private func vwSummary() -> some View {

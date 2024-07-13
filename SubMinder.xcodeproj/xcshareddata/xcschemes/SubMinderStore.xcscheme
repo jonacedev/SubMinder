@@ -4,8 +4,7 @@
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES"
-      buildArchitectures = "Automatic">
+      buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -15,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AB7B36522C34A793004AE578"
-               BuildableName = "SubMinder.app"
-               BlueprintName = "SubMinder"
+               BlueprintIdentifier = "AB5917132C41F31C007A0EE5"
+               BuildableName = "SubMinderStore.app"
+               BlueprintName = "SubMinderStore"
                ReferencedContainer = "container:SubMinder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,36 +28,11 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AB7B36622C34A794004AE578"
-               BuildableName = "SubMinderTests.xctest"
-               BlueprintName = "SubMinderTests"
-               ReferencedContainer = "container:SubMinder.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AB7B366C2C34A794004AE578"
-               BuildableName = "SubMinderUITests.xctest"
-               BlueprintName = "SubMinderUITests"
-               ReferencedContainer = "container:SubMinder.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "es"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -69,9 +43,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB7B36522C34A793004AE578"
-            BuildableName = "SubMinder.app"
-            BlueprintName = "SubMinder"
+            BlueprintIdentifier = "AB5917132C41F31C007A0EE5"
+            BuildableName = "SubMinderStore.app"
+            BlueprintName = "SubMinderStore"
             ReferencedContainer = "container:SubMinder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -86,9 +60,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB7B36522C34A793004AE578"
-            BuildableName = "SubMinder.app"
-            BlueprintName = "SubMinder"
+            BlueprintIdentifier = "AB5917132C41F31C007A0EE5"
+            BuildableName = "SubMinderStore.app"
+            BlueprintName = "SubMinderStore"
             ReferencedContainer = "container:SubMinder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

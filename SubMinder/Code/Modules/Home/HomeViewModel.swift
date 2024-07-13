@@ -64,10 +64,6 @@ final class HomeViewModel: BaseViewModel {
         }
     }
     
-    @MainActor func signOut() {
-        firebaseManager.signOut()
-    }
-    
     @MainActor
     func checkExpiratedSubscriptions(subscriptions: [SubscriptionModelDto]) async {
         

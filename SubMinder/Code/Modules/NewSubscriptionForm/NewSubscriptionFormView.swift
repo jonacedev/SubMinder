@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewSubscriptionFormView: View {
     
-    @EnvironmentObject var modalState: ModalState
+    @EnvironmentObject var modalState: AddModalState
     @StateObject var viewModel: NewSubscriptionFormViewModel
     
     // MARK: - Gradient
@@ -227,5 +227,5 @@ struct NewSubscriptionFormView: View {
 
 #Preview {
     NewSubscriptionFormView(selectedSubscription: SubscriptionsFactory.shared.getDefaultSubscription(), firebaseManager: FirebaseManager())
-        .environmentObject(ModalState())
+        .environmentObject(AddModalState())
 }
