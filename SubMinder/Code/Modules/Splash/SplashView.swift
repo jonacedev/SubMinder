@@ -22,8 +22,9 @@ struct SplashView: View {
     }
     
     @ViewBuilder private func content() -> some View {
-        VStack {
-            Text("Splash")
+        ZStack {
+            Color.clear
+                .ignoresSafeArea()
         }
         .onAppear {
             viewModel.onAppear()

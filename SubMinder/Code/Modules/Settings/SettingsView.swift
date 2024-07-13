@@ -18,7 +18,8 @@ struct SettingsView: View {
     var body: some View {
         BaseView(content: content, viewModel: viewModel)
             .toolbarRole(.editor)
-    
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Ajustes")
     }
     
     @ViewBuilder private func content() -> some View {
