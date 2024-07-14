@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import _AuthenticationServices_SwiftUI
 
 struct LoginView: View {
     
@@ -40,10 +41,6 @@ struct LoginView: View {
                     makeLogin()
                 })
                 
-                Divider()
-                    .frame(height: 0.9)
-                    .background(Color.secondary4)
-                
                 vwBottom()
             }
             .padding(.horizontal, 20)
@@ -69,6 +66,28 @@ struct LoginView: View {
     }
     
     @ViewBuilder private func vwBottom() -> some View {
+        
+        HStack {
+            Rectangle()
+                .frame(height: 0.9)
+                .foregroundStyle(Color.secondary4)
+            
+            SMText(text: "o")
+                .padding(.horizontal, 10)
+            
+            Rectangle()
+                .frame(height: 0.9)
+                .foregroundStyle(Color.secondary4)
+        }
+        
+        SignInWithAppleButton(onRequest: { request in
+            firebaseManager.requestAppleAuthorization(request)
+        }, onCompletion: { result in
+            firebaseManager.handleAppleID(result)
+        })
+        .frame(height: 44)
+        .clipShape(.rect(cornerRadius: 14))
+        
         HStack {
             SMText(text: "login_no_account".localized)
             Button(action: {
