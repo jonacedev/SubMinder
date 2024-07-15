@@ -10,5 +10,5 @@ import Foundation
 struct UserModel: Identifiable, Codable {
     let id: String
     let username: String
-    let email: String
+    let email: String?
 }

@@ -39,9 +39,9 @@ struct RegisterView: View {
                 registerUser()
             })
             
-            Divider()
+            Rectangle()
                 .frame(height: 0.9)
-                .background(Color.secondary4)
+                .foregroundStyle(Color.secondary4)
             
             vwBottom()
             

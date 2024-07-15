@@ -11,7 +11,6 @@ struct SMTextField: View {
     
     var placeholder: String
     @Binding var text: String
-    
     let height: CGFloat = 44
     let cornerRadius: CGFloat = 14
     let lineWidth: CGFloat = 1

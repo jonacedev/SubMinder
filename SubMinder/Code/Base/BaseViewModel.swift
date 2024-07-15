@@ -14,6 +14,7 @@ class BaseViewModel: ObservableObject {
 
     @Published var alert: BaseAlert.Model?
     @Published var loading: Bool?
+    var cancellables: Set<AnyCancellable> = []
 
     func showLoading() {
         DispatchQueue.main.async {

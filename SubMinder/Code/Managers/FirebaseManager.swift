@@ -11,11 +11,13 @@ import FirebaseFirestore
 import AuthenticationServices
 import CryptoKit
 
-class FirebaseManager: ObservableObject {
+class FirebaseManager: NSObject, ObservableObject {
     
     @Published var userSession: FirebaseAuth.User?
+    @Published var isLoadingOperation = false
     
     // MARK: Apple variables
+    var isReauthentication = false
     var currentNonce: String?
     var nonce: String? {
         currentNonce ?? nil
@@ -25,7 +27,9 @@ class FirebaseManager: ObservableObject {
     
     func updateUserSession() {
         verifySignInWithAppleID {
-            self.userSession = Auth.auth().currentUser
+            DispatchQueue.main.async {
+                self.userSession = Auth.auth().currentUser
+            }
         }
     }
     
@@ -204,6 +208,27 @@ class FirebaseManager: ObservableObject {
         }
     }
     
+    @MainActor
+    func removeUserData(userId: String) async throws {
+        do {
+            
+            let subscriptions = try await getUserSubscriptions()
+            for subscription in subscriptions {
+                try await removeSubscription(subscriptionId: subscription.id)
+           }
+            
+            let userRef = Firestore.firestore()
+                .collection("users")
+                .document(userId)
+            
+            try await userRef.delete()
+            
+        } catch {
+            print("Register error: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
     
     // MARK: - Sign out
     
@@ -215,58 +240,67 @@ class FirebaseManager: ObservableObject {
 }
 
 // MARK: Apple login
-extension FirebaseManager {
+extension FirebaseManager: ASAuthorizationControllerDelegate {
     
-    func requestAppleAuthorization(_ request: ASAuthorizationAppleIDRequest) {
+    func performAppleSignIn(isReauthentication: Bool = false) {
+        self.isReauthentication = isReauthentication
         currentNonce = randomNonceString()
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
         request.requestedScopes = [.fullName, .email]
         request.nonce = sha256(currentNonce!)
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.performRequests()
     }
     
-    func handleAppleID(_ result: Result<ASAuthorization, Error>) {
-        if case let .success(auth) = result {
-            guard let appleIDCredentials = auth.credential as? ASAuthorizationAppleIDCredential else {
-                print("AppleAuthorization failed: AppleID credential not available")
-                return
-            }
-
-            Task {
-                do {
-                    let result = try await appleAuth(
-                        appleIDCredentials,
-                        nonce: nonce
-                    )
-                    if let result = result {
-                        self.userSession = result.user
-                    }
-                    
-                } catch {
-                    print("AppleAuthorization failed: \(error)")
-                }
-            }
+    func authorizationController(controller: ASAuthorizationController,
+                                 didCompleteWithAuthorization authorization: ASAuthorization) {
+        guard let appleIDCredentials = authorization.credential as? ASAuthorizationAppleIDCredential else {
+            operationIsLoading(isLoading: false)
+            return
         }
-        else if case let .failure(error) = result {
-            print("AppleAuthorization failed: \(error)")
+        
+        Task {
+            do {
+                if isReauthentication {
+                    if let user = self.userSession {
+                        try await reauthenticateAppleID(appleIDCredentials, for: user, nonce: nonce)
+                        operationIsLoading(isLoading: false)
+                    }
+                  
+                } else {
+                    let result = try await appleAuth(appleIDCredentials, nonce: nonce)
+                    operationIsLoading(isLoading: false)
+                    
+                    if let result = result {
+                        let user = UserModel(id: result.user.uid, username: appleIDCredentials.fullName?.givenName ?? "", email: appleIDCredentials.email ?? nil)
+                        try await uploadUserData(user: user)
+                        
+                        DispatchQueue.main.async {
+                            self.userSession = result.user
+                        }
+                    }
+                }
+
+            } catch {
+                print("AppleAuthorization failed: \(error)")
+                operationIsLoading(isLoading: false)
+            }
         }
     }
-        
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        operationIsLoading(isLoading: false)
+    }
+    
     private func appleAuth(
         _ appleIDCredential: ASAuthorizationAppleIDCredential,
         nonce: String?
     ) async throws -> AuthDataResult? {
-        guard let nonce = nonce else {
-            fatalError("Invalid state: A login callback was received, but no login request was sent.")
-        }
-        
-        guard let appleIDToken = appleIDCredential.identityToken else {
-            print("Unable to fetch identity token")
-            return nil
-        }
-        
-        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-            print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-            return nil
-        }
+        guard let nonce = nonce else { return nil }
+        guard let appleIDToken = appleIDCredential.identityToken else { return nil }
+        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else { return nil }
         
         let credentials = OAuthProvider.appleCredential(withIDToken: idTokenString,
                                                         rawNonce: nonce,
@@ -281,13 +315,49 @@ extension FirebaseManager {
         }
     }
     
+    private func reauthenticateAppleID(
+        _ appleIDCredential: ASAuthorizationAppleIDCredential,
+        for user: User,
+        nonce: String?
+    ) async throws {
+        do {
+            guard let nonce = nonce else { return }
+            guard let appleIDToken = appleIDCredential.identityToken else { return }
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else { return }
+   
+            let credential = OAuthProvider.appleCredential(withIDToken: idTokenString,
+                                                           rawNonce: nonce,
+                                                           fullName: appleIDCredential.fullName)
+            try await user.reauthenticate(with: credential)
+            try await revokeAppleIDToken(appleIDCredential)
+            try await removeAndCloseSession(user: user)
+        }
+        catch {
+            print("Reauthenticate apple failed. \(error)")
+            throw error
+        }
+    }
+    
+    private func revokeAppleIDToken(_ appleIDCredential: ASAuthorizationAppleIDCredential) async throws {
+        guard let authorizationCode = appleIDCredential.authorizationCode else { return }
+        guard let authCodeString = String(data: authorizationCode, encoding: .utf8) else { return }
+
+        do {
+            try await Auth.auth().revokeToken(withAuthorizationCode: authCodeString)
+        }
+        catch {
+            print("Revoke apple token failed. \(error)")
+            throw error
+        }
+    }
+    
     
     // MARK: - Helpers
     
     func verifySignInWithAppleID(success: @escaping () -> Void) {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let providerData = Auth.auth().currentUser?.providerData
-        if let appleProviderData = providerData?.first(where: { $0.providerID == "apple.com" }) {
+        if isAppleSession(), let appleProviderData = providerData?.first(where: { $0.providerID == "apple.com" }) {
             Task {
                 let credentialState = try await appleIDProvider.credentialState(forUserID: appleProviderData.uid)
                 switch credentialState {
@@ -295,7 +365,9 @@ extension FirebaseManager {
                     success()
                     break
                 case .revoked, .notFound:
-                    self.userSession = nil
+                    DispatchQueue.main.async {
+                        self.userSession = nil
+                    }
                 default:
                     break
                 }
@@ -305,36 +377,82 @@ extension FirebaseManager {
         }
     }
     
+    func isAppleSession() -> Bool {
+        let providerData = Auth.auth().currentUser?.providerData
+        if let _ = providerData?.first(where: { $0.providerID == "apple.com" }) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     private func randomNonceString(length: Int = 32) -> String {
-         precondition(length > 0)
-         var randomBytes = [UInt8](repeating: 0, count: length)
-         let errorCode = SecRandomCopyBytes(kSecRandomDefault, randomBytes.count, &randomBytes)
-         if errorCode != errSecSuccess {
-             fatalError(
-                 "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
-             )
-         }
+        precondition(length > 0)
+        var randomBytes = [UInt8](repeating: 0, count: length)
+        let errorCode = SecRandomCopyBytes(kSecRandomDefault, randomBytes.count, &randomBytes)
+        if errorCode != errSecSuccess {
+            fatalError(
+                "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
+            )
+        }
+        
+        let charset: [Character] =
+        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        
+        let nonce = randomBytes.map { byte in
+            charset[Int(byte) % charset.count]
+        }
+        
+        return String(nonce)
+    }
+    
+    private func sha256(_ input: String) -> String {
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
+            return String(format: "%02x", $0)
+        }.joined()
+        
+        return hashString
+    }
+}
 
-         let charset: [Character] =
-         Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-
-         let nonce = randomBytes.map { byte in
-             // Pick a random character from the set, wrapping around if needed.
-             charset[Int(byte) % charset.count]
-         }
-
-         return String(nonce)
-     }
-
-     // 3.
-     private func sha256(_ input: String) -> String {
-         let inputData = Data(input.utf8)
-         let hashedData = SHA256.hash(data: inputData)
-         let hashString = hashedData.compactMap {
-             return String(format: "%02x", $0)
-         }.joined()
-
-         return hashString
-     }
+extension FirebaseManager {
+    
+    func deleteUserAccount() async throws {
+        guard let user = Auth.auth().currentUser else { return }
+        let providers = user.providerData.map { $0.providerID }
+        operationIsLoading(isLoading: true)
+        
+        do {
+            if providers.contains("apple.com")  {
+                performAppleSignIn(isReauthentication: true)
+            } else {
+                try await removeAndCloseSession(user: user)
+                operationIsLoading(isLoading: false)
+                
+            }
+        }
+        catch {
+            print("FirebaseAuthError: Failed to delete auth user. \(error)")
+            operationIsLoading(isLoading: false)
+            throw error
+        }
+    }
+    
+    func removeAndCloseSession(user: FirebaseAuth.User) async throws {
+        try await removeUserData(userId: user.uid)
+        try await user.delete()
+        
+        DispatchQueue.main.async {
+            self.userSession = nil
+        }
+    }
+    
+    func operationIsLoading(isLoading: Bool) {
+        DispatchQueue.main.async {
+            self.isLoadingOperation = isLoading
+        }
+    }
 }
 

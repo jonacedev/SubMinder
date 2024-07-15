@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import _AuthenticationServices_SwiftUI
 
 struct LoginView: View {
     
@@ -30,8 +29,8 @@ struct LoginView: View {
         NavigationStack {
             VStack(spacing: 40) {
                 SMText(text: "login_header".localized,
-                           fontType: .bold,
-                           size: .header)
+                       fontType: .bold,
+                       size: .header)
                 .foregroundStyle(Color.secondary2)
                 .padding(.bottom, 30)
                 
@@ -40,14 +39,15 @@ struct LoginView: View {
                 SMMainButton(title: "login_btn".localized, action: {
                     makeLogin()
                 })
+                .frame(height: 44)
                 
                 vwBottom()
+                    .highPriorityGesture(TapGesture(), including: .subviews)
             }
             .padding(.horizontal, 20)
             .navigationDestination(isPresented: $pushRegisterView, destination: {
                 RegisterView(firebaseManager: firebaseManager)
             })
-            .ignoresSafeArea(.keyboard)
         }
         .tint(Color.secondary2)
     }
@@ -57,11 +57,15 @@ struct LoginView: View {
         VStack(alignment: .leading) {
            
             SMText(text: "login_email".localized)
+                .foregroundStyle(Color.secondary2)
             SMTextField(placeholder: "login_email_placeholder".localized, text: $email)
+                .frame(height: 44)
                 .padding(.bottom, 20)
        
             SMText(text: "login_password".localized)
+                .foregroundStyle(Color.secondary2)
             SMSecureTextField(placeholder: "login_password_placeholder".localized, text: $password)
+                .frame(height: 44)
         }
     }
     
@@ -73,6 +77,7 @@ struct LoginView: View {
                 .foregroundStyle(Color.secondary4)
             
             SMText(text: "o")
+                .foregroundStyle(Color.secondary3)
                 .padding(.horizontal, 10)
             
             Rectangle()
@@ -80,13 +85,9 @@ struct LoginView: View {
                 .foregroundStyle(Color.secondary4)
         }
         
-        SignInWithAppleButton(onRequest: { request in
-            firebaseManager.requestAppleAuthorization(request)
-        }, onCompletion: { result in
-            firebaseManager.handleAppleID(result)
+        SMAppleCustomButton(action: {
+            firebaseManager.performAppleSignIn()
         })
-        .frame(height: 44)
-        .clipShape(.rect(cornerRadius: 14))
         
         HStack {
             SMText(text: "login_no_account".localized)

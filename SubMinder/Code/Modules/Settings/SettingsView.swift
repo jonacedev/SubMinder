@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @StateObject var viewModel: SettingsViewModel
+    @State var showDeleteAlert = false
     
     init(firebaseManager: FirebaseManager) {
         self._viewModel = StateObject(wrappedValue: SettingsViewModel(firebaseManager: firebaseManager))
@@ -25,8 +26,6 @@ struct SettingsView: View {
     @ViewBuilder private func content() -> some View {
         VStack {
             
-            
-            
             Spacer()
             
             SMMainButton(title: "Cerrar sesión", action: {
@@ -35,6 +34,28 @@ struct SettingsView: View {
             .foregroundStyle(Color.white)
             .padding(.horizontal, 20)
             .padding(.bottom, 50)
+            
+            
+            SMLinkButtonStyled(title: "Eliminar cuenta", action: {
+                if viewModel.isAppleSession() {
+                    showDeleteAlert = true
+                } else {
+                    deleteAccount()
+                }
+                
+            }, withGradient: false)
+            .alert(isPresented: $showDeleteAlert, content: {
+                Alert(title: Text("Importante"), message: Text("Inicia sesión para eliminar tu cuenta vinculada a Apple."), dismissButton: .default(Text("Ok"), action: {
+                    deleteAccount()
+                }))
+            })
+            .padding(.bottom, 20)
+        }
+    }
+    
+    func deleteAccount() {
+        Task {
+            await viewModel.deleteAccount()
         }
     }
     

@@ -82,8 +82,6 @@
 		AB59175D2C41F31C007A0EE5 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC02B2C35D0AC0057EDC6 /* Roboto-Medium.ttf */; };
 		AB59175E2C41F31C007A0EE5 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABEDC0272C35D09B0057EDC6 /* Roboto-Bold.ttf */; };
 		AB59175F2C41F31C007A0EE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB7B365A2C34A794004AE578 /* Assets.xcassets */; };
-		AB5917602C41F31C007A0EE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB59A5052C39D253005A8F39 /* GoogleService-Info.plist */; };
-		AB59A5062C39D253005A8F39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB59A5052C39D253005A8F39 /* GoogleService-Info.plist */; };
 		AB59A50A2C3A09D9005A8F39 /* BaseActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB59A5092C3A09D9005A8F39 /* BaseActions.swift */; };
 		AB7B36572C34A793004AE578 /* SubMinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36562C34A793004AE578 /* SubMinderApp.swift */; };
 		AB7B365B2C34A794004AE578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB7B365A2C34A794004AE578 /* Assets.xcassets */; };
@@ -119,6 +117,10 @@
 		ABAA84C12C4224350085E292 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = ABAA84C02C4224350085E292 /* FirebaseFirestoreCombine-Community */; };
 		ABAA84C22C4418670085E292 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AB5917182C41F31C007A0EE5 /* FirebaseDatabase */; };
 		ABAA84C32C4418670085E292 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AB5917192C41F31C007A0EE5 /* FirebaseStorage */; };
+		ABAA84ED2C4484AE0085E292 /* SMAppleCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA84EC2C4484AE0085E292 /* SMAppleCustomButton.swift */; };
+		ABAA84EE2C4484AE0085E292 /* SMAppleCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA84EC2C4484AE0085E292 /* SMAppleCustomButton.swift */; };
+		ABAA84F02C4536490085E292 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABAA84EF2C4536490085E292 /* GoogleService-Info.plist */; };
+		ABAA84F22C45380B0085E292 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABAA84F12C45380B0085E292 /* GoogleService-Info.plist */; };
 		ABCEEBDF2C3A22EC000D7830 /* SMDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBDE2C3A22EC000D7830 /* SMDropDownMenu.swift */; };
 		ABCEEBE12C3A3AF8000D7830 /* View+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBE02C3A3AF8000D7830 /* View+Utils.swift */; };
 		ABCEEBE72C3B287A000D7830 /* Number+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBE62C3B287A000D7830 /* Number+Utils.swift */; };
@@ -161,7 +163,6 @@
 		AB5917662C41F31C007A0EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "/Users/jonathan/Desktop/iOS Projects/SubMinder/SubMinder/App/Store/Info.plist"; sourceTree = "<absolute>"; };
 		AB5917692C420B7B007A0EE5 /* SubMinderTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SubMinderTest.entitlements; sourceTree = "<group>"; };
 		AB59176A2C420BAD007A0EE5 /* SubMinderStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SubMinderStore.entitlements; sourceTree = "<group>"; };
-		AB59A5052C39D253005A8F39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB59A5092C3A09D9005A8F39 /* BaseActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseActions.swift; sourceTree = "<group>"; };
 		AB7B36532C34A793004AE578 /* SubMinderTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubMinderTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7B36562C34A793004AE578 /* SubMinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubMinderApp.swift; sourceTree = "<group>"; };
@@ -189,6 +190,9 @@
 		AB94857C2C38C01300DF72BA /* NewSubscriptionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionFormView.swift; sourceTree = "<group>"; };
 		AB94857E2C38C04400DF72BA /* NewSubscriptionFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionFormViewModel.swift; sourceTree = "<group>"; };
 		AB9485812C38C2A600DF72BA /* SubscriptionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsFactory.swift; sourceTree = "<group>"; };
+		ABAA84EC2C4484AE0085E292 /* SMAppleCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMAppleCustomButton.swift; sourceTree = "<group>"; };
+		ABAA84EF2C4536490085E292 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ABAA84F12C45380B0085E292 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABCEEBDE2C3A22EC000D7830 /* SMDropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMDropDownMenu.swift; sourceTree = "<group>"; };
 		ABCEEBE02C3A3AF8000D7830 /* View+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Utils.swift"; sourceTree = "<group>"; };
 		ABCEEBE62C3B287A000D7830 /* Number+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Utils.swift"; sourceTree = "<group>"; };
@@ -358,6 +362,7 @@
 			children = (
 				AB7B36A72C34B9A6004AE578 /* Info.plist */,
 				AB5917692C420B7B007A0EE5 /* SubMinderTest.entitlements */,
+				ABAA84EF2C4536490085E292 /* GoogleService-Info.plist */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 			children = (
 				AB5917662C41F31C007A0EE5 /* Info.plist */,
 				AB59176A2C420BAD007A0EE5 /* SubMinderStore.entitlements */,
+				ABAA84F12C45380B0085E292 /* GoogleService-Info.plist */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -492,6 +498,7 @@
 				ABCEEBEF2C3D53B8000D7830 /* SMEmptyView.swift */,
 				ABCEEBF12C3D5603000D7830 /* SMLinkButtonStyled.swift */,
 				AB5916BC2C3F3A49007A0EE5 /* SMSearchBar.swift */,
+				ABAA84EC2C4484AE0085E292 /* SMAppleCustomButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -530,7 +537,6 @@
 				AB5917682C4202C4007A0EE5 /* Store */,
 				AB5917672C4202BF007A0EE5 /* Test */,
 				AB7B36A52C34B782004AE578 /* AppDelegate.swift */,
-				AB59A5052C39D253005A8F39 /* GoogleService-Info.plist */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -731,7 +737,7 @@
 				AB59175D2C41F31C007A0EE5 /* Roboto-Medium.ttf in Resources */,
 				AB59175E2C41F31C007A0EE5 /* Roboto-Bold.ttf in Resources */,
 				AB59175F2C41F31C007A0EE5 /* Assets.xcassets in Resources */,
-				AB5917602C41F31C007A0EE5 /* GoogleService-Info.plist in Resources */,
+				ABAA84F22C45380B0085E292 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,7 +751,7 @@
 				ABEDC02C2C35D0AC0057EDC6 /* Roboto-Medium.ttf in Resources */,
 				ABEDC0282C35D09B0057EDC6 /* Roboto-Bold.ttf in Resources */,
 				AB7B365B2C34A794004AE578 /* Assets.xcassets in Resources */,
-				AB59A5062C39D253005A8F39 /* GoogleService-Info.plist in Resources */,
+				ABAA84F02C4536490085E292 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,6 +785,7 @@
 				AB5917302C41F31C007A0EE5 /* RegisterView.swift in Sources */,
 				AB5917312C41F31C007A0EE5 /* SMEmptyView.swift in Sources */,
 				AB5917322C41F31C007A0EE5 /* SMIconButton.swift in Sources */,
+				ABAA84EE2C4484AE0085E292 /* SMAppleCustomButton.swift in Sources */,
 				AB5917332C41F31C007A0EE5 /* SMBorderConstant.swift in Sources */,
 				AB5917342C41F31C007A0EE5 /* SMTooltipShape.swift in Sources */,
 				AB5917352C41F31C007A0EE5 /* View+Extensions.swift in Sources */,
@@ -840,6 +847,7 @@
 				AB7B36BE2C354F44004AE578 /* RegisterView.swift in Sources */,
 				ABCEEBF02C3D53B8000D7830 /* SMEmptyView.swift in Sources */,
 				ABEDC0392C3716520057EDC6 /* SMIconButton.swift in Sources */,
+				ABAA84ED2C4484AE0085E292 /* SMAppleCustomButton.swift in Sources */,
 				AB5916A52C3F1762007A0EE5 /* SMBorderConstant.swift in Sources */,
 				AB5916A62C3F1762007A0EE5 /* SMTooltipShape.swift in Sources */,
 				AB5916A72C3F1762007A0EE5 /* View+Extensions.swift in Sources */,
@@ -923,7 +931,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SubminderStore.mobileprovision;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SubminderStore;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -966,7 +974,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SubminderStore.mobileprovision;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SubminderStore;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1107,12 +1115,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Subminder/App/Test/SubMinderTest.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Jonathan Miguel Onrubia (P848M825V9)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SubMinder/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = LBQRL4GMCD;
+				DEVELOPMENT_TEAM = LBQRL4GMCD;
 				ENABLE_CODE_COVERAGE = YES;
 				ENABLE_DEBUG_DYLIB = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1135,7 +1141,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinderTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SubminderTest;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
