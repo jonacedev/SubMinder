@@ -35,6 +35,12 @@ class BaseViewModel: ObservableObject {
         }
     }
     
+    func showAlert(alert: BaseAlert.Model) {
+        DispatchQueue.main.async {
+            self.alert = alert
+        }
+    }
+    
     func hideAlert() {
         self.alert = nil
     }

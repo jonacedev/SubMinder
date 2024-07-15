@@ -121,6 +121,8 @@
 		ABAA84EE2C4484AE0085E292 /* SMAppleCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA84EC2C4484AE0085E292 /* SMAppleCustomButton.swift */; };
 		ABAA84F02C4536490085E292 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABAA84EF2C4536490085E292 /* GoogleService-Info.plist */; };
 		ABAA84F22C45380B0085E292 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABAA84F12C45380B0085E292 /* GoogleService-Info.plist */; };
+		ABBDD4A12C45E0D90064407E /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDD4A02C45E0D90064407E /* NotificationsManager.swift */; };
+		ABBDD4A22C45E0D90064407E /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDD4A02C45E0D90064407E /* NotificationsManager.swift */; };
 		ABCEEBDF2C3A22EC000D7830 /* SMDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBDE2C3A22EC000D7830 /* SMDropDownMenu.swift */; };
 		ABCEEBE12C3A3AF8000D7830 /* View+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBE02C3A3AF8000D7830 /* View+Utils.swift */; };
 		ABCEEBE72C3B287A000D7830 /* Number+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCEEBE62C3B287A000D7830 /* Number+Utils.swift */; };
@@ -193,6 +195,7 @@
 		ABAA84EC2C4484AE0085E292 /* SMAppleCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMAppleCustomButton.swift; sourceTree = "<group>"; };
 		ABAA84EF2C4536490085E292 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABAA84F12C45380B0085E292 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ABBDD4A02C45E0D90064407E /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		ABCEEBDE2C3A22EC000D7830 /* SMDropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMDropDownMenu.swift; sourceTree = "<group>"; };
 		ABCEEBE02C3A3AF8000D7830 /* View+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Utils.swift"; sourceTree = "<group>"; };
 		ABCEEBE62C3B287A000D7830 /* Number+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Utils.swift"; sourceTree = "<group>"; };
@@ -444,6 +447,7 @@
 			children = (
 				AB7B36CA2C35992B004AE578 /* FirebaseManager.swift */,
 				AB7B368D2C34AA1B004AE578 /* BaseManager.swift */,
+				ABBDD4A02C45E0D90064407E /* NotificationsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -534,9 +538,9 @@
 		AB7B36A32C34B768004AE578 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				AB7B36A52C34B782004AE578 /* AppDelegate.swift */,
 				AB5917682C4202C4007A0EE5 /* Store */,
 				AB5917672C4202BF007A0EE5 /* Test */,
-				AB7B36A52C34B782004AE578 /* AppDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -805,6 +809,7 @@
 				AB5917432C41F31C007A0EE5 /* NewSubscriptionView.swift in Sources */,
 				AB5917442C41F31C007A0EE5 /* BaseManager.swift in Sources */,
 				AB5917452C41F31C007A0EE5 /* RegisterViewModel.swift in Sources */,
+				ABBDD4A12C45E0D90064407E /* NotificationsManager.swift in Sources */,
 				AB5917462C41F31C007A0EE5 /* String+Utils.swift in Sources */,
 				AB5917472C41F31C007A0EE5 /* SMText.swift in Sources */,
 				AB5917482C41F31C007A0EE5 /* DeviceInfo.swift in Sources */,
@@ -867,6 +872,7 @@
 				ABEDC0482C385DA50057EDC6 /* NewSubscriptionView.swift in Sources */,
 				AB7B368E2C34AA1B004AE578 /* BaseManager.swift in Sources */,
 				AB7B36C02C354F4F004AE578 /* RegisterViewModel.swift in Sources */,
+				ABBDD4A22C45E0D90064407E /* NotificationsManager.swift in Sources */,
 				AB7B36B62C34D974004AE578 /* String+Utils.swift in Sources */,
 				ABEDC02E2C35D41D0057EDC6 /* SMText.swift in Sources */,
 				AB7B36AE2C34C01F004AE578 /* DeviceInfo.swift in Sources */,

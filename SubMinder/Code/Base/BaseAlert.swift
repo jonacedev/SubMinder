@@ -47,10 +47,15 @@ struct BaseAlert: View {
                     .ignoresSafeArea()
                     .clipShape(.rect(cornerRadius: 24))
                 
-                VStack(spacing: 12) {
+                VStack(spacing: 10) {
 
                     if let image = model.image {
-                        Image(image).resizable().frame(width: 36, height: 36, alignment: .center).foregroundStyle(.white)
+                        Image(image)
+                            .renderingMode(.template)
+                            .resizable()
+                            .frame(width: 36, height: 36, alignment: .center)
+                            .foregroundStyle(.black)
+                            .padding(.top)
                     }
 
                     alertTexts()
@@ -69,10 +74,10 @@ struct BaseAlert: View {
     }
 
     @ViewBuilder func alertTexts() -> some View {
-        SMText(text: model.title, fontType: .bold, size: .large)
+        SMText(text: model.title, fontType: .bold, size: .mediumLarge)
             .foregroundStyle(Color.secondary1)
             .multilineTextAlignment(.center)
-        SMText(text: model.description, fontType: .regular, size: .medium)
+        SMText(text: model.description, fontType: .regular, size: .smallLarge)
             .foregroundStyle(Color.secondary1)
             .multilineTextAlignment(.center)
     }

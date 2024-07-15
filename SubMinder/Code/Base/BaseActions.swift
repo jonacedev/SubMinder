@@ -6,10 +6,20 @@
 //
 
 import Foundation
+import UIKit
 
 final class BaseActions {
     
     static func isPreview() -> Bool {
         ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+    }
+    
+    static func openAppSettings() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
+               UIApplication.shared.canOpenURL(settingsUrl) else {
+             return
+         }
+
+         UIApplication.shared.open(settingsUrl)
     }
 }

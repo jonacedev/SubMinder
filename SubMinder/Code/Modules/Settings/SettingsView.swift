@@ -12,6 +12,8 @@ struct SettingsView: View {
     @StateObject var viewModel: SettingsViewModel
     @State var showDeleteAlert = false
     
+    @State var notificationsEnabled = false
+    
     init(firebaseManager: FirebaseManager) {
         self._viewModel = StateObject(wrappedValue: SettingsViewModel(firebaseManager: firebaseManager))
     }
@@ -26,6 +28,49 @@ struct SettingsView: View {
     @ViewBuilder private func content() -> some View {
         VStack {
             
+            VStack {
+                Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .foregroundStyle(
+                        LinearGradient(
+                        colors: [Color.additionalPurple, Color.additionalBlue],
+                        startPoint: .topLeading,
+                        endPoint: .trailing)
+                    )
+                    .padding(.top, 50)
+                    .padding(.bottom, 10)
+                
+                SMText(text: viewModel.userData?.username ?? "", fontType: .medium, size: .large)
+                
+                SMText(text: viewModel.userData?.email ?? "", fontType: .regular, size: .medium)
+                    .foregroundStyle(Color.secondary3)
+            }
+            .padding(.bottom, 50)
+            
+            VStack {
+                HStack {
+                    SMText(text: "Notificaciones", fontType: .regular, size: .medium)
+                    
+                    Toggle("", isOn: $notificationsEnabled)
+                        .onChange(of: notificationsEnabled) { newValue, oldValue in
+                            NotificationsManager.shared.requestAuthorization(granted: {
+                                print("granted")
+                            }, denied: {
+                                notificationsEnabled = false
+                                viewModel.notificationsDeniedAlert()
+                            })
+                        }
+                }
+                .padding(.vertical, 10)
+                
+                Divider()
+                    .foregroundStyle(Color.secondary4)
+ 
+            }
+            .padding(.horizontal, 20)
+            
+        
             Spacer()
             
             SMMainButton(title: "Cerrar sesión", action: {
@@ -33,7 +78,7 @@ struct SettingsView: View {
             })
             .foregroundStyle(Color.white)
             .padding(.horizontal, 20)
-            .padding(.bottom, 50)
+            .padding(.bottom, 30)
             
             
             SMLinkButtonStyled(title: "Eliminar cuenta", action: {
