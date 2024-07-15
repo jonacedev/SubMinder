@@ -38,6 +38,7 @@ struct RegisterView: View {
             SMMainButton(title: "register_btn".localized, action: {
                 registerUser()
             })
+            .frame(height: 44)
             
             Rectangle()
                 .frame(height: 0.9)
@@ -56,14 +57,17 @@ struct RegisterView: View {
             
             SMText(text: "register_username".localized)
             SMTextField(placeholder: "register_username_placeholder".localized, text: $username)
+                .frame(height: 44)
                 .padding(.bottom, 20)
             
             SMText(text: "register_email".localized)
             SMTextField(placeholder: "register_email_placeholder".localized, text: $email)
+                .frame(height: 44)
                 .padding(.bottom, 20)
        
             SMText(text: "register_password".localized)
             SMSecureTextField(placeholder: "register_password_placeholder".localized, text: $password)
+                .frame(height: 44)
         }
     }
     
