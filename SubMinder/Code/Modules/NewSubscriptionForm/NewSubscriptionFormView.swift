@@ -11,6 +11,7 @@ struct NewSubscriptionFormView: View {
     
     @EnvironmentObject var modalState: AddModalState
     @StateObject var viewModel: NewSubscriptionFormViewModel
+    @State private var userDefaults = UserDefaultsCache()
     
     // MARK: - Gradient
     @State var start = UnitPoint(x: 0, y: 0)
@@ -89,14 +90,12 @@ struct NewSubscriptionFormView: View {
                 .scaledToFill()
                 .frame(width: 60, height: 60)
                 .padding(.bottom, 10)
-                .rotation3DEffect(logoAnimation ? Angle(degrees: 45) : .zero,
+                .rotation3DEffect(logoAnimation ? Angle(degrees: 30) : .zero,
                               axis: (x: 1, y: 0, z: 0)
                 )
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        withAnimation {
-                            logoAnimation.toggle()
-                        }
+                    withAnimation {
+                        logoAnimation = false
                     }
                 }
         
@@ -119,7 +118,7 @@ struct NewSubscriptionFormView: View {
                 .keyboardType(.decimalPad)
                 .tint(Color.white)
                 .foregroundStyle(Color.white)
-                .onChange(of: price) { newValue in
+                .onChange(of: price) { oldValue, newValue in
                       if newValue.count > 8 {
                           price = String(newValue.prefix(8))
                       }
@@ -143,7 +142,7 @@ struct NewSubscriptionFormView: View {
                     .keyboardType(.alphabet)
                     .autocorrectionDisabled()
                     .tint(Color.additionalBlue)
-                    .onChange(of: name) { newValue in
+                    .onChange(of: name) { oldValue, newValue in
                           if newValue.count > 8 {
                               name = String(newValue.prefix(13))
                           }
@@ -215,6 +214,21 @@ struct NewSubscriptionFormView: View {
         
         Task {
             await viewModel.addNewSubscription(model: newSubscription)
+            
+            NotificationsManager.shared.requestAuthorization(granted: {
+                viewModel.configReminderNotification(model: newSubscription, success: {
+                    userDefaults.notificationsEnabled = true
+                    closeModals()
+                })
+            }, denied: {
+                userDefaults.notificationsEnabled = false
+                closeModals()
+            })
+        }
+    }
+    
+    func closeModals() {
+        DispatchQueue.main.async {
             modalState.showSecondModal = false
             modalState.showFirstModal = false
         }

@@ -92,14 +92,12 @@ struct SubscriptionDetailView: View {
                 .scaledToFill()
                 .frame(width: 60, height: 60)
                 .padding(.bottom, 10)
-                .rotation3DEffect(logoAnimation ? Angle(degrees: 45) : .zero,
+                .rotation3DEffect(logoAnimation ? Angle(degrees: 30) : .zero,
                               axis: (x: 1, y: 0, z: 0)
                 )
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        withAnimation {
-                            logoAnimation.toggle()
-                        }
+                    withAnimation {
+                        logoAnimation = false
                     }
                 }
         
@@ -122,7 +120,7 @@ struct SubscriptionDetailView: View {
                 .keyboardType(.decimalPad)
                 .tint(Color.white)
                 .foregroundStyle(Color.white)
-                .onChange(of: price) { newValue in
+                .onChange(of: price) { oldValue, newValue in
                       if newValue.count > 8 {
                           price = String(newValue.prefix(8))
                       }
@@ -145,7 +143,7 @@ struct SubscriptionDetailView: View {
                     .keyboardType(.alphabet)
                     .autocorrectionDisabled()
                     .tint(Color.additionalBlue)
-                    .onChange(of: name) { newValue in
+                    .onChange(of: name) { oldValue, newValue in
                           if newValue.count > 8 {
                               name = String(newValue.prefix(13))
                           }
@@ -218,7 +216,14 @@ struct SubscriptionDetailView: View {
             if let subscriptionId = viewModel.subscription?.id {
                 Task {
                     await viewModel.removeSubscription(subscriptionId: subscriptionId)
-                    dismiss()
+                    NotificationsManager.shared.requestAuthorization(granted: {
+                        viewModel.removeNotification(subscriptionId: subscriptionId, success: {
+                            dismiss()
+                        })
+                    }, denied: {
+                        dismiss()
+                    })
+                  
                 }
             }
         }, label: {
@@ -245,10 +250,22 @@ struct SubscriptionDetailView: View {
             
             Task {
                 await viewModel.updateSubscriptionWithData(updatedModel: updatedSubscription)
-                needToUpdate = true
-                dismiss()
+                
+                NotificationsManager.shared.requestAuthorization(granted: {
+                    viewModel.updateNotification(model: updatedSubscription, success: {
+                        dismissUpdate()
+                    })
+                }, denied: {
+                    dismissUpdate()
+                })
+               
             }
         }
+    }
+    
+    func dismissUpdate() {
+        needToUpdate = true
+        dismiss()
     }
     
     func isValidForm() -> Bool {

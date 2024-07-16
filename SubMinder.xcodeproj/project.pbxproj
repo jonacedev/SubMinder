@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB3FAE602C46E610004883DF /* UserDefaultsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3FAE5F2C46E610004883DF /* UserDefaultsCache.swift */; };
+		AB3FAE612C46E610004883DF /* UserDefaultsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3FAE5F2C46E610004883DF /* UserDefaultsCache.swift */; };
 		AB5916A52C3F1762007A0EE5 /* SMBorderConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916982C3F1762007A0EE5 /* SMBorderConstant.swift */; };
 		AB5916A62C3F1762007A0EE5 /* SMTooltipShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB59169E2C3F1762007A0EE5 /* SMTooltipShape.swift */; };
 		AB5916A72C3F1762007A0EE5 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5916952C3F1762007A0EE5 /* View+Extensions.swift */; };
@@ -150,6 +152,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB3FAE5F2C46E610004883DF /* UserDefaultsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsCache.swift; sourceTree = "<group>"; };
 		AB5916952C3F1762007A0EE5 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		AB5916972C3F1762007A0EE5 /* SMArrowConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMArrowConstant.swift; sourceTree = "<group>"; };
 		AB5916982C3F1762007A0EE5 /* SMBorderConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMBorderConstant.swift; sourceTree = "<group>"; };
@@ -448,6 +451,7 @@
 				AB7B36CA2C35992B004AE578 /* FirebaseManager.swift */,
 				AB7B368D2C34AA1B004AE578 /* BaseManager.swift */,
 				ABBDD4A02C45E0D90064407E /* NotificationsManager.swift */,
+				AB3FAE5F2C46E610004883DF /* UserDefaultsCache.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -793,6 +797,7 @@
 				AB5917332C41F31C007A0EE5 /* SMBorderConstant.swift in Sources */,
 				AB5917342C41F31C007A0EE5 /* SMTooltipShape.swift in Sources */,
 				AB5917352C41F31C007A0EE5 /* View+Extensions.swift in Sources */,
+				AB3FAE602C46E610004883DF /* UserDefaultsCache.swift in Sources */,
 				AB5917362C41F31C007A0EE5 /* SMArrowConstant.swift in Sources */,
 				AB5917372C41F31C007A0EE5 /* SMConstant.swift in Sources */,
 				AB5917382C41F31C007A0EE5 /* SMFrameModifier.swift in Sources */,
@@ -852,6 +857,7 @@
 				AB7B36BE2C354F44004AE578 /* RegisterView.swift in Sources */,
 				ABCEEBF02C3D53B8000D7830 /* SMEmptyView.swift in Sources */,
 				ABEDC0392C3716520057EDC6 /* SMIconButton.swift in Sources */,
+				AB3FAE612C46E610004883DF /* UserDefaultsCache.swift in Sources */,
 				ABAA84ED2C4484AE0085E292 /* SMAppleCustomButton.swift in Sources */,
 				AB5916A52C3F1762007A0EE5 /* SMBorderConstant.swift in Sources */,
 				AB5916A62C3F1762007A0EE5 /* SMTooltipShape.swift in Sources */,

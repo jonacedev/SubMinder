@@ -29,4 +29,9 @@ class NewSubscriptionFormViewModel: BaseViewModel {
                                                action1: { self.hideAlert() }))
         }
     }
+    
+    func configReminderNotification(model: NewSubscriptionModel, success: @escaping () -> Void) {
+        NotificationsManager.shared.configNotification(at: model.paymentDate.toDate(), withTitle: "Recordatorio", andBody: "Tu suscripción a \(model.name) va a renovarse en 3 días!", identifier: model.id)
+        success()
+    }
 }

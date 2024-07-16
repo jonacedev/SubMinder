@@ -46,4 +46,14 @@ class SubscriptionDetailViewModel: BaseViewModel {
         }
     }
     
+    func removeNotification(subscriptionId: String, success: @escaping () -> Void) {
+        NotificationsManager.shared.removeNotification(withIdentifier: subscriptionId)
+        success()
+    }
+    
+    func updateNotification(model: SubscriptionModelDto, success: @escaping () -> Void) {
+        NotificationsManager.shared.updateNotification(forSubscription: model)
+        success()
+    }
+    
 }

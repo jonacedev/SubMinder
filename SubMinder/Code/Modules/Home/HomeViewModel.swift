@@ -74,15 +74,24 @@ final class HomeViewModel: BaseViewModel {
                 if subscription.type != .freeTrial, let newExpirationDate = expirationDate.nextExpirationDate(type: subscription.type)?.toString() {
                     do {
                         try await firebaseManager.updateExpiratedSubscriptions(subscriptionId: subscription.id, newExpirationDate: newExpirationDate)
+                        NotificationsManager.shared.requestAuthorization(granted: {
+                            NotificationsManager.shared.updateNotification(forSubscription: subscription)
+                        }, denied: { })
+                        
                     } catch {
                         manageError(alert: BaseAlert.Model(title: "Error",
                                                            description: error.localizedDescription,
                                                            buttonText1: "Aceptar",
                                                            action1: { self.hideAlert() }))
                     }
-                } else {
+                }
+                else {
                     do {
                         try await firebaseManager.removeSubscription(subscriptionId: subscription.id)
+                        NotificationsManager.shared.requestAuthorization(granted: {
+                            NotificationsManager.shared.removeNotification(withIdentifier: subscription.id)
+                        }, denied: { })
+                        
                     } catch {
                         manageError(alert: BaseAlert.Model(title: "Error",
                                                            description: error.localizedDescription,

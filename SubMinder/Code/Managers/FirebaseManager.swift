@@ -273,10 +273,12 @@ extension FirebaseManager: ASAuthorizationControllerDelegate {
                     let result = try await appleAuth(appleIDCredentials, nonce: nonce)
                     operationIsLoading(isLoading: false)
                     
-                    if let result = result, let username = appleIDCredentials.fullName?.givenName {
-                        let user = UserModel(id: result.user.uid, username: username, email: appleIDCredentials.email ?? "")
-                        try await uploadUserData(user: user)
-                        
+                    if let result = result {
+                        if let username = appleIDCredentials.fullName?.givenName {
+                            let user = UserModel(id: result.user.uid, username: username, email: appleIDCredentials.email ?? "")
+                            try await uploadUserData(user: user)
+                        }
+                       
                         DispatchQueue.main.async {
                             self.userSession = result.user
                         }
