@@ -18,8 +18,6 @@ struct NewSubscriptionFormView: View {
     @State var end = UnitPoint(x: 0, y: 2)
     let colors = [Color.additionalBlue, Color.additionalPurple, Color.additionalPink]
     
-    // MARK: - Logo animation
-    @State var logoAnimation = true
     
     // MARK: - Subscription name
     @State var name: String = ""
@@ -90,14 +88,6 @@ struct NewSubscriptionFormView: View {
                 .scaledToFill()
                 .frame(width: 60, height: 60)
                 .padding(.bottom, 10)
-                .rotation3DEffect(logoAnimation ? Angle(degrees: 30) : .zero,
-                              axis: (x: 1, y: 0, z: 0)
-                )
-                .onAppear {
-                    withAnimation {
-                        logoAnimation = false
-                    }
-                }
         
             SMText(text: selectedSubscription.name, fontType: .medium, size: .extraLarge)
                 .foregroundStyle(.white)
