@@ -14,10 +14,19 @@ struct NewSubscriptionRow: View {
     var body: some View {
         VStack {
             HStack {
-                Image(subscription.image)
-                    .resizable()
-                    .frame(width: 35, height: 35)
-                    .padding(.trailing, 5)
+                
+                Rectangle()
+                    .frame(width: 40, height: 40)
+                    .foregroundStyle(subscription.color)
+                    .clipShape(.rect(cornerRadius: 14))
+                    .overlay {
+                        Image(subscription.image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 24, height: 24)
+                    }
+                    .padding(.trailing, 3)
+            
                 SMText(text: subscription.name, fontType: .medium, size: .medium)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)

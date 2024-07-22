@@ -66,7 +66,9 @@ struct SubscriptionListView: View {
                     }
                 }, content: {
                     if let selectedSubscription = viewModel.selectedSubscription {
-                        SubscriptionDetailView(firebaseManager: firebaseManager, subscription: selectedSubscription, needToUpdate: $needToUpdate)
+                        NavigationStack {
+                            SubscriptionDetailView(firebaseManager: firebaseManager, subscription: selectedSubscription, needToUpdate: $needToUpdate)
+                        }
                     }
                 })
                 .padding(.horizontal, 20)

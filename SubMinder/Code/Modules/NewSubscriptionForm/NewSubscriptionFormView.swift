@@ -13,12 +13,6 @@ struct NewSubscriptionFormView: View {
     @StateObject var viewModel: NewSubscriptionFormViewModel
     @State private var userDefaults = UserDefaultsCache()
     
-    // MARK: - Gradient
-    @State var start = UnitPoint(x: 0, y: 0)
-    @State var end = UnitPoint(x: 0, y: 2)
-    let colors = [Color.additionalBlue, Color.additionalPurple, Color.additionalPink]
-    
-    
     // MARK: - Subscription name
     @State var name: String = ""
     
@@ -47,30 +41,28 @@ struct NewSubscriptionFormView: View {
     
     var body: some View {
         BaseView(content: content, viewModel: viewModel)
+            .toolbar {
+                ToolbarItem(placement: .principal, content: {
+                    SMText(text: selectedSubscription.name, fontType: .medium, size: .large)
+                        .foregroundStyle(.white)
+                        .lineLimit(1)
+                })
+            }
+            .navigationBarTitleDisplayMode(.inline)
     }
     
     @ViewBuilder private func content() -> some View {
         GeometryReader { _ in
             ZStack {
-                LinearGradient(gradient: Gradient(colors: colors), startPoint: start, endPoint: end)
-                    .animation(Animation.easeInOut(duration: 3).repeatForever(), value: start)
-                    .onAppear {
-                        start = UnitPoint(x: 1, y: -1)
-                        end = UnitPoint(x: 0, y: 1)
-                    }
+                selectedSubscription.color
                     .ignoresSafeArea()
                 
                 VStack {
                     vwHeader()
-                        .padding(.top, 60)
-                        .padding(.bottom, 10)
+                        .padding(.top, 35)
+                        .padding(.bottom, 30)
                     vwForm()
                         .background(Color.white)
-                        .clipShape(.rect(topLeadingRadius: 24,
-                                         bottomLeadingRadius: 0,
-                                         bottomTrailingRadius: 0,
-                                         topTrailingRadius: 24)
-                        )
                 }
                 .ignoresSafeArea(edges: .bottom)
             }
@@ -85,15 +77,9 @@ struct NewSubscriptionFormView: View {
         VStack {
             Image(selectedSubscription.image)
                 .resizable()
-                .scaledToFill()
-                .frame(width: 60, height: 60)
-                .padding(.bottom, 10)
-        
-            SMText(text: selectedSubscription.name, fontType: .medium, size: .extraLarge)
-                .foregroundStyle(.white)
-                .lineLimit(1)
-                .padding(.horizontal, 50)
-                .padding(.bottom, 10)
+                .scaledToFit()
+                .frame(width: 70, height: 70)
+                .padding(.bottom, 20)
             
             HStack {
                 Spacer()
@@ -103,7 +89,7 @@ struct NewSubscriptionFormView: View {
                             Text(pricePlaceholder).foregroundStyle(Color.white.opacity(0.3))
                 )
                 .fixedSize(horizontal: true, vertical: false)
-                .font(.custom(FontType.regular.rawValue, size: TextSize.title.rawValue))
+                .font(.custom(FontType.regular.rawValue, size: TextSize.title2.rawValue))
                 .multilineTextAlignment(.center)
                 .keyboardType(.decimalPad)
                 .tint(Color.white)
@@ -132,6 +118,7 @@ struct NewSubscriptionFormView: View {
                     .keyboardType(.alphabet)
                     .autocorrectionDisabled()
                     .tint(Color.additionalBlue)
+                    .foregroundStyle(Color.secondary2)
                     .onChange(of: name) { oldValue, newValue in
                           if newValue.count > 8 {
                               name = String(newValue.prefix(13))

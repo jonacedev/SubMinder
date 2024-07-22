@@ -14,10 +14,17 @@ struct SubscriptionListRow: View {
     var body: some View {
         VStack {
             HStack {
-                Image(subscription.image)
-                    .resizable()
-                    .frame(width: 35, height: 35)
-                    .padding(.trailing, 5)
+                Rectangle()
+                    .frame(width: 45, height: 45)
+                    .foregroundStyle(subscription.getBackgroundColor())
+                    .clipShape(.rect(cornerRadius: 14))
+                    .overlay {
+                        Image(subscription.image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 25, height: 25)
+                    }
+                    .padding(.trailing, 3)
                 
                 VStack(alignment: .leading) {
                     HStack {

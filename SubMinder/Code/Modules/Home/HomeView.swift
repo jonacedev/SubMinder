@@ -213,7 +213,9 @@ struct HomeView: View {
                                 checkNeedToUpdate()
                             }, content: {
                                 if let selectedSubscription = viewModel.selectedSubscription {
-                                    SubscriptionDetailView(firebaseManager: firebaseManager, subscription: selectedSubscription, needToUpdate: $needToUpdate)
+                                    NavigationStack {
+                                        SubscriptionDetailView(firebaseManager: firebaseManager, subscription: selectedSubscription, needToUpdate: $needToUpdate)
+                                    }
                                 }
                             })
                     }
@@ -228,11 +230,12 @@ struct HomeView: View {
                 
                 Rectangle()
                     .frame(width: 60, height: 60)
-                    .foregroundStyle(Color.white.opacity(0.6))
+                    .foregroundStyle(model.getBackgroundColor())
                     .clipShape(.rect(cornerRadius: 14))
                     .overlay {
                         Image(model.image)
                             .resizable()
+                            .scaledToFit()
                             .frame(width: 38, height: 38)
                             .shadow(radius: 0.3)
                     }

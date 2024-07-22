@@ -45,37 +45,19 @@ struct NewSubscriptionView: View {
             SMSearchBar(text: $searchText, placeholder: "Buscar")
                 .keyboardType(.alphabet)
                 .autocorrectionDisabled()
-                .padding(.horizontal, 18)
+                .padding(.horizontal, 15)
                 .padding(.vertical, 5)
             vwList()
             vwBottom()
         }
         .sheet(isPresented: $modalState.showSecondModal, content: {
             if let selectedSubscription = viewModel.selectedSubscription {
-                NewSubscriptionFormView(selectedSubscription: selectedSubscription, firebaseManager: firebaseManager)
-                    .environmentObject(modalState)
+                NavigationStack {
+                    NewSubscriptionFormView(selectedSubscription: selectedSubscription, firebaseManager: firebaseManager)
+                        .environmentObject(modalState)
+                }
             }
         })
-    }
-    
-    @ViewBuilder private func vwHeader() -> some View {
-        VStack {
-            SMText(text: "Añadir gastos", fontType: .medium, size: .mediumLarge)
-        }
-        .frame(maxWidth: .infinity)
-        .overlay(alignment: .leading, content: {
-            Button(action: {
-                modalState.showFirstModal = false
-            }, label: {
-                Image(systemName: "xmark")
-                    .resizable()
-                    .frame(width: 18, height: 18)
-                    .foregroundStyle(.white)
-                    .padding(.leading, 20)
-            })
-            
-        })
-        .foregroundStyle(Color.white)
     }
     
     @ViewBuilder private func vwList() -> some View {
@@ -101,7 +83,7 @@ struct NewSubscriptionView: View {
                 }
             })
             .padding(.top, 10)
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 15)
         }
         .padding(.bottom, 10)
         .background(.white)

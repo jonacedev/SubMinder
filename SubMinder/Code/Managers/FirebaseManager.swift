@@ -124,14 +124,14 @@ class FirebaseManager: NSObject, ObservableObject {
                 throw error
             }
         } else {
-            let defaultModel = NewSubscriptionModel(name: "default", image: "netflix", price: 5.99, paymentDate: "17-11-2024", type: "Anual", divisa: "EUR")
+            let defaultModel = NewSubscriptionModel(name: "default", image: "netflix", price: 5.99, paymentDate: "25-11-2024", type: "Anual", divisa: "EUR")
             
-            let thisWeekModel0 = NewSubscriptionModel(name: "default", image: "spotify", price: 5.99, paymentDate: "13-07-2024", type: "Semanal", divisa: "EUR")
-            let thisWeekModel = NewSubscriptionModel(name: "default", image: "crunchyroll", price: 5.99, paymentDate: "10-07-2024", type: "Mensual", divisa: "EUR")
-            let thisWeekModel2 = NewSubscriptionModel(name: "default", image: "behance", price: 5.99, paymentDate: "14-07-2024", type: "Trimestral", divisa: "EUR")
-            let thisWeekModel3 = NewSubscriptionModel(name: "default", image: "youtube", price: 5.99, paymentDate: "11-07-2024", type: "Prueba", divisa: "EUR")
+            let thisWeekModel0 = NewSubscriptionModel(name: "default", image: "spotify", price: 5.99, paymentDate: "26-07-2024", type: "Semanal", divisa: "EUR")
+            let thisWeekModel = NewSubscriptionModel(name: "default", image: "crunchyroll", price: 5.99, paymentDate: "28-07-2024", type: "Mensual", divisa: "EUR")
+            let thisWeekModel2 = NewSubscriptionModel(name: "default", image: "behance", price: 5.99, paymentDate: "27-07-2024", type: "Trimestral", divisa: "EUR")
+            let thisWeekModel3 = NewSubscriptionModel(name: "default", image: "youtube", price: 5.99, paymentDate: "24-07-2024", type: "Prueba", divisa: "EUR")
             
-            let freeTrialModel = NewSubscriptionModel(name: "default", image: "linkedin", price: 5.99, paymentDate: "17-08-2025", type: "Prueba", divisa: "EUR")
+            let freeTrialModel = NewSubscriptionModel(name: "default", image: "linkedin", price: 5.99, paymentDate: "26-08-2025", type: "Prueba", divisa: "EUR")
             
             return [SubscriptionModelDto(model: defaultModel),
                     SubscriptionModelDto(model: thisWeekModel0),
