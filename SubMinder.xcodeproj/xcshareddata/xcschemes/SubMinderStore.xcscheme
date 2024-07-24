@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AB5917132C41F31C007A0EE5"
-               BuildableName = "SubMinderStore.app"
+               BuildableName = "SubMinder.app"
                BlueprintName = "SubMinderStore"
                ReferencedContainer = "container:SubMinder.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB5917132C41F31C007A0EE5"
-            BuildableName = "SubMinderStore.app"
+            BuildableName = "SubMinder.app"
             BlueprintName = "SubMinderStore"
             ReferencedContainer = "container:SubMinder.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB5917132C41F31C007A0EE5"
-            BuildableName = "SubMinderStore.app"
+            BuildableName = "SubMinder.app"
             BlueprintName = "SubMinderStore"
             ReferencedContainer = "container:SubMinder.xcodeproj">
          </BuildableReference>

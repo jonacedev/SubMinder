@@ -62,7 +62,6 @@
 		AB5917412C41F31C007A0EE5 /* SubMinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36562C34A793004AE578 /* SubMinderApp.swift */; };
 		AB5917422C41F31C007A0EE5 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0362C35F1D30057EDC6 /* Color+Utils.swift */; };
 		AB5917432C41F31C007A0EE5 /* NewSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC0472C385DA50057EDC6 /* NewSubscriptionView.swift */; };
-		AB5917442C41F31C007A0EE5 /* BaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B368D2C34AA1B004AE578 /* BaseManager.swift */; };
 		AB5917452C41F31C007A0EE5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36BF2C354F4F004AE578 /* RegisterViewModel.swift */; };
 		AB5917462C41F31C007A0EE5 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36B52C34D974004AE578 /* String+Utils.swift */; };
 		AB5917472C41F31C007A0EE5 /* SMText.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDC02D2C35D41D0057EDC6 /* SMText.swift */; };
@@ -92,7 +91,6 @@
 		AB7B365E2C34A794004AE578 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB7B365D2C34A794004AE578 /* Preview Assets.xcassets */; };
 		AB7B36882C34A9D3004AE578 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36872C34A9D3004AE578 /* LoginView.swift */; };
 		AB7B368A2C34A9E0004AE578 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36892C34A9E0004AE578 /* HomeView.swift */; };
-		AB7B368E2C34AA1B004AE578 /* BaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B368D2C34AA1B004AE578 /* BaseManager.swift */; };
 		AB7B36912C34AA5E004AE578 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36902C34AA5E004AE578 /* SplashView.swift */; };
 		AB7B36962C34AC31004AE578 /* BaseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36952C34AC31004AE578 /* BaseLoader.swift */; };
 		AB7B36A62C34B782004AE578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B36A52C34B782004AE578 /* AppDelegate.swift */; };
@@ -178,7 +176,6 @@
 		AB7B365D2C34A794004AE578 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AB7B36872C34A9D3004AE578 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AB7B36892C34A9E0004AE578 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		AB7B368D2C34AA1B004AE578 /* BaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseManager.swift; sourceTree = "<group>"; };
 		AB7B36902C34AA5E004AE578 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		AB7B36952C34AC31004AE578 /* BaseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLoader.swift; sourceTree = "<group>"; };
 		AB7B36A52C34B782004AE578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -453,7 +450,6 @@
 			isa = PBXGroup;
 			children = (
 				AB7B36CA2C35992B004AE578 /* FirebaseManager.swift */,
-				AB7B368D2C34AA1B004AE578 /* BaseManager.swift */,
 				ABBDD4A02C45E0D90064407E /* NotificationsManager.swift */,
 				AB3FAE5F2C46E610004883DF /* UserDefaultsCache.swift */,
 			);
@@ -716,7 +712,7 @@
 				};
 			};
 			buildConfigurationList = AB7B364E2C34A793004AE578 /* Build configuration list for PBXProject "SubMinder" */;
-			compatibilityVersion = "Xcode 15.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -818,7 +814,6 @@
 				AB5917412C41F31C007A0EE5 /* SubMinderApp.swift in Sources */,
 				AB5917422C41F31C007A0EE5 /* Color+Utils.swift in Sources */,
 				AB5917432C41F31C007A0EE5 /* NewSubscriptionView.swift in Sources */,
-				AB5917442C41F31C007A0EE5 /* BaseManager.swift in Sources */,
 				AB5917452C41F31C007A0EE5 /* RegisterViewModel.swift in Sources */,
 				ABBDD4A12C45E0D90064407E /* NotificationsManager.swift in Sources */,
 				AB5917462C41F31C007A0EE5 /* String+Utils.swift in Sources */,
@@ -882,7 +877,6 @@
 				AB7B36572C34A793004AE578 /* SubMinderApp.swift in Sources */,
 				ABEDC0372C35F1D30057EDC6 /* Color+Utils.swift in Sources */,
 				ABEDC0482C385DA50057EDC6 /* NewSubscriptionView.swift in Sources */,
-				AB7B368E2C34AA1B004AE578 /* BaseManager.swift in Sources */,
 				AB7B36C02C354F4F004AE578 /* RegisterViewModel.swift in Sources */,
 				ABBDD4A22C45E0D90064407E /* NotificationsManager.swift in Sources */,
 				AB7B36B62C34D974004AE578 /* String+Utils.swift in Sources */,
@@ -945,7 +939,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinder;
 				PRODUCT_NAME = SubMinder;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -988,7 +982,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinder;
 				PRODUCT_NAME = SubMinder;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1155,7 +1149,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinderTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1197,7 +1191,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinderTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
