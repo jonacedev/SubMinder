@@ -35,7 +35,7 @@ struct SplashView: View {
                 .frame(width: 130, height: 130)
                 .scaledToFit()
                 .padding(.bottom, 50)
-                .scaleEffect(isLogoAnimated ? 2 : 1)
+                .scaleEffect(isLogoAnimated ? 1.8 : 1)
                 .onAppear {
                     withAnimation {
                         isLogoAnimated = false
@@ -46,7 +46,9 @@ struct SplashView: View {
             viewModel.onAppear()
         }
         .onChange(of: viewModel.successCheck) {
-            splashLoaded = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                splashLoaded = true
+            }
         }
         .alert(isPresented: $viewModel.showJailbreakAlert) {
             Alert(
