@@ -167,7 +167,7 @@
 		AB5916BC2C3F3A49007A0EE5 /* SMSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSearchBar.swift; sourceTree = "<group>"; };
 		AB5916F22C40184A007A0EE5 /* SubscriptionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailView.swift; sourceTree = "<group>"; };
 		AB5916F42C40185D007A0EE5 /* SubscriptionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailViewModel.swift; sourceTree = "<group>"; };
-		AB5917652C41F31C007A0EE5 /* SubMinderStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubMinderStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB5917652C41F31C007A0EE5 /* SubMinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubMinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5917662C41F31C007A0EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "/Users/jonathan/Desktop/iOS Projects/SubMinder/SubMinder/App/Store/Info.plist"; sourceTree = "<absolute>"; };
 		AB5917692C420B7B007A0EE5 /* SubMinderTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SubMinderTest.entitlements; sourceTree = "<group>"; };
 		AB59176A2C420BAD007A0EE5 /* SubMinderStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SubMinderStore.entitlements; sourceTree = "<group>"; };
@@ -399,7 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				AB7B36532C34A793004AE578 /* SubMinderTest.app */,
-				AB5917652C41F31C007A0EE5 /* SubMinderStore.app */,
+				AB5917652C41F31C007A0EE5 /* SubMinder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -669,7 +669,7 @@
 				ABAA84C02C4224350085E292 /* FirebaseFirestoreCombine-Community */,
 			);
 			productName = SubMinder;
-			productReference = AB5917652C41F31C007A0EE5 /* SubMinderStore.app */;
+			productReference = AB5917652C41F31C007A0EE5 /* SubMinder.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AB7B36522C34A793004AE578 /* SubMinderTest */ = {
@@ -947,7 +947,7 @@
 				);
 				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinder;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SubMinder;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SubminderStore;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -990,7 +990,7 @@
 				);
 				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jonacedev.SubMinder;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SubMinder;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SubminderStore;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
