@@ -11,6 +11,7 @@ struct SplashView: View {
     
     @StateObject var viewModel: SplashViewModel
     @Binding var splashLoaded: Bool
+    @State var isLogoAnimated = true
     
     init(firebaseManager: FirebaseManager, splashLoaded: Binding<Bool>) {
         self._splashLoaded = splashLoaded
@@ -23,8 +24,23 @@ struct SplashView: View {
     
     @ViewBuilder private func content() -> some View {
         ZStack {
-            Color.clear
-                .ignoresSafeArea()
+            LinearGradient(
+                colors: [Color.additionalPurple, Color.additionalBlue],
+                startPoint: .topLeading,
+                endPoint: .trailing)
+            .ignoresSafeArea()
+            
+            Image("appLogo")
+                .resizable()
+                .frame(width: 130, height: 130)
+                .scaledToFit()
+                .padding(.bottom, 50)
+                .scaleEffect(isLogoAnimated ? 2 : 1)
+                .onAppear {
+                    withAnimation {
+                        isLogoAnimated = false
+                    }
+                }
         }
         .onAppear {
             viewModel.onAppear()
