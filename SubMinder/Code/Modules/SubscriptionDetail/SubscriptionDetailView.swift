@@ -42,7 +42,7 @@ struct SubscriptionDetailView: View {
         BaseView(content: content, viewModel: viewModel)
             .toolbar {
                 ToolbarItem(placement: .primaryAction, content: {
-                    vwTrashOverlay()
+                    vwTrash()
                 })
                 
                 ToolbarItem(placement: .principal, content: {
@@ -189,17 +189,17 @@ struct SubscriptionDetailView: View {
         .multilineTextAlignment(.trailing)
     }
     
-    @ViewBuilder private func vwTrashOverlay() -> some View {
+    @ViewBuilder private func vwTrash() -> some View {
         Button(action: {
             if let subscriptionId = viewModel.subscription?.id {
                 Task {
                     await viewModel.removeSubscription(subscriptionId: subscriptionId)
                     NotificationsManager.shared.requestAuthorization(granted: {
                         viewModel.removeNotification(subscriptionId: subscriptionId, success: {
-                            dismiss()
+                            dismissUpdate()
                         })
                     }, denied: {
-                        dismiss()
+                        dismissUpdate()
                     })
                   
                 }
