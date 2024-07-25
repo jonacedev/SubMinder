@@ -81,7 +81,7 @@ struct SubscriptionModelDto: Identifiable {
         case "amazonprime": .colorAmazonPrime
         case "appledeveloper": .colorAppleDeveloper
         case "applemusic": .colorAppleMusic
-        case "appletv": .colorAppleTV
+        case "appletv": .colorAppletv
         case "audible": .colorAudible
         case "calm": .colorCalm
         case "canva": .colorCanva
@@ -101,7 +101,7 @@ struct SubscriptionModelDto: Identifiable {
         case "hbo": .colorHbo
         case "hostinger": .colorHostinger
         case "hulu": .colorHulu
-        case "icloud": .colorICloud
+        case "icloud": .colorIcloud
         case "linkedin": .colorLinkedin
         case "medium": .colorMedium
         case "movistar": .colorMovistar
